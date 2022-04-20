@@ -13,7 +13,6 @@
                 foreach ($sql_login->getResult() as $loginrow)
                 {
                     $userdata = array('user_id' => $loginrow->user_id, 'fname' => $loginrow->fname, 'mname' => $loginrow->mname, 'lname' => $loginrow->lname, 'user_type' => $loginrow->user_type, 'is_active' => $loginrow->is_active ,'logged_in' => TRUE);
-                    $session = session();
                     $this->session->set($userdata);
 
                     if(($loginrow->is_active) == 1)
@@ -22,12 +21,13 @@
                         {
                             return redirect()->to('/views/view_admin');
                         }
-                        if(($loginrow->user_type) == "TEACHER")
+                        else if(($loginrow->user_type) == "TEACHER")
                         {
                             return redirect()->to('/views/view_teacher');
                         }
-                        if(($loginrow->user_type) == "STUDENT")
+                        else if(($loginrow->user_type) == "STUDENT")
                         {
+                            //echo view('student/student_home',$userdata);
                             return redirect()->to('/views/view_student');
                         }
                     }
@@ -46,6 +46,12 @@
                 return redirect()->to('/views/index');
 
             }
+        }
+        public function logout()
+        {
+            $this->session->destroy();
+            return redirect()->to(site_url());
+            
         }
 
         public function sign_up()

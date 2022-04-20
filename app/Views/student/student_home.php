@@ -1,3 +1,16 @@
+<?php
+
+    $session = session();
+    $loginverification = $session->get('logged_in');
+    
+    if(!$loginverification) 
+    {
+        header('Location:'.base_url());
+        die();
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,7 +65,7 @@
   </style>
 </head>
 <body>
-<nav class="navbar" role="navigation" aria-label="main navigation">
+<nav class="navbar is-link" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item" href="https://bulma.io">
       <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
@@ -74,13 +87,15 @@
       <a class="navbar-item">
         Documentation
       </a>
+    </div>
 
-      <div class="navbar-item has-dropdown is-hoverable">
+    <div class="navbar-end">
+      <div class="navbar-item">
+      <div class="navbar-item has-dropdown is-hoverable ">
         <a class="navbar-link">
-          More
+          <i class="fa fa-user"></i>
         </a>
-
-        <div class="navbar-dropdown">
+        <div class="navbar-dropdown is-right">
           <a class="navbar-item">
             About
           </a>
@@ -91,23 +106,12 @@
             Contact
           </a>
           <hr class="navbar-divider">
-          <a class="navbar-item">
-            Report an issue
+          <a class="navbar-item" href="<?=site_url('databasecontroller/logout')?>">
+          <i class="fa fa-sign-out"></i> &nbsp;
+            Log-out
           </a>
         </div>
       </div>
-    </div>
-
-    <div class="navbar-end">
-      <div class="navbar-item">
-        <div class="buttons">
-          <a class="button is-primary">
-            <strong>Sign up</strong>
-          </a>
-          <a class="button is-light">
-            Log in
-          </a>
-        </div>
       </div>
     </div>
   </div>
@@ -177,7 +181,7 @@
 
     <script>
         var demoWorkspace = Blockly.inject('blocklyDiv',
-            {media: '<?=base_url('/design/media/')?>',
+            {media: '<?=base_url('design/media/')?>',
             toolbox: document.getElementById('toolbox')});
         Blockly.Xml.domToWorkspace(document.getElementById('startBlocks'),
                                 demoWorkspace);

@@ -19,7 +19,7 @@
     <script src="<?=base_url('/design/js/jquery-3.6.0.js')?>" type="text/javascript"></script>
     <script src="<?=base_url('/design/js/popper.min.js')?>" type="text/javascript"></script>
     <script src="<?=base_url('/design/js/modal-fx.js')?>" type="text/javascript"></script>
-    <script src="<?=base_url('/design/js/sweetalert2.min.js')?>" type="text/javascript"></script>
+    <script src="<?=base_url('/design/js/sweetalert2.all.min.js')?>" type="text/javascript"></script>
 </head>
 <style>
     body, html
