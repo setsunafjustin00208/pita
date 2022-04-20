@@ -20,12 +20,12 @@ class Views extends BaseController
         echo view('admin/admin_home');
     }
 
-    public function view_student($page = 'student')
+    public function view_student()
     {
         echo view('student/student_home');
     }
     
-    public function view_teacher($page = 'teacher')
+    public function view_teacher()
     {
         echo view('teacher/teacher_home');
     }

@@ -1,0 +1,27 @@
+CRITICAL - 2022-04-19 19:42:17 --> Invalid file: student/student_home.php
+#0 C:\xampp\htdocs\pita\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('student/student...')
+#1 C:\xampp\htdocs\pita\system\Common.php(1089): CodeIgniter\View\View->render('student/student...', Array, true)
+#2 C:\xampp\htdocs\pita\app\Controllers\Views.php(25): view('student/student...')
+#3 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\Views->view_student()
+#4 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Views))
+#5 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-04-19 19:43:32 --> Invalid file: student/student_home.php
+#0 C:\xampp\htdocs\pita\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('student/student...')
+#1 C:\xampp\htdocs\pita\system\Common.php(1089): CodeIgniter\View\View->render('student/student...', Array, true)
+#2 C:\xampp\htdocs\pita\app\Controllers\Views.php(25): view('student/student...')
+#3 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\Views->view_student()
+#4 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Views))
+#5 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-04-19 19:43:36 --> Invalid file: student/student_home.php
+#0 C:\xampp\htdocs\pita\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('student/student...')
+#1 C:\xampp\htdocs\pita\system\Common.php(1089): CodeIgniter\View\View->render('student/student...', Array, true)
+#2 C:\xampp\htdocs\pita\app\Controllers\Views.php(25): view('student/student...')
+#3 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\Views->view_student()
+#4 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Views))
+#5 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}

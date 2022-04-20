@@ -10,14 +10,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome</title>
-    <link rel="stylesheet" href="design/css/all.css" type="text/css">
-    <link rel="stylesheet" href="design/css/bulma.css" type="text/css">
-    <link rel="stylesheet" href="design/css/animate.min.css" type="text/css">
-    <script src="design/js/mine.js" type="text/javascript"></script>
-    <script src="design/js/all.js" type="text/javascript"></script>
-    <script src="design/js/jquery-3.6.0.js" type="text/javascript"></script>
-    <script src="design/js/popper.min.js" type="text/javascript"></script>
-    <script src="design/js/sweetalert2.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="<?=base_url('/design/css/all.css')?>" type="text/css">
+    <link rel="stylesheet" href="<?=base_url('/design/css/bulma.css')?>" type="text/css">
+    <link rel="stylesheet" href="<?=base_url('/design/css/animate.min.css')?>" type="text/css">
+    <link rel="stylesheet" href="<?=base_url('/design/css/modal-fx.css')?>" type="text/css">
+    <script src="<?=base_url('/design/js/mine.js')?>" type="text/javascript"></script>
+    <script src="<?=base_url('/design/js/all.js')?>" type="text/javascript"></script>
+    <script src="<?=base_url('/design/js/jquery-3.6.0.js')?>" type="text/javascript"></script>
+    <script src="<?=base_url('/design/js/popper.min.js')?>" type="text/javascript"></script>
+    <script src="<?=base_url('/design/js/modal-fx.js')?>" type="text/javascript"></script>
+    <script src="<?=base_url('/design/js/sweetalert2.min.js')?>" type="text/javascript"></script>
 </head>
 <style>
     body, html
@@ -28,7 +30,7 @@
     .bg 
     {
         /* The image used */
-        background-image: url("design/images/bg.jpg");
+        background-image: url("<?=base_url('/design/images/bg.jpg')?>");
 
         /* Full height */
         height: 100%;
@@ -45,6 +47,45 @@
     }
    
 </style>
+<?php 
+                if(isset($_SESSION['wrongLogIn']))
+                {
+                    $loginmessage  = $_SESSION['wrongLogIn'];
+            ?>
+            <script>
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong!',
+                    html: '<p class="subtitle"><?=$loginmessage?></p>',
+                    footer: '<a href="">Why do I have this issue?</a>'
+                })
+
+            </script>
+            <?php 
+                $_SESSION['wrongLogIn'] = '';
+                }
+
+                else if(isset($_SESSION['notActive']))
+                {
+                    $loginmessage  = $_SESSION['notActive'];
+                
+            
+            ?> 
+            <script>
+                 Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong!',
+                    html: '<p class="subtitle"><?=$loginmessage?></p>',
+                    footer: '<a href="">Why do I have this issue?</a>'
+                })
+
+            </script>
+            <?php 
+                $_SESSION['notActive'] = '';
+                }
+            ?> 
 <body class="bg">
     <nav class="navbar is-info" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
@@ -153,8 +194,8 @@
             });
             });
     </script>
-        <div id= "modal-trigger" class="modal">
-            <div class="modal-background animate__backInUp"></div>
+        <div id= "modal-trigger" class="modal modal-fx-fadeInScale">
+            <div class="modal-background"></div>
                 <div class="modal-card modal-size">
                         <header class="modal-card-head">
                             <p class="modal-card-title"><strong>Log-in</strong></p>
@@ -180,57 +221,78 @@
                         </form>
                             <button class="button is-danger">Cancel</button>
                         </footer>
-                        
-                    
                 </div>
         </div>
-        <div id= "modal-trigger-2" class="modal">
+        <div id= "modal-trigger-2" class="modal modal-fx-fadeInScale">
+            <script>
+
+            </script>
             <div class="modal-background"></div>
-                <div class="modal-card modal-size animate__backInUp">
+                <div class="modal-card modal-size">
                         <header class="modal-card-head">
                             <p class="modal-card-title">Sign-up</p>
                             <button class="delete" aria-label="close"></button>
                         </header>
                         <section class="modal-card-body">
-                        <form action="">
+                        <?=form_open('DatabaseController/sign_up')?>
+                        <input type="hidden" name="date_created" value="<?=date("y_m_d H:i:s")?>">
+                        <input type="hidden" name="date_modified" value="<?=date("y_m_d H:i:s")?>">
+                        <input type="hidden" name="is_active" value="0">
+                        <input type="hidden" name="user_type" value="STUDENT">
                             <div class="field">
                                 <label for="" class="label">Username</label>
                             </div>
                             <div class="control">
-                                <input type="text" name="Username" placeholder="Enter Username" class="input is-link">
+                                <input type="text" name="username" placeholder="Enter Username" class="input is-link">
                             </div>
                             <div class="field">
-                                <label for="" class="label">Username</label>
+                                <label for="" class="label">Password</label>
                             </div>
                             <div class="control">
-                                <input type="text" name="Username" placeholder="Enter Username" class="input is-link">
+                                <input type="password" name="password" placeholder="Enter Password" class="input is-link">
                             </div>
                             <div class="field">
-                                <label for="" class="label">Username</label>
+                                <label for="" class="label">Confirm Password</label>
                             </div>
                             <div class="control">
-                                <input type="text" name="Username" placeholder="Enter Username" class="input is-link">
+                                <input type="password" placeholder="Confirm Password" class="input is-link">
                             </div>
                             <div class="field">
-                                <label for="" class="label">Username</label>
+                                <label for="" class="label">First name</label>
                             </div>
                             <div class="control">
-                                <input type="text" name="Username" placeholder="Enter Username" class="input is-link">
+                                <input type="text" name="fname" placeholder="Enter First Name" class="input is-link">
                             </div>
                             <div class="field">
-                                <label for="" class="label">Username</label>
+                                <label for="" class="label">Middle name</label>
                             </div>
                             <div class="control">
-                                <input type="text" name="Username" placeholder="Enter Username" class="input is-link">
+                                <input type="text" name="mname" placeholder="Enter Middle name" class="input is-link">
                             </div>
-                        
+                            <div class="field">
+                                <label for="" class="label">Last name</label>
+                            </div>
+                            <div class="control">
+                                <input type="text" name="lname" placeholder="Enter Last name" class="input is-link">
+                            </div>
+                            <div class="field">
+                                <label for="" class="label">Grade Level</label>
+                            </div>
+                            <div class="control">
+                                <input type="number" maxlength="1" name="grade" placeholder="Enter grade level" class="input is-link">
+                            </div>
+                            <div class="field">
+                                <label for="" class="label">Section</label>
+                            </div>
+                            <div class="control">
+                                <input type="text" name="section" placeholder="Enter Last name" class="input is-link">
+                            </div>
                         </section>
                         <footer class="modal-card-foot">
                             <button class="button is-success">Register</button>
                         </form>
                             <button class="button">Cancel</button>
                         </footer>
-                
                 </div>
         </div>
 </body>
