@@ -12,15 +12,15 @@
     }
     else
     {
-      if($usertype != 'TEACHER')
+      if($usertype != 'ADMIN')
       {
         if($usertype == 'STUDENT')
         {
           return redirect()->to('/views/view_student');
         }
-        else if ($usertype == 'ADMIN')
+        else if ($usertype == 'TEACHER')
         {
-          return redirect()->to('/views/view_admin');
+          return redirect()->to('/views/view_teacher');
         }
       }
     }

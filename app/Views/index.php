@@ -197,7 +197,7 @@
                             <div class="field">
                                 <label for="" class="label">Password</label>
                                 <div class="control">
-                                    <input type="text" name="Password" placeholder="Enter Password" class="input is-link">
+                                    <input type="password" name="Password" placeholder="Enter Password" class="input is-link">
                                 </div>
                             </div>
                         </section>

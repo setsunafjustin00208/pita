@@ -29,6 +29,11 @@ class Views extends BaseController
         echo view('admin/admin_home');
     }
 
+    public function view_admin_users()
+    {
+        echo view('admin/admin_users');
+    }
+
     public function view_student()
     {
         echo view('student/student_home');

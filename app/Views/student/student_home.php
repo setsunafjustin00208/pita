@@ -24,26 +24,6 @@
         }
       }
     }
-   /* if($usertype == 'STUDENT')
-    {
-      if(!$loginverification) 
-      {
-          header('Location:'.base_url());
-          die();
-      }
-    }
-    else
-    {
-      if($usertype == 'TEACHER')
-      {
-        return redirect()->to('/views/view_teacher');
-      }
-
-      else
-      {
-        return redirect()->to('/views/view_admin');
-      }
-    } */
 ?>
 
 <!DOCTYPE html>
@@ -151,12 +131,44 @@
     </div>
   </div>
 </nav>
-
 <div class="container columns">
-    <div class="column is-1">
-
+    <div class="column is-2 box mt-3 ml-2">
+    <aside class="menu">
+            <p class="menu-label">
+                General
+            </p>
+            <ul class="menu-list">
+                <li><a>Dashboard</a></li>
+                <li><a>Customers</a></li>
+            </ul>
+            <p class="menu-label">
+                Administration
+            </p>
+            <ul class="menu-list">
+                <li><a>Team Settings</a></li>
+                <li>
+                <a class="is-active">Manage Your Team</a>
+                <ul>
+                    <li><a>Members</a></li>
+                    <li><a>Plugins</a></li>
+                    <li><a>Add a member</a></li>
+                </ul>
+                </li>
+                <li><a>Invitations</a></li>
+                <li><a>Cloud Storage Environment Settings</a></li>
+                <li><a>Authentication</a></li>
+            </ul>
+            <p class="menu-label">
+                Transactions
+            </p>
+            <ul class="menu-list">
+                <li><a>Payments</a></li>
+                <li><a>Transfers</a></li>
+                <li><a>Balance</a></li>
+            </ul>
+        </aside>
     </div>
-    <div class="column is-11 is-fullheight-with-navbar">
+    <div class="column is-10 box ml-2 is-fullheight-with-navbar">
         <p>
             <button class="button is-link p-3 m-3" onclick="runCode()" id="runButton">Run Program</button>
         </p>
@@ -168,7 +180,6 @@
             style="display: inline-block; height: 480px; width: 30%;">
         </textarea>
     </div>
-
     <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
         <category name="Logic" colour="%{BKY_LOGIC_HUE}">
         <block type="controls_if"></block>
