@@ -225,53 +225,81 @@
                                 <label for="" class="label">Username</label>
                             </div>
                             <div class="control">
-                                <input type="text" name="username" placeholder="Enter Username" class="input is-link">
+                                <input type="text" name="username" placeholder="Enter Username" class="input is-link" required>
                             </div>
                             <div class="field">
                                 <label for="" class="label">Password</label>
                             </div>
                             <div class="control">
-                                <input type="password" name="password" placeholder="Enter Password" class="input is-link">
+                                <input type="password" id="password" name="password" placeholder="Enter Password" class="input is-link" onkeyup="check();" required>
                             </div>
                             <div class="field">
                                 <label for="" class="label">Confirm Password</label>
                             </div>
                             <div class="control">
-                                <input type="password" placeholder="Confirm Password" class="input is-link">
+                                <input type="password" id="confirm" placeholder="Confirm Password" class="input is-link" onkeyup="check();" required>
                             </div>
+                            <div class="field mt-2">
+                                <label for="" class="label" id="message"></label>
+                            </div>
+                            <script>
+                                var check = function() {
+                                    if (document.getElementById('password').value == document.getElementById('confirm').value) 
+                                    {
+                                        if(document.getElementById('password').value === ""  || document.getElementById('confirm').value === "")
+                                        {
+                                            document.getElementById('message').innerHTML = '';
+                                            document.getElementById('submit').disabled = true;
+                                        }
+
+                                        else
+                                        {
+                                            document.getElementById('message').style.color = 'green';
+                                            document.getElementById('message').innerHTML = 'matching';
+                                            document.getElementById('submit').disabled = false;
+                                        }
+                                       
+                                    } 
+                                    else {
+                                        document.getElementById('message').style.color = 'red';
+                                        document.getElementById('message').innerHTML = 'not matching';
+                                        document.getElementById('submit').disabled = true;
+                                    }
+                                }
+                        </script>
                             <div class="field">
                                 <label for="" class="label">First name</label>
                             </div>
                             <div class="control">
-                                <input type="text" name="fname" placeholder="Enter First Name" class="input is-link">
+                                <input type="text" name="fname" placeholder="Enter First Name" class="input is-link" required>
                             </div>
                             <div class="field">
                                 <label for="" class="label">Middle name</label>
                             </div>
                             <div class="control">
-                                <input type="text" name="mname" placeholder="Enter Middle name" class="input is-link">
+                                <input type="text" name="mname" placeholder="Enter Middle name" class="input is-link" required>
                             </div>
                             <div class="field">
                                 <label for="" class="label">Last name</label>
                             </div>
                             <div class="control">
-                                <input type="text" name="lname" placeholder="Enter Last name" class="input is-link">
+                                <input type="text" name="lname" placeholder="Enter Last name" class="input is-link" required>
                             </div>
                             <div class="field">
                                 <label for="" class="label">Grade Level</label>
                             </div>
                             <div class="control">
-                                <input type="number" maxlength="1" name="grade" placeholder="Enter grade level" class="input is-link">
+                                <input type="number" maxlength="1" name="grade" placeholder="Enter grade level" class="input is-link" required>
                             </div>
                             <div class="field">
                                 <label for="" class="label">Section</label>
                             </div>
                             <div class="control">
-                                <input type="text" name="section" placeholder="Enter Last name" class="input is-link">
+                                <input type="text" name="section" placeholder="Enter Last name" class="input is-link" required>
                             </div>
                         </section>
                         <footer class="modal-card-foot">
-                            <button class="button is-success">Register</button>
+                            <button class="button is-success" id="submit">Register</button>
                         </form>
                             <button class="button">Cancel</button>
                         </footer>

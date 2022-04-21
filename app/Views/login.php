@@ -22,10 +22,23 @@
         }
 
     }
-    if(isset($_SESSION['wrongLogIn']))
+                if(isset($_SESSION['wrongLogIn']))
                 {
                     $loginmessage  = $_SESSION['wrongLogIn'];
                 }
+                else
+                {
+                    $loginmessage = "Log-In To Your account";
+                }
+                if(isset($_SESSION['wrongLogInTitle']))
+                {
+                    $loginmessageTitle  = $_SESSION['wrongLogInTitle'];
+                }
+                else
+                {
+                    $loginmessageTitle = "Log-In To Your account";
+                }
+                
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,9 +63,9 @@
 <div class="hero-body">
     <div class="container is-max-desktop has-text-centered">
       <div class="column is-5 is-offset-3">
-      <h1 class="title has-text-white is-4">Login Again</h1>
+      <h1 class="title has-text-white is-4"><?=$loginmessageTitle?></h1>
         <hr class="login-hr">
-        <p class="subtitle is-6 has-text-white"><?=$loginmessage?>!</p>
+        <p class="subtitle is-6 has-text-white"><?=$loginmessage?></p>
         <div class="box">
             <center>
             <div class="box image is-128x128">

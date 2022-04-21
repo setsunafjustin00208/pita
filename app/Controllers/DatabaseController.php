@@ -41,7 +41,7 @@
                 }
             }
             else
-            {
+            {   $_SESSION['wrongLogInTitle'] = "Please Log-In Again";
                 $_SESSION['wrongLogIn'] = "Invalid Username Or Password!!";
                 return redirect()->to('/views/login_page');
 
@@ -55,10 +55,22 @@
         }
 
         public function sign_up()
-        {
-            $sign_up_query_builder=$this->db->table('users');
-            $sign_up_query_builder->insert($_POST);
-            return redirect()->to('/views/index');
+        {   
+            $Username = $_POST['username'];
+            $sql_sign_up_verification = $this->db->query("SELECT * FROM USERS WHERE username = '{$Username}'");
+            if($sql_sign_up_verification->getNumRows() > 0)
+            {
+                $_SESSION['MayUserNaIto'] = "Username Available. Please Choose another Username";
+                $_SESSION['MayUserNaItoTitle'] = "Username Taken";
+                return redirect()->to('/views/signup_page');
+            }
+            else
+            {
+                $sign_up_query_builder=$this->db->table('users');
+                $sign_up_query_builder->insert($_POST);
+                return redirect()->to('/views/index');
+            }
+            
         }
     }
 

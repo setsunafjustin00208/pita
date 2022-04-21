@@ -14,6 +14,10 @@ class Views extends BaseController
     {
         echo view('login');
     }
+    public function signup_page()
+    {
+        echo view('sign_up');
+    }
 
 /** 
     Landing page eacher user type
