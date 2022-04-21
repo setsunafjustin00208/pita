@@ -10,6 +10,11 @@ class Views extends BaseController
         echo view('index');
     }
 
+    public function login_page()
+    {
+        echo view('login');
+    }
+
 /** 
     Landing page eacher user type
 

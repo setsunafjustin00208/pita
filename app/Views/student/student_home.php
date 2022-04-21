@@ -1,14 +1,49 @@
 <?php
-
+    helper(['array','date','form','html','security','url']);
     $session = session();
     $loginverification = $session->get('logged_in');
-    
+    $usertype = $session->get('user_type');
+
     if(!$loginverification) 
     {
-        header('Location:'.base_url());
-        die();
-    }
+      header('Location:'.base_url());
+      die();
 
+    }
+    else
+    {
+      if($usertype != 'STUDENT')
+      {
+        if($usertype == 'ADMIN')
+        {
+          return redirect()->to('/views/view_admin');
+        }
+        else if ($usertype == 'TEACHER')
+        {
+          return redirect()->to('/views/view_teacher');
+        }
+      }
+    }
+   /* if($usertype == 'STUDENT')
+    {
+      if(!$loginverification) 
+      {
+          header('Location:'.base_url());
+          die();
+      }
+    }
+    else
+    {
+      if($usertype == 'TEACHER')
+      {
+        return redirect()->to('/views/view_teacher');
+      }
+
+      else
+      {
+        return redirect()->to('/views/view_admin');
+      }
+    } */
 ?>
 
 <!DOCTYPE html>

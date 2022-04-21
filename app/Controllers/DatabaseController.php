@@ -43,7 +43,7 @@
             else
             {
                 $_SESSION['wrongLogIn'] = "Invalid Username Or Password!!";
-                return redirect()->to('/views/index');
+                return redirect()->to('/views/login_page');
 
             }
         }

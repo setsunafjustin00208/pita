@@ -1,8 +1,29 @@
 <?php
-    helper('form');
+    helper(['array','date','form','html','security','url']);
+    $session = session();
+    $loginverification = $session->get('logged_in');
+    $usertype = $session->get('user_type');
+    if($loginverification) 
+    {
+        if($usertype == 'ADMIN')
+        {
+            header('Location:'.site_url('views/view_admin'));
+            exit();
+        }
+        else if ($usertype == 'TEACHER')
+        {
+            header('Location:'.site_url('views/view_teacher'));
+            exit();
+        }
+        else if ($usertype == 'STUDENT')
+        {
+            header('Location:'.site_url('views/view_student'));
+            exit();
+        }
 
+    }
+    
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,45 +68,9 @@
     }
    
 </style>
-<?php 
-                if(isset($_SESSION['wrongLogIn']))
-                {
-                    $loginmessage  = $_SESSION['wrongLogIn'];
-            ?>
-            <script>
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Something went wrong!',
-                    html: '<p class="subtitle"><?=$loginmessage?></p>',
-                    footer: '<a href="">Why do I have this issue?</a>'
-                })
-
-            </script>
-            <?php 
-                $_SESSION['wrongLogIn'] = '';
-                }
-
-                else if(isset($_SESSION['notActive']))
-                {
-                    $loginmessage  = $_SESSION['notActive'];
-                
-            
-            ?> 
-            <script>
-                 Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Something went wrong!',
-                    html: '<p class="subtitle"><?=$loginmessage?></p>',
-                    footer: '<a href="">Why do I have this issue?</a>'
-                })
-
-            </script>
-            <?php 
-                $_SESSION['notActive'] = '';
-                }
-            ?> 
+<script>
+    
+</script>
 <body class="bg">
     <nav class="navbar is-info" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
@@ -194,7 +179,7 @@
             });
             });
     </script>
-        <div id= "modal-trigger" class="modal modal-fx-fadeInScale">
+ <div id= "modal-trigger" class="modal modal-fx-fadeInScale">
             <div class="modal-background"></div>
                 <div class="modal-card modal-size">
                         <header class="modal-card-head">
@@ -224,9 +209,6 @@
                 </div>
         </div>
         <div id= "modal-trigger-2" class="modal modal-fx-fadeInScale">
-            <script>
-
-            </script>
             <div class="modal-background"></div>
                 <div class="modal-card modal-size">
                         <header class="modal-card-head">
