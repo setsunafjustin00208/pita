@@ -12,17 +12,30 @@
     }
     else
     {
-      if($usertype != 'TEACHER')
+      if($status == 'ACTIVE')
       {
-        if($usertype == 'STUDENT')
+        if($usertype != 'TEACHER')
         {
-          return redirect()->to('/views/view_student');
-        }
-        else if ($usertype == 'ADMIN')
-        {
-          return redirect()->to('/views/view_admin');
+          if($usertype == 'STUDENT')
+          {
+            header("Location:".site_url('/views/view_student'));
+            exit();
+          }
+          else if ($usertype == 'ADMIN')
+          {
+            header("Location:".site_url('/views/view_admin'));
+            exit();
+          }
         }
       }
+      else
+      {
+          $_SESSION['wrongLogInTitle'] = "Account Inactive";
+          $_SESSION['wrongLogIn'] = "Enter Code first";
+          header('Location:'.site_url('views/login_page'));
+          exit();
+      }
+
     }
 ?>
 <!DOCTYPE html>

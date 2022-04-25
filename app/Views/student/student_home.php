@@ -3,26 +3,38 @@
     $session = session();
     $loginverification = $session->get('logged_in');
     $usertype = $session->get('user_type');
-
+    $status = $session->get('is_active');
+    
     if(!$loginverification) 
     {
       header('Location:'.base_url());
       die();
-
     }
     else
     {
-      if($usertype != 'STUDENT')
-      {
-        if($usertype == 'ADMIN')
+      if($status == 'ACTIVE')
         {
-          return redirect()->to('/views/view_admin');
+          if($usertype != 'STUDENT')
+          {
+            if($usertype == 'ADMIN')
+            {
+                header("Location:".site_url('/views/view_admin'));
+                exit();
+            }
+            else if ($usertype == 'TEACHER')
+            {
+              header("Location:".site_url('/views/view_teacher'));
+              exit();
+            }
+          }
         }
-        else if ($usertype == 'TEACHER')
+        else
         {
-          return redirect()->to('/views/view_teacher');
+          $_SESSION['wrongLogInTitle'] = "Account Inactive";
+          $_SESSION['wrongLogIn'] = "Enter Code first";
+          header('Location:'.site_url('views/login_page'));
+          exit();
         }
-      }
     }
 ?>
 

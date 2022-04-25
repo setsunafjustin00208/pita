@@ -1,0 +1,83 @@
+CRITICAL - 2022-04-22 09:09:33 --> Call to undefined method CodeIgniter\Session\Session::userdata()
+#0 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\DatabaseController->login()
+#1 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabaseController))
+#2 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2022-04-22 09:48:05 --> syntax error, unexpected token "}", expecting "," or ";"
+#0 C:\xampp\htdocs\pita\system\Router\Router.php(175): CodeIgniter\Router\Router->autoRoute('DatabaseControl...')
+#1 C:\xampp\htdocs\pita\system\CodeIgniter.php(726): CodeIgniter\Router\Router->handle('DatabaseControl...')
+#2 C:\xampp\htdocs\pita\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#3 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-04-22 09:48:21 --> syntax error, unexpected token "public"
+#0 C:\xampp\htdocs\pita\system\Router\Router.php(175): CodeIgniter\Router\Router->autoRoute('DatabaseControl...')
+#1 C:\xampp\htdocs\pita\system\CodeIgniter.php(726): CodeIgniter\Router\Router->handle('DatabaseControl...')
+#2 C:\xampp\htdocs\pita\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#3 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-04-22 09:55:40 --> Call to undefined method CodeIgniter\Session\Session::userdata()
+#0 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\DatabaseController->login()
+#1 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabaseController))
+#2 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2022-04-22 10:02:24 --> CodeIgniter\Session\Session::push(): Argument #2 ($data) must be of type array, int given, called in C:\xampp\htdocs\pita\app\Controllers\DatabaseController.php on line 53
+#0 C:\xampp\htdocs\pita\app\Controllers\DatabaseController.php(53): CodeIgniter\Session\Session->push('attempt', 1)
+#1 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\DatabaseController->login()
+#2 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabaseController))
+#3 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-04-22 17:47:30 --> Cache key contains reserved characters {}()/\@:
+#0 C:\xampp\htdocs\pita\system\Cache\Handlers\FileHandler.php(80): CodeIgniter\Cache\Handlers\BaseHandler::validateKey('throttler_http:...', '')
+#1 C:\xampp\htdocs\pita\system\Throttle\Throttler.php(103): CodeIgniter\Cache\Handlers\FileHandler->get('throttler_http:...')
+#2 C:\xampp\htdocs\pita\app\Controllers\DatabaseController.php(47): CodeIgniter\Throttle\Throttler->check('http://localhos...', 5, 60)
+#3 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\DatabaseController->login()
+#4 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabaseController))
+#5 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-04-22 17:49:26 --> Cache key contains reserved characters {}()/\@:
+#0 C:\xampp\htdocs\pita\system\Cache\Handlers\FileHandler.php(80): CodeIgniter\Cache\Handlers\BaseHandler::validateKey('throttler_http:...', '')
+#1 C:\xampp\htdocs\pita\system\Throttle\Throttler.php(103): CodeIgniter\Cache\Handlers\FileHandler->get('throttler_http:...')
+#2 C:\xampp\htdocs\pita\app\Controllers\DatabaseController.php(49): CodeIgniter\Throttle\Throttler->check('http://localhos...', 5, 60)
+#3 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\DatabaseController->login()
+#4 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabaseController))
+#5 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-04-22 17:51:41 --> Call to a member function getIPAddress() on string
+#0 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\DatabaseController->login()
+#1 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabaseController))
+#2 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2022-04-22 18:20:00 --> Cache key contains reserved characters {}()/\@:
+#0 C:\xampp\htdocs\pita\system\Cache\Handlers\FileHandler.php(80): CodeIgniter\Cache\Handlers\BaseHandler::validateKey('throttler_http:...', '')
+#1 C:\xampp\htdocs\pita\system\Throttle\Throttler.php(103): CodeIgniter\Cache\Handlers\FileHandler->get('throttler_http:...')
+#2 C:\xampp\htdocs\pita\app\Controllers\DatabaseController.php(49): CodeIgniter\Throttle\Throttler->check('http://localhos...', 5, 60)
+#3 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\DatabaseController->login()
+#4 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabaseController))
+#5 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2022-04-22 18:27:35 --> Email: sendWithMail throwed mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set()
+ERROR - 2022-04-22 18:30:18 --> Email: sendWithMail throwed mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set()
+ERROR - 2022-04-22 19:00:53 --> Email: sendWithMail throwed mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set()
+ERROR - 2022-04-22 19:09:01 --> Email: sendWithMail throwed mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set()
+ERROR - 2022-04-22 19:11:01 --> Email: sendWithMail throwed mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set()
+ERROR - 2022-04-22 19:11:03 --> Email: sendWithMail throwed mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set()
+ERROR - 2022-04-22 19:13:00 --> Email: sendWithMail throwed mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set()
+ERROR - 2022-04-22 19:13:02 --> Email: sendWithMail throwed mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set()
+ERROR - 2022-04-22 19:15:05 --> Email: sendWithMail throwed mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set()
+CRITICAL - 2022-04-22 19:15:42 --> syntax error, unexpected token "}"
+#0 C:\xampp\htdocs\pita\system\Router\Router.php(175): CodeIgniter\Router\Router->autoRoute('views/verificat...')
+#1 C:\xampp\htdocs\pita\system\CodeIgniter.php(726): CodeIgniter\Router\Router->handle('views/verificat...')
+#2 C:\xampp\htdocs\pita\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#3 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+ERROR - 2022-04-22 19:15:58 --> Email: sendWithMail throwed mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set()

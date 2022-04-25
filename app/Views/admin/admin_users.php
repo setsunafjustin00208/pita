@@ -16,11 +16,13 @@
       {
         if($usertype == 'STUDENT')
         {
-          return redirect()->to('/views/view_student');
+          header("Location:".site_url('/views/view_student'));
+          exit();
         }
         else if ($usertype == 'TEACHER')
         {
-          return redirect()->to('/views/view_teacher');
+          header("Location:".site_url('/views/view_teacher'));
+          exit();
         }
       }
     }
@@ -97,7 +99,7 @@
             Contact
           </a>
           <hr class="navbar-divider">
-          <a class="navbar-item" href="<?=site_url('databasecontroller/logout')?>">
+          <a class="navbar-item" href="<?=site_url('database/logout')?>">
           <i class="fa fa-sign-out"></i> &nbsp;
             Log-out
           </a>

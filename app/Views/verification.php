@@ -3,37 +3,23 @@
     $session = session();
     $loginverification = $session->get('logged_in');
     $usertype = $session->get('user_type');
-    $status = session()->get('is_active');
-
     if($loginverification) 
     {
-
-        if($status == 'ACTIVE')
+        if($usertype == 'ADMIN')
         {
-            if($usertype == 'ADMIN')
-            {
-                header('Location:'.site_url('views/view_admin'));
-                exit();
-            }
-            else if ($usertype == 'TEACHER')
-            {
-                header('Location:'.site_url('views/view_teacher'));
-                exit();
-            }
-            else if ($usertype == 'STUDENT')
-            {
-                header('Location:'.site_url('views/view_student'));
-                exit();
-            }
+            header('Location:'.site_url('views/view_admin'));
+            exit();
         }
-        else
+        else if ($usertype == 'TEACHER')
         {
-            $_SESSION['wrongLogInTitle'] = "Account Inactive";
-            $_SESSION['wrongLogIn'] = "Enter Code first";
-            header('Location:'.site_url('views/login_page'));
-            
+            header('Location:'.site_url('views/view_teacher'));
+            exit();
         }
-       
+        else if ($usertype == 'STUDENT')
+        {
+            header('Location:'.site_url('views/view_student'));
+            exit();
+        }
 
     }
                 if(isset($_SESSION['wrongLogIn']))
@@ -42,7 +28,7 @@
                 }
                 else
                 {
-                    $loginmessage = "Log-In To Your account";
+                    $loginmessage = "Enter Code";
                 }
                 if(isset($_SESSION['wrongLogInTitle']))
                 {
@@ -50,7 +36,7 @@
                 }
                 else
                 {
-                    $loginmessageTitle = "Log-In To Your account";
+                    $loginmessageTitle = "Check your email if the code was sent";
                 }
                 
 ?>
@@ -70,7 +56,7 @@
     <script src="<?=base_url('/design/js/popper.min.js')?>" type="text/javascript"></script>
     <script src="<?=base_url('/design/js/modal-fx.js')?>" type="text/javascript"></script>
     <script src="<?=base_url('/design/js/sweetalert2.all.min.js')?>" type="text/javascript"></script>
-    <title>Error Credentials</title>
+    <title>Enter Code</title>
 </head>
 <body>
 <div class="hero is-fullheight is-link">
@@ -86,19 +72,14 @@
                     <img src="https://miro.medium.com/proxy/0*4fHRBbNhF_1jpdCM.jpeg">
              </div>
              </center>
-        <div class="title has-text-grey is-6">Please enter your right username and password.</div>
-        <?=form_open('DatabaseController/login')?>
+        <div class="title has-text-grey is-6">Please enter your Verification that is sent to your email.</div>
+        <?=form_open('DatabaseController/verification')?>
             <div class="field">
                 <div class="control">
-                <input class="input is-link" type="email" placeholder="Enter Email" name="email" autofocus="">
+                <input class="input is-link" type="number" placeholder="Enter code" name="verification" autofocus="">
                 </div>
             </div>
-            <div class="field">
-                <div class="control">
-                <input class="input is-link" type="password" name="Password"  placeholder="Password">
-                </div>
-            </div>
-            <button class="button is-block is-danger is-fullwidth">Login</button>
+            <button class="button is-block is-danger is-fullwidth">Enter Code</button>
             </form>
             
         </div>

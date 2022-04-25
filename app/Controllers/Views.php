@@ -18,6 +18,10 @@ class Views extends BaseController
     {
         echo view('sign_up');
     }
+    public function verification_page()
+    {
+        echo view('verification');
+    }
 
 /** 
     Landing page eacher user type
@@ -43,6 +47,7 @@ class Views extends BaseController
     {
         echo view('teacher/teacher_home');
     }
+
 }
 
 

@@ -52,6 +52,7 @@ class BaseController extends Controller
         helper(['array','date','form','html','security','url']);
         $this->db = \Config\Database::connect();
         $this->session = \Config\Services::session();
+        $this->email = \Config\Services::email();
         
         
         

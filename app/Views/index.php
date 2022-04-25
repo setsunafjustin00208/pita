@@ -187,12 +187,12 @@
                             <button class="delete" aria-label="close"></button>
                         </header>
                         <section class="modal-card-body">
-                        <?=form_open('DatabaseController/login')?>
+                        <?=form_open('databasecontroller/login')?>
                             <div class="field">
-                                <label for="" class="label">Username</label>
+                                <label for="" class="label">Email</label>
                             </div>
                             <div class="control">
-                                <input type="text" name="Username" placeholder="Enter Username" class="input is-link">
+                                <input type="email" name="email" placeholder="Ente email" class="input is-link">
                             </div>
                             <div class="field">
                                 <label for="" class="label">Password</label>
@@ -216,11 +216,18 @@
                             <button class="delete" aria-label="close"></button>
                         </header>
                         <section class="modal-card-body">
-                        <?=form_open('DatabaseController/sign_up')?>
+                        <?=form_open('databasecontroller/sign_up')?>
                         <input type="hidden" name="date_created" value="<?=date("y_m_d H:i:s")?>">
                         <input type="hidden" name="date_modified" value="<?=date("y_m_d H:i:s")?>">
-                        <input type="hidden" name="is_active" value="0">
+                        <input type="hidden" name="is_active" value="DISABLED">
+                        <input type="hidden" name="verification" value="<?=rand(10000,99999)?>">
                         <input type="hidden" name="user_type" value="STUDENT">
+                            <div class="field">
+                                <label for="" class="label">Email</label>
+                            </div>
+                            <div class="control">
+                                <input type="email" name="email" placeholder="Ente email" class="input is-link">
+                            </div>
                             <div class="field">
                                 <label for="" class="label">Username</label>
                             </div>
