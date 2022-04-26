@@ -125,7 +125,7 @@
                 General
             </p>
             <ul class="menu-list">
-                <li><a class="is-active" href="<?=site_url('/views/view_admin')?>">Dashboard</a></li>
+                <li><a href="<?=site_url('/views/view_admin')?>">Dashboard</a></li>
                 <li><a href="<?=site_url('/views/view_admin_users')?>">Users</a></li>
             </ul>
             <p class="menu-label">
@@ -145,7 +145,7 @@
             </p>
             <ul class="menu-list">
                 <li><a href="<?=site_url('/views/admin_overall_statistics')?>">Overall</a></li>
-                <li><a href="<?=site_url('/views/admin_users_statistics')?>">Number of users</a></li>
+                <li><a class="is-active" href="<?=site_url('/views/admin_users_statistics')?>">Number of users</a></li>
             </ul>
         </aside>
     </div>

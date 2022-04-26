@@ -16,8 +16,8 @@
 
                 if(($loginrow->is_active) ==  "DISABLED")
                 {
-                    $_SESSION['wrongLogInTitle'] = "Account Inactive";
-                    $_SESSION['wrongLogIn'] = "Enter Code first";
+                    $_SESSION['Activate'] = "Account Inactive";
+                    $_SESSION['ActivateCode'] = "Enter Code first";
                     header('Location:'.site_url('views/verification-page'));
                     exit();
                 }
@@ -86,15 +86,15 @@
             $verification_data=$verification_builder->getWhere(['verification'=>$verification_code]);
             if($verification_data)
             {
-                $verification_builder->set('is_active','ACTIVE');
+                $verification_builder->set(['is_active','verification'],['ACTIVE',0]);
                 $verification_builder->where('verification',$verification_code);
                 $verification_builder->update();
                 return redirect()->to('/views/login_page');
             }
             else
             {
-                $_SESSION['wrongLogInTitle'] = "Account Inactive";
-                $_SESSION['wrongLogIn'] = "Enter Code first";
+                $_SESSION['Activate'] = "Account Inactive";
+                $_SESSION['ActivateCode'] = "Enter Code first";
                 header('Location:'.site_url('views/verification-page'));
                 exit();
             }

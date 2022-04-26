@@ -125,7 +125,7 @@
                 General
             </p>
             <ul class="menu-list">
-                <li><a class="is-active" href="<?=site_url('/views/view_admin')?>">Dashboard</a></li>
+                <li><a href="<?=site_url('/views/view_admin')?>">Dashboard</a></li>
                 <li><a href="<?=site_url('/views/view_admin_users')?>">Users</a></li>
             </ul>
             <p class="menu-label">
@@ -136,7 +136,7 @@
                 <li>
                 <ul>
                     <li><a href="<?=site_url('/views/admin_teacher_view')?>">Teachers</a></li>
-                    <li><a href="<?=site_url('/views/admin_student_view')?>">Students</a></li>
+                    <li><a class="is-active" href="<?=site_url('/views/admin_student_view')?>">Students</a></li>
                     <li><a href="<?=site_url('/views/admin_administrator_view')?>">Administrators</a></li>
                 </ul>
             </ul>

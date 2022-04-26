@@ -3,28 +3,38 @@
     $session = session();
     $loginverification = $session->get('logged_in');
     $usertype = $session->get('user_type');
-
+    $status = session()->get('is_active');
     if(!$loginverification) 
     {
       header('Location:'.base_url());
       die();
-
     }
     else
     {
-      if($usertype != 'ADMIN')
-      {
-        if($usertype == 'STUDENT')
+      if($status == 'ACTIVE')
         {
-          header("Location:".site_url('/views/view_student'));
+          if($usertype != 'ADMIN')
+          {
+            if($usertype == 'STUDENT')
+            {
+                header("Location:".site_url('/views/view_student'));
+                exit();
+            }
+            else if ($usertype == 'TEACHER')
+            {
+              header("Location:".site_url('/views/view_teacher'));
+              exit();
+            }
+          }
+        }
+        else
+        {
+          $_SESSION['wrongLogInTitle'] = "Account Inactive";
+          $_SESSION['wrongLogIn'] = "Enter Code first";
+          header('Location:'.site_url('views/login_page'));
           exit();
         }
-        else if ($usertype == 'TEACHER')
-        {
-          header("Location:".site_url('/views/view_teacher'));
-          exit();
-        }
-      }
+      
     }
 ?>
 <!DOCTYPE html>
@@ -55,12 +65,12 @@
     <script src="<?=base_url('/design/js/javascript_compressed.js')?>"></script>
     <script src="<?=base_url('/design/js/msg/js/en.js')?>"></script>
     <script src="<?=base_url('/design/js/wait_block.js')?>"></script>
-    <title>Hello Admin</title>
+    <title>Hello <?=session()->get('fname')?></title>
 </head>
 <body>
 <nav class="navbar is-link" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <a class="navbar-item" href="https://bulma.io">
+    <a class="navbar-item" href="<?=site_url('/views/view_admin')?>">
       <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
     </a>
 
@@ -74,11 +84,11 @@
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
       <a class="navbar-item">
-        Home
-      </a>
+        <?php
 
-      <a class="navbar-item">
-        Documentation
+            echo "HELLO! ".session()->get('fname')."&nbsp".session()->get('mname')."&nbsp".session()->get('lname');
+
+        ?>
       </a>
     </div>
 
@@ -86,20 +96,19 @@
       <div class="navbar-item">
       <div class="navbar-item has-dropdown is-hoverable ">
         <a class="navbar-link">
-          <i class="fa fa-user"></i>
+          <i class="fa fa-cog"></i>
         </a>
         <div class="navbar-dropdown is-right">
-          <a class="navbar-item">
-            About
+          <a href="<?=site_url('/views/admin_about_view')?>" class="navbar-item">
+          <i class="fa fa-user"></i>&nbsp;
+            About me
           </a>
-          <a class="navbar-item">
-            Jobs
-          </a>
-          <a class="navbar-item">
-            Contact
+          <a href="<?=site_url('/views/admin_about_view')?>" class="navbar-item">
+           <i class="fa fa-user-edit"></i>&nbsp;
+            Profile
           </a>
           <hr class="navbar-divider">
-          <a class="navbar-item" href="<?=site_url('database/logout')?>">
+          <a class="navbar-item" href="<?=site_url('databasecontroller/logout')?>">
           <i class="fa fa-sign-out"></i> &nbsp;
             Log-out
           </a>
@@ -116,40 +125,38 @@
                 General
             </p>
             <ul class="menu-list">
-                <li><a href="<?=site_url('/views/view_admin')?>">Dashboard</a></li>
+                <li><a  href="<?=site_url('/views/view_admin')?>">Dashboard</a></li>
                 <li><a class="is-active" href="<?=site_url('/views/view_admin_users')?>">Users</a></li>
             </ul>
             <p class="menu-label">
-                Administration
+                User manipulation
             </p>
             <ul class="menu-list">
-                <li><a>Team Settings</a></li>
+                <li><a>Manage users</a></li>
                 <li>
-                <a class="">Manage Your Team</a>
                 <ul>
-                    <li><a>Members</a></li>
-                    <li><a>Plugins</a></li>
-                    <li><a>Add a member</a></li>
+                    <li><a href="<?=site_url('/views/admin_teacher_view')?>">Teachers</a></li>
+                    <li><a href="<?=site_url('/views/admin_student_view')?>">Students</a></li>
+                    <li><a href="<?=site_url('/views/admin_administrator_view')?>">Administrators</a></li>
                 </ul>
-                </li>
-                <li><a>Invitations</a></li>
-                <li><a>Cloud Storage Environment Settings</a></li>
-                <li><a>Authentication</a></li>
             </ul>
             <p class="menu-label">
-                Transactions
+                Statistics
             </p>
             <ul class="menu-list">
-                <li><a>Payments</a></li>
-                <li><a>Transfers</a></li>
-                <li><a>Balance</a></li>
+                <li><a href="<?=site_url('/views/admin_overall_statistics')?>">Overall</a></li>
+                <li><a href="<?=site_url('/views/admin_users_statistics')?>">Number of users</a></li>
             </ul>
         </aside>
     </div>
-    <div class="column container box">
-
+    <div class="column container">
+        <div class="tile is-ancestor has-text-centered">
+            <div class="tile box is-5">
+            </div>
+            <div class="tile box is-5">
+            </div>
+        </div>
     </div>
-
 </div>
 </body>
 </html>

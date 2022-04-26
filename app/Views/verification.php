@@ -22,21 +22,21 @@
         }
 
     }
-                if(isset($_SESSION['wrongLogIn']))
+                if(isset($_SESSION['Activate']))
                 {
-                    $loginmessage  = $_SESSION['wrongLogIn'];
+                    $loginmessage  = $_SESSION['Activate'];
                 }
                 else
                 {
-                    $loginmessage = "Enter Code";
+                    $loginmessage = "Check your email if the code was sent";
                 }
-                if(isset($_SESSION['wrongLogInTitle']))
+                if(isset($_SESSION['ActivateCode']))
                 {
-                    $loginmessageTitle  = $_SESSION['wrongLogInTitle'];
+                    $loginmessageTitle  = $_SESSION['ActivateCode'];
                 }
                 else
                 {
-                    $loginmessageTitle = "Check your email if the code was sent";
+                    $loginmessageTitle = "Enter Code";
                 }
                 
 ?>
