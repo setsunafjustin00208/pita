@@ -29,3 +29,249 @@ CRITICAL - 2022-04-27 03:33:57 --> Undefined array key "user_id"
 #3 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
 #4 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
 #5 {main}
+CRITICAL - 2022-04-27 07:14:56 --> Undefined array key "email"
+#0 C:\xampp\htdocs\pita\app\Controllers\DatabaseController.php(106): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 106)
+#1 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\DatabaseController->add_users()
+#2 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabaseController))
+#3 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-04-27 07:15:44 --> Undefined array key "user_status"
+#0 C:\xampp\htdocs\pita\app\Controllers\DatabaseController.php(204): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 204)
+#1 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\DatabaseController->update_status()
+#2 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabaseController))
+#3 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-04-27 07:24:36 --> Undefined property: stdClass::$Password
+#0 C:\xampp\htdocs\pita\app\Views\admin\admin_users.php(219): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined prope...', 'C:\\xampp\\htdocs...', 219)
+#1 C:\xampp\htdocs\pita\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\pita\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\pita\system\Common.php(1089): CodeIgniter\View\View->render('admin/admin_use...', Array, true)
+#4 C:\xampp\htdocs\pita\app\Controllers\Views.php(50): view('admin/admin_use...')
+#5 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\Views->view_admin_users()
+#6 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Views))
+#7 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2022-04-27 08:21:29 --> Object of class CodeIgniter\Database\MySQLi\Builder could not be converted to string
+#0 C:\xampp\htdocs\pita\system\View\View.php(210): include()
+#1 C:\xampp\htdocs\pita\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#2 C:\xampp\htdocs\pita\system\Common.php(1089): CodeIgniter\View\View->render('admin/admin_hom...', Array, true)
+#3 C:\xampp\htdocs\pita\app\Controllers\Views.php(33): view('admin/admin_hom...')
+#4 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\Views->view_admin()
+#5 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Views))
+#6 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+ERROR - 2022-04-27 08:21:56 --> Unknown column 'numusers' in 'field list'
+CRITICAL - 2022-04-27 08:21:56 --> Unknown column 'numusers' in 'field list'
+#0 C:\xampp\htdocs\pita\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT COUNT(`n...', 0)
+#1 C:\xampp\htdocs\pita\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(`n...')
+#2 C:\xampp\htdocs\pita\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(`n...')
+#3 C:\xampp\htdocs\pita\system\Database\BaseBuilder.php(1455): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(`n...', Array, false)
+#4 C:\xampp\htdocs\pita\app\Views\admin\admin_home.php(176): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\pita\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#6 C:\xampp\htdocs\pita\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#7 C:\xampp\htdocs\pita\system\Common.php(1089): CodeIgniter\View\View->render('admin/admin_hom...', Array, true)
+#8 C:\xampp\htdocs\pita\app\Controllers\Views.php(33): view('admin/admin_hom...')
+#9 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\Views->view_admin()
+#10 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Views))
+#11 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#13 {main}
+CRITICAL - 2022-04-27 08:22:14 --> Object of class CodeIgniter\Database\MySQLi\Result could not be converted to string
+#0 C:\xampp\htdocs\pita\system\View\View.php(210): include()
+#1 C:\xampp\htdocs\pita\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#2 C:\xampp\htdocs\pita\system\Common.php(1089): CodeIgniter\View\View->render('admin/admin_hom...', Array, true)
+#3 C:\xampp\htdocs\pita\app\Controllers\Views.php(33): view('admin/admin_hom...')
+#4 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\Views->view_admin()
+#5 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Views))
+#6 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-04-27 08:23:24 --> Object of class CodeIgniter\Database\MySQLi\Result could not be converted to string
+#0 C:\xampp\htdocs\pita\system\View\View.php(210): include()
+#1 C:\xampp\htdocs\pita\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#2 C:\xampp\htdocs\pita\system\Common.php(1089): CodeIgniter\View\View->render('admin/admin_hom...', Array, true)
+#3 C:\xampp\htdocs\pita\app\Controllers\Views.php(33): view('admin/admin_hom...')
+#4 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\Views->view_admin()
+#5 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Views))
+#6 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-04-27 08:23:59 --> Object of class CodeIgniter\Database\MySQLi\Result could not be converted to string
+#0 C:\xampp\htdocs\pita\system\View\View.php(210): include()
+#1 C:\xampp\htdocs\pita\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#2 C:\xampp\htdocs\pita\system\Common.php(1089): CodeIgniter\View\View->render('admin/admin_hom...', Array, true)
+#3 C:\xampp\htdocs\pita\app\Controllers\Views.php(33): view('admin/admin_hom...')
+#4 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\Views->view_admin()
+#5 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Views))
+#6 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-04-27 08:24:54 --> Object of class CodeIgniter\Database\MySQLi\Result could not be converted to string
+#0 C:\xampp\htdocs\pita\system\View\View.php(210): include()
+#1 C:\xampp\htdocs\pita\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#2 C:\xampp\htdocs\pita\system\Common.php(1089): CodeIgniter\View\View->render('admin/admin_hom...', Array, true)
+#3 C:\xampp\htdocs\pita\app\Controllers\Views.php(33): view('admin/admin_hom...')
+#4 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\Views->view_admin()
+#5 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Views))
+#6 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-04-27 08:26:07 --> Object of class CodeIgniter\Database\MySQLi\Result could not be converted to string
+#0 C:\xampp\htdocs\pita\system\View\View.php(210): include()
+#1 C:\xampp\htdocs\pita\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#2 C:\xampp\htdocs\pita\system\Common.php(1089): CodeIgniter\View\View->render('admin/admin_hom...', Array, true)
+#3 C:\xampp\htdocs\pita\app\Controllers\Views.php(33): view('admin/admin_hom...')
+#4 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\Views->view_admin()
+#5 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Views))
+#6 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-04-27 08:30:35 --> Array to string conversion
+#0 C:\xampp\htdocs\pita\app\Views\admin\admin_home.php(169): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string...', 'C:\\xampp\\htdocs...', 169)
+#1 C:\xampp\htdocs\pita\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\pita\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\pita\system\Common.php(1089): CodeIgniter\View\View->render('admin/admin_hom...', Array, true)
+#4 C:\xampp\htdocs\pita\app\Controllers\Views.php(33): view('admin/admin_hom...')
+#5 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\Views->view_admin()
+#6 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Views))
+#7 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2022-04-27 08:36:57 --> Undefined variable $db_connect
+#0 C:\xampp\htdocs\pita\app\Views\admin\admin_home.php(167): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 167)
+#1 C:\xampp\htdocs\pita\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\pita\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\pita\system\Common.php(1089): CodeIgniter\View\View->render('admin/admin_hom...', Array, true)
+#4 C:\xampp\htdocs\pita\app\Controllers\Views.php(33): view('admin/admin_hom...')
+#5 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\Views->view_admin()
+#6 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Views))
+#7 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2022-04-27 08:45:12 --> Call to a member function table() on null
+#0 C:\xampp\htdocs\pita\system\View\View.php(210): include()
+#1 C:\xampp\htdocs\pita\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#2 C:\xampp\htdocs\pita\system\Common.php(1089): CodeIgniter\View\View->render('admin/admin_hom...', Array, true)
+#3 C:\xampp\htdocs\pita\app\Controllers\Views.php(33): view('admin/admin_hom...')
+#4 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\Views->view_admin()
+#5 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Views))
+#6 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-04-27 08:45:43 --> Undefined property: CodeIgniter\Database\MySQLi\Result::$user_id
+#0 C:\xampp\htdocs\pita\app\Views\admin\admin_home.php(177): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined prope...', 'C:\\xampp\\htdocs...', 177)
+#1 C:\xampp\htdocs\pita\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\pita\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\pita\system\Common.php(1089): CodeIgniter\View\View->render('admin/admin_hom...', Array, true)
+#4 C:\xampp\htdocs\pita\app\Controllers\Views.php(33): view('admin/admin_hom...')
+#5 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\Views->view_admin()
+#6 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Views))
+#7 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2022-04-27 08:54:19 --> Not unique table/alias: 'users'
+CRITICAL - 2022-04-27 08:54:19 --> Not unique table/alias: 'users'
+#0 C:\xampp\htdocs\pita\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT COUNT(*)...', 0)
+#1 C:\xampp\htdocs\pita\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*)...')
+#2 C:\xampp\htdocs\pita\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*)...')
+#3 C:\xampp\htdocs\pita\system\Database\BaseBuilder.php(1539): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...', Array, false)
+#4 C:\xampp\htdocs\pita\app\Views\admin\admin_home.php(183): CodeIgniter\Database\BaseBuilder->countAllResults()
+#5 C:\xampp\htdocs\pita\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#6 C:\xampp\htdocs\pita\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#7 C:\xampp\htdocs\pita\system\Common.php(1089): CodeIgniter\View\View->render('admin/admin_hom...', Array, true)
+#8 C:\xampp\htdocs\pita\app\Controllers\Views.php(33): view('admin/admin_hom...')
+#9 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\Views->view_admin()
+#10 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Views))
+#11 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#13 {main}
+CRITICAL - 2022-04-27 08:55:17 --> Undefined variable $adminsers_count
+#0 C:\xampp\htdocs\pita\app\Views\admin\admin_home.php(180): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 180)
+#1 C:\xampp\htdocs\pita\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\pita\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\pita\system\Common.php(1089): CodeIgniter\View\View->render('admin/admin_hom...', Array, true)
+#4 C:\xampp\htdocs\pita\app\Controllers\Views.php(33): view('admin/admin_hom...')
+#5 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\Views->view_admin()
+#6 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Views))
+#7 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2022-04-27 09:05:07 --> Unknown column 'user_id' in 'field list'
+CRITICAL - 2022-04-27 09:05:07 --> Unknown column 'user_id' in 'field list'
+#0 C:\xampp\htdocs\pita\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT COUNT(us...', 0)
+#1 C:\xampp\htdocs\pita\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(us...')
+#2 C:\xampp\htdocs\pita\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(us...')
+#3 C:\xampp\htdocs\pita\app\Views\admin\admin_home.php(180): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(us...')
+#4 C:\xampp\htdocs\pita\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\pita\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#6 C:\xampp\htdocs\pita\system\Common.php(1089): CodeIgniter\View\View->render('admin/admin_hom...', Array, true)
+#7 C:\xampp\htdocs\pita\app\Controllers\Views.php(33): view('admin/admin_hom...')
+#8 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\Views->view_admin()
+#9 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Views))
+#10 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#12 {main}
+ERROR - 2022-04-27 09:06:38 --> Unknown column 'email' in 'field list'
+CRITICAL - 2022-04-27 09:06:38 --> Unknown column 'email' in 'field list'
+#0 C:\xampp\htdocs\pita\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT COUNT(em...', 0)
+#1 C:\xampp\htdocs\pita\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(em...')
+#2 C:\xampp\htdocs\pita\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(em...')
+#3 C:\xampp\htdocs\pita\app\Views\admin\admin_home.php(180): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(em...')
+#4 C:\xampp\htdocs\pita\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\pita\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#6 C:\xampp\htdocs\pita\system\Common.php(1089): CodeIgniter\View\View->render('admin/admin_hom...', Array, true)
+#7 C:\xampp\htdocs\pita\app\Controllers\Views.php(33): view('admin/admin_hom...')
+#8 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\Views->view_admin()
+#9 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Views))
+#10 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#12 {main}
+ERROR - 2022-04-27 09:07:35 --> Unknown column 'ADMIN' in 'where clause'
+CRITICAL - 2022-04-27 09:07:35 --> Unknown column 'ADMIN' in 'where clause'
+#0 C:\xampp\htdocs\pita\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT COUNT(us...', 0)
+#1 C:\xampp\htdocs\pita\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(us...')
+#2 C:\xampp\htdocs\pita\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(us...')
+#3 C:\xampp\htdocs\pita\app\Views\admin\admin_home.php(180): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(us...')
+#4 C:\xampp\htdocs\pita\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\pita\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#6 C:\xampp\htdocs\pita\system\Common.php(1089): CodeIgniter\View\View->render('admin/admin_hom...', Array, true)
+#7 C:\xampp\htdocs\pita\app\Controllers\Views.php(33): view('admin/admin_hom...')
+#8 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\Views->view_admin()
+#9 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Views))
+#10 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#12 {main}
+ERROR - 2022-04-27 09:08:09 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM users' at line 1
+CRITICAL - 2022-04-27 09:08:09 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM users' at line 1
+#0 C:\xampp\htdocs\pita\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT COUNT(us...', 0)
+#1 C:\xampp\htdocs\pita\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(us...')
+#2 C:\xampp\htdocs\pita\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(us...')
+#3 C:\xampp\htdocs\pita\app\Views\admin\admin_home.php(180): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(us...')
+#4 C:\xampp\htdocs\pita\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\pita\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#6 C:\xampp\htdocs\pita\system\Common.php(1089): CodeIgniter\View\View->render('admin/admin_hom...', Array, true)
+#7 C:\xampp\htdocs\pita\app\Controllers\Views.php(33): view('admin/admin_hom...')
+#8 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\Views->view_admin()
+#9 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Views))
+#10 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#12 {main}
+ERROR - 2022-04-27 09:08:23 --> Unknown column 'ADMIN' in 'where clause'
+CRITICAL - 2022-04-27 09:08:23 --> Unknown column 'ADMIN' in 'where clause'
+#0 C:\xampp\htdocs\pita\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT COUNT(us...', 0)
+#1 C:\xampp\htdocs\pita\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(us...')
+#2 C:\xampp\htdocs\pita\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(us...')
+#3 C:\xampp\htdocs\pita\app\Views\admin\admin_home.php(180): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(us...')
+#4 C:\xampp\htdocs\pita\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\pita\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#6 C:\xampp\htdocs\pita\system\Common.php(1089): CodeIgniter\View\View->render('admin/admin_hom...', Array, true)
+#7 C:\xampp\htdocs\pita\app\Controllers\Views.php(33): view('admin/admin_hom...')
+#8 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\Views->view_admin()
+#9 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Views))
+#10 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#12 {main}

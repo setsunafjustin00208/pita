@@ -150,6 +150,17 @@
         </aside>
     </div>
     <div class="column container p-4 mt-3">
+      <section class="hero is-link is-small mb-5">
+          <div class="hero-body">
+            <p class="title">
+              <i class="fa fa-graduation-cap"></i> &nbsp;
+                List of Students
+            </p>
+            <p class="subtitle">
+              Check and manage students
+            </p>
+          </div>
+        </section>
     <div class="buttons">
         <a data-target="modal-trigger" class="button is-link modal-trigger"><i class="fa fa-graduation-cap" aria-hidden="true"></i> &nbsp; Add Student</a>
       </div>
@@ -157,7 +168,7 @@
             <div class="modal-background"></div>
                 <div class="modal-card modal-size">
                         <header class="modal-card-head">
-                            <p class="modal-card-title">Add teacher</p>
+                            <p class="modal-card-title">Add Student</p>
                             <button class="delete" aria-label="close"></button>
                         </header>
                         <section class="modal-card-body">
@@ -251,7 +262,7 @@
                             </div>
                         </section>
                         <footer class="modal-card-foot">
-                            <button class="button is-success" id="submit"> <i class="fa fa-plus"></i> &nbsp; Add Teacher</button>
+                            <button class="button is-success" id="submit"> <i class="fa fa-plus"></i> &nbsp; Add Student</button>
                         </form>
                             <button class="button">Cancel</button>
                         </footer>

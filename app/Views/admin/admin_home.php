@@ -149,13 +149,76 @@
             </ul>
         </aside>
     </div>
-    <div class="column container">
-        <div class="tile is-ancestor has-text-centered">
-            <div class="tile box is-5">
-            </div>
-            <div class="tile box is-5">
-            </div>
+    <div class="column container p-4 mt-3">
+      <section class="hero is-link is-small mb-5">
+        <div class="hero-body">
+          <p class="title">
+            <i class="fa-solid fa-table-columns"></i> &nbsp;
+              Dashboard
+          </p>
+          <p class="subtitle">
+            How is your day?
+          </p>
         </div>
+      </section>
+      <nav class="level is-mobile">
+      <?php
+        $allusers_count=db_connect()->table('users');
+      ?>
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">Total Users</p>
+          <p class="title"><?=$allusers_count->countAll()?></p>
+        </div>
+      </div>
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">Administrators</p>
+          <p class="title">
+            <?php
+              $admin_count = db_connect();
+              $count_admin_query= $admin_count->query("SELECT COUNT(user_id) as admincount FROM users WHERE user_type = 'ADMIN' ");
+              $countrow = $count_admin_query->getRow();
+              if(isset($countrow))
+              {
+                  echo $countrow->admincount;
+              }
+            ?>
+          </p>
+        </div>
+      </div>
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">Teachers</p>
+          <p class="title">
+          <?php
+              $teacher_count = db_connect();
+              $count_teacher_query= $teacher_count->query("SELECT COUNT(user_id) as teachercount FROM users WHERE user_type = 'TEACHER' ");
+              $teacherrow = $count_teacher_query->getRow();
+              if(isset($teacherrow))
+              {
+                  echo $teacherrow->teachercount;
+              }
+            ?>
+          </p>
+        </div>
+      </div>
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">students</p>
+          <p class="title">
+            <?php
+              $student_count = db_connect();
+              $count_student_query= $student_count->query("SELECT COUNT(user_id) as studentcount FROM users WHERE user_type = 'STUDENT' ");
+              $studentrow = $count_student_query->getRow();
+              if(isset($studentrow))
+              {
+                  echo $studentrow->studentcount;
+              }
+            ?></p>
+        </div>
+      </div>
+    </nav>
     </div>
 </div>
 </body>

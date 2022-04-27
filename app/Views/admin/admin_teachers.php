@@ -150,6 +150,17 @@
         </aside>
     </div>
     <div class="column container p-4 mt-3">
+      <section class="hero is-link is-small mb-5">
+        <div class="hero-body">
+          <p class="title">
+            <i class="fas fa-chalkboard-teacher"></i> &nbsp;
+              List of teachers
+          </p>
+          <p class="subtitle">
+            Check and manage teachers
+          </p>
+        </div>
+      </section>
     <div class="buttons">
         <a data-target="modal-trigger" class="button is-link modal-trigger"><i class="fas fa-chalkboard-teacher"></i> &nbsp; Add Teacher</a>
       </div>

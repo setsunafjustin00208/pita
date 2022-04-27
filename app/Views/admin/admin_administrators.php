@@ -150,6 +150,17 @@
         </aside>
     </div>
     <div class="column container p-4 mt-3">
+      <section class="hero is-link is-small mb-5">
+          <div class="hero-body">
+            <p class="title">
+              <i class="fas fa-user-cog"></i> &nbsp;
+                List of Administrators
+            </p>
+            <p class="subtitle">
+              Check and manage Administrators. Except yours of course...
+            </p>
+          </div>
+        </section>
     <div class="buttons">
         <a data-target="modal-trigger" class="button is-link modal-trigger"><i class="fas fa-user-cog"></i> &nbsp; Add Administrator</a>
       </div>
@@ -157,7 +168,7 @@
             <div class="modal-background"></div>
                 <div class="modal-card modal-size">
                         <header class="modal-card-head">
-                            <p class="modal-card-title">Add teacher</p>
+                            <p class="modal-card-title">Add Administrator</p>
                             <button class="delete" aria-label="close"></button>
                         </header>
                         <section class="modal-card-body">
@@ -165,8 +176,10 @@
                         <input type="hidden" name="date_created" value="<?=date("y_m_d H:i:s")?>">
                         <input type="hidden" name="date_modified" value="<?=date("y_m_d H:i:s")?>">
                         <input type="hidden" name="is_active" value="ACTIVE">
+                        <input type="hidden" name="grade" value="999">
+                        <input type="hidden" name="section" value="ADMIN">
                         <input type="hidden" name="verification" value="0">
-                        <input type="hidden" name="user_type" value="STUDENT">
+                        <input type="hidden" name="user_type" value="ADMIN">
                             <div class="field">
                                 <label for="" class="label">Email</label>
                             </div>
@@ -237,18 +250,6 @@
                             <div class="control">
                                 <input type="text" name="lname" placeholder="Enter Last name" class="input is-link" required>
                             </div>
-                            <div class="field">
-                                <label for="" class="label">Grade Level</label>
-                            </div>
-                            <div class="control">
-                                <input type="number" maxlength="1" name="grade" placeholder="Enter grade level" class="input is-link" required>
-                            </div>
-                            <div class="field">
-                                <label for="" class="label">Section</label>
-                            </div>
-                            <div class="control">
-                                <input type="text" name="Section" placeholder="Enter Last name" class="input is-link" required>
-                            </div>
                         </section>
                         <footer class="modal-card-foot">
                             <button class="button is-success" id="submit"> <i class="fa fa-plus"></i> &nbsp; Add Teacher</button>
@@ -311,6 +312,8 @@
                                               <input type="hidden" name="date_created" value="<?=date("y_m_d H:i:s")?>">
                                               <input type="hidden" name="date_modified" value="<?=date("y_m_d H:i:s")?>">
                                               <input type="hidden" name="verification" value="0">
+                                              <input type="hidden" name="grade" value="999">
+                                              <input type="hidden" name="section" value="ADMIN">
                                               <input type="hidden" name="user_id" value="<?=$userRow->user_id?>">
                                               <input type="hidden" name="user_type" value="<?=$userRow->user_type?>">
                                                   <div class="field">

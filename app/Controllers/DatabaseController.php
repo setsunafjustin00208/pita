@@ -198,6 +198,18 @@
 
 
         }
+        public function update_status()
+        {
+            $status_user_id = $_POST['user_id'];
+            $user_status_update = $_POST['is_active'];
+
+            $status_update = $this->db->table('users');
+            $status_update->set('is_active',$user_status_update);
+            $status_update->where('user_id',$status_user_id);
+            $status_update->update();
+            return redirect()->to('/views/view_admin_users');
+            
+        }
 
         
     }

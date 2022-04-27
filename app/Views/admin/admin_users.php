@@ -150,6 +150,17 @@
         </aside>
     </div>
     <div class="column container p-4 mt-3">
+    <section class="hero is-link is-small mb-5">
+      <div class="hero-body">
+        <p class="title">
+          <i class="fa fa-users"></i> &nbsp;
+            List Of users
+        </p>
+        <p class="subtitle">
+          Check if there is the user that you are looking for.
+        </p>
+      </div>
+    </section>
       <div class="table-container">
         <table class="table is-narrow is-hoverable is-fullwidth display compact cell-border stripe"id="mytable">
             <script>
@@ -163,12 +174,10 @@
               <tr>
                 <th><abbr title="Email">Email</abbr></th>
                 <th><abbr title="Username">Username</abbr></th>
-                <th><abbr title="Password">Password</abbr></th>
-                <th><abbr title="First Name">F.Name</abbr></th>
-                <th><abbr title="Middle Name">M.Name</abbr></th>
-                <th><abbr title="Last Name">L.Name</abbr></th>
+                <th><abbr title="Name">Name</abbr></th>
                 <th><abbr title="User Type">UsrType</abbr></th>
                 <th><abbr title="Status">Status</abbr></th>
+                <th><abbr title="Action">Actn</abbr></th>
               </tr>
             </thead>
             <tbody>
@@ -182,12 +191,130 @@
                 <tr>
                   <td><?=$userRow->email?></td>
                   <td><?=$userRow->username?></td>
-                  <td><?=$userRow->password?></td>
-                  <td><?=$userRow->fname?></td>
-                  <td><?=$userRow->mname?></td>
-                  <td><?=$userRow->lname?></td>
+                  <td><?=$userRow->lname?>,&nbsp;<?=$userRow->fname?>&nbsp;<?=$userRow->mname?></td>
+                  <td><?=$userRow->user_type?></td>
                   <td><?=$userRow->is_active?></td>
-                  <td><?=$userRow->is_active?></td>
+                  <td>
+                    <div class="buttons">
+                        <button data-target="modal-trigger-view-info<?=$userRow->user_id?>" class="button is-success is-small modal-trigger"><i class="fa-solid fa-eye"></i></button>
+                        <div id= "modal-trigger-view-info<?=$userRow->user_id?>" class="modal modal-fx-fadeInScale">
+                                  <div class="modal-background"></div>
+                                      <div class="modal-card modal-size">
+                                              <header class="modal-card-head">
+                                                  <p class="modal-card-title">User Account Information</p>
+                                                  <button class="delete" aria-label="close"></button>
+                                              </header>
+                                              <section class="modal-card-body">
+                                                <form action="">
+                                                  <div class="field">
+                                                      <label for="" class="label">Email:</label>
+                                                  </div>
+                                                  <div class="control mb-2">
+                                                      <input type="email" value="<?=$userRow->email?>" class="input is-link has-text-black" disabled>
+                                                  </div>
+                                                  <div class="field">
+                                                      <label for="" class="label">Password:</label>
+                                                  </div>
+                                                  <div class="control mb-2">
+                                                      <input type="text" value="<?=$userRow->password?>" class="input is-link has-text-black" disabled>
+                                                  </div>
+                                                  <div class="field">
+                                                      <label for="" class="label">First name:</label>
+                                                  </div>
+                                                  <div class="control mb-2">
+                                                      <input type="text" value="<?=$userRow->fname?>" class="input is-link has-text-black" disabled>
+                                                  </div>
+                                                  <div class="field">
+                                                      <label for="" class="label">Middle name:</label>
+                                                  </div>
+                                                  <div class="control mb-2">
+                                                      <input type="text" value="<?=$userRow->mname?>" class="input is-link has-text-black" disabled>
+                                                  </div>
+                                                  <div class="field">
+                                                      <label for="" class="label">Last name:</label>
+                                                  </div>
+                                                  <div class="control mb-2">
+                                                      <input type="text" value="<?=$userRow->lname?>" class="input is-link has-text-black" disabled>
+                                                  </div>
+                                                  <div class="field">
+                                                      <label for="" class="label">Grade:</label>
+                                                  </div>
+                                                  <div class="control mb-2">
+                                                      <input type="text" value="<?=$userRow->grade?>" class="input is-link has-text-black" disabled>
+                                                  </div>
+                                                  <div class="field">
+                                                      <label for="" class="label">Section:</label>
+                                                  </div>
+                                                  <div class="control mb-2">
+                                                      <input type="text" value="<?=$userRow->section?>" class="input is-link has-text-black" disabled>
+                                                  </div>
+                                                </form>
+                                              </section>
+                                              <footer class="modal-card-foot">
+                                                  <button class="button is-link">Done</button>
+                                              </footer>
+                                      </div>
+                              </div>
+                        <?php
+                          if(($userRow->user_id) != 1)
+                          {
+                        ?>
+                        <button data-target="modal-trigger-change-status<?=$userRow->user_id?>"class="button is-warning modal-trigger is-small"><i class="fa-solid fa-person-military-to-person"></i></button>
+                        <div id= "modal-trigger-change-status<?=$userRow->user_id?>" class="modal modal-fx-fadeInScale">
+                                  <div class="modal-background"></div>
+                                      <div class="modal-card modal-size">
+                                              <header class="modal-card-head">
+                                                  <p class="modal-card-title">Change Account Status</p>
+                                                  <button class="delete" aria-label="close"></button>
+                                              </header>
+                                              <section class="modal-card-body">
+                                                <?=form_open('databasecontroller/update_status')?>
+                                                  <input type="hidden" name="user_id" value="<?=$userRow->user_id?>">
+                                                  <?php
+                                                      if(($userRow->is_active) ==  "ACTIVE")
+                                                      {
+                                                  ?>
+                                                  <div class="control">
+                                                    <label class="radio">
+                                                      <input type="radio" name="is_active" value="ACTIVE" checked>
+                                                      ACTIVE
+                                                    </label>
+                                                    <label class="radio">
+                                                      <input type="radio" name="is_active" value="DISABLED">
+                                                      DISABLED
+                                                    </label>
+                                                  </div>
+                                                  <?php 
+                                                     }
+                                                     else
+                                                     {
+                                                  ?>
+                                                    <div class="control">
+                                                    <label class="radio">
+                                                      <input type="radio" name="is_active" value="ACTIVE">
+                                                      ACTIVE
+                                                    </label>
+                                                    <label class="radio">
+                                                      <input type="radio" name="is_active" value="DISABLED" checked>
+                                                      DISABLED
+                                                    </label>
+                                                  </div>
+                                                  <?php
+                                                    }
+                                                  ?>
+                                              </section>
+                                              <footer class="modal-card-foot">
+                                                  <button class="button is-success">Change Status</button>
+                                                </form> 
+                                                  <button class="button is-link">Cancel</button>
+                                              </footer>
+                                      </div>
+                              </div>
+                              <?php
+                                }
+                              ?>
+                    </div>
+                  </td>
                 </tr>
                 <?php
                   }
@@ -197,12 +324,10 @@
               <tr>
                 <th><abbr title="Email">Email</abbr></th>
                 <th><abbr title="Username">Username</abbr></th>
-                <th><abbr title="Password">Password</abbr></th>
-                <th><abbr title="First Name">F.Name</abbr></th>
-                <th><abbr title="Middle Name">M.Name</abbr></th>
-                <th><abbr title="Last Name">L.Name</abbr></th>
+                <th><abbr title="Name">Name</abbr></th>
                 <th><abbr title="User Type">UsrType</abbr></th>
                 <th><abbr title="Status">Status</abbr></th>
+                <th><abbr title="Action">Actn</abbr></th>
               </tr>
             </tfoot>
         </table>
