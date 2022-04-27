@@ -101,6 +101,104 @@
 
         }
 
+        public function add_users()
+        {
+            $email_string = $_POST['email'];
+            $email_builder=$this->db->table('users');
+            $email_data = $email_builder->getWhere(['email'=>$email_string]);
+
+            if($email_data->getNumRows() != 1)
+            {
+                $add_user=$this->db->table('users');
+                $add_user->insert($_POST);
+
+                $user_type = $_POST['user_type'];
+                
+                if($user_type == 'ADMIN')
+                {
+                    return redirect()->to('/views/admin_administrator_view');
+                }
+                else if($user_type == 'TEACHER')
+                {
+                    return redirect()->to('/views/admin_teacher_view');
+                }
+                else if($user_type == 'STUDENT')
+                {
+                    return redirect()->to('/views/admin_teacher_view');
+                }
+            }
+
+            else
+            {
+                $user_type = $_POST['user_type'];
+                
+                if($user_type == 'ADMIN')
+                {
+                    return redirect()->to('/views/admin_administrator_view');
+                }
+                else if($user_type == 'TEACHER')
+                {
+                    return redirect()->to('/views/admin_teacher_view');
+                }
+                else if($user_type == 'STUDENT')
+                {
+                    return redirect()->to('/views/admin_teacher_view');
+                }
+            }
+
+
+        }
+        public function update_users()
+        {
+           $user_id = $_POST['user_id'];
+           $user_type = $_POST['user_type'];
+
+           $update_function = $this->db->table('users');
+           $update_function->where('user_id',$user_id);
+           $update_function->update($_POST);
+
+           if($user_type == 'ADMIN')
+           {
+               return redirect()->to('/views/admin_administrator_view');
+           }
+           else if($user_type == 'TEACHER')
+           {
+               return redirect()->to('/views/admin_teacher_view');
+           }
+           else if($user_type == 'STUDENT')
+           {
+                return redirect()->to('/views/admin_student_view');
+           }
+           
+
+
+
+        }
+        public function delete_users()
+        {
+           $delete_user_id = $_POST['user_id'];
+           $delete_user_type = $_POST['user_type'];
+
+           $delete_function = $this->db->table('users');
+           $delete_function->where('user_id',$delete_user_id);
+           $delete_function->delete();
+
+           if($delete_user_type == 'ADMIN')
+                {
+                    return redirect()->to('/views/admin_administrator_view');
+                }
+                else if($delete_user_type == 'TEACHER')
+                {
+                    return redirect()->to('/views/admin_teacher_view');
+                }
+                else if($delete_user_type == 'STUDENT')
+                {
+                    return redirect()->to('/views/admin_student_view');
+                }
+
+
+        }
+
         
     }
 

@@ -53,12 +53,12 @@
     <script src="<?=base_url('/design/js/mine.js')?>" type="text/javascript"></script>
     <script src="<?=base_url('/design/js/all.js')?>" type="text/javascript"></script>
     <script src="<?=base_url('/design/js/jquery-3.6.0.js')?>" type="text/javascript"></script>
+    <script src="<?=base_url('/design/js/dataTables.bulma.js')?>" type="text/javascript"></script>
+    <script src="<?=base_url('/design/js/datatables.min.js')?>" type="text/javascript"></script>
+    <script src="<?=base_url('/design/js/jquery.dataTables.js')?>" type="text/javascript"></script>
     <script src="<?=base_url('/design/js/popper.min.js')?>" type="text/javascript"></script>
     <script src="<?=base_url('/design/js/modal-fx.js')?>" type="text/javascript"></script>
     <script src="<?=base_url('/design/js/sweetalert2.all.min.js')?>" type="text/javascript"></script>
-    <script src="<?=base_url('/design/js/dataTables.bulma.js')?>" type="text/javascript"></script>
-    <script src="<?=base_url('/design/js/datatables.js')?>" type="text/javascript"></script>
-    <script src="<?=base_url('/design/js/jquery.dataTables.js')?>" type="text/javascript"></script>
     <script src="<?=base_url('/design/js/acorn_interpreter.js')?>"></script>
     <script src="<?=base_url('/design/js/blockly_compressed.js')?>"></script>
     <script src="<?=base_url('/design/js/blocks_compressed.js')?>"></script>
@@ -66,7 +66,7 @@
     <script src="<?=base_url('/design/js/msg/js/en.js')?>"></script>
     <script src="<?=base_url('/design/js/wait_block.js')?>"></script>
     <title>Hello <?=session()->get('fname')?></title>
-</head>
+
 <body>
 <nav class="navbar is-link" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
@@ -149,13 +149,64 @@
             </ul>
         </aside>
     </div>
-    <div class="column container">
-        <div class="tile is-ancestor has-text-centered">
-            <div class="tile box is-5">
-            </div>
-            <div class="tile box is-5">
-            </div>
-        </div>
+    <div class="column container p-4 mt-3">
+      <div class="table-container">
+        <table class="table is-narrow is-hoverable is-fullwidth display compact cell-border stripe"id="mytable">
+            <script>
+                $(document).ready( function () {
+                  $('#mytable').DataTable({
+                      stateSave: true
+                  } );
+                });
+            </script>
+            <thead>
+              <tr>
+                <th><abbr title="Email">Email</abbr></th>
+                <th><abbr title="Username">Username</abbr></th>
+                <th><abbr title="Password">Password</abbr></th>
+                <th><abbr title="First Name">F.Name</abbr></th>
+                <th><abbr title="Middle Name">M.Name</abbr></th>
+                <th><abbr title="Last Name">L.Name</abbr></th>
+                <th><abbr title="User Type">UsrType</abbr></th>
+                <th><abbr title="Status">Status</abbr></th>
+              </tr>
+            </thead>
+            <tbody>
+                <?php
+                  $users_builder= db_connect()->table('users');
+                  $user_results = $users_builder->get();
+
+                  foreach($user_results->getResult() as $userRow)
+                  {
+                ?>
+                <tr>
+                  <td><?=$userRow->email?></td>
+                  <td><?=$userRow->username?></td>
+                  <td><?=$userRow->password?></td>
+                  <td><?=$userRow->fname?></td>
+                  <td><?=$userRow->mname?></td>
+                  <td><?=$userRow->lname?></td>
+                  <td><?=$userRow->is_active?></td>
+                  <td><?=$userRow->is_active?></td>
+                </tr>
+                <?php
+                  }
+                ?>
+            </tbody>
+            <tfoot>
+              <tr>
+                <th><abbr title="Email">Email</abbr></th>
+                <th><abbr title="Username">Username</abbr></th>
+                <th><abbr title="Password">Password</abbr></th>
+                <th><abbr title="First Name">F.Name</abbr></th>
+                <th><abbr title="Middle Name">M.Name</abbr></th>
+                <th><abbr title="Last Name">L.Name</abbr></th>
+                <th><abbr title="User Type">UsrType</abbr></th>
+                <th><abbr title="Status">Status</abbr></th>
+              </tr>
+            </tfoot>
+        </table>
+      </div>
     </div>
 </div>
 </body>

@@ -1,0 +1,31 @@
+ERROR - 2022-04-27 02:34:12 --> Column 'section' specified twice
+CRITICAL - 2022-04-27 02:34:12 --> Column 'section' specified twice
+#0 C:\xampp\htdocs\pita\system\Database\MySQLi\Connection.php(292): mysqli->query('INSERT INTO `us...', 0)
+#1 C:\xampp\htdocs\pita\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `us...')
+#2 C:\xampp\htdocs\pita\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `us...')
+#3 C:\xampp\htdocs\pita\system\Database\BaseBuilder.php(1771): CodeIgniter\Database\BaseConnection->query('INSERT INTO `us...', Array, false)
+#4 C:\xampp\htdocs\pita\app\Controllers\DatabaseController.php(113): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\DatabaseController->add_users()
+#6 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabaseController))
+#7 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2022-04-27 02:34:28 --> Column 'section' specified twice
+CRITICAL - 2022-04-27 02:34:28 --> Column 'section' specified twice
+#0 C:\xampp\htdocs\pita\system\Database\MySQLi\Connection.php(292): mysqli->query('INSERT INTO `us...', 0)
+#1 C:\xampp\htdocs\pita\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `us...')
+#2 C:\xampp\htdocs\pita\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `us...')
+#3 C:\xampp\htdocs\pita\system\Database\BaseBuilder.php(1771): CodeIgniter\Database\BaseConnection->query('INSERT INTO `us...', Array, false)
+#4 C:\xampp\htdocs\pita\app\Controllers\DatabaseController.php(113): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\DatabaseController->add_users()
+#6 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabaseController))
+#7 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2022-04-27 03:33:57 --> Undefined array key "user_id"
+#0 C:\xampp\htdocs\pita\app\Controllers\DatabaseController.php(153): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 153)
+#1 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\DatabaseController->update_users()
+#2 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabaseController))
+#3 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}

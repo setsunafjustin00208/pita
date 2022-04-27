@@ -1,0 +1,22 @@
+CRITICAL - 2022-04-26 23:28:57 --> Undefined variable $user_results
+#0 C:\xampp\htdocs\pita\app\Views\admin\admin_users.php(169): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 169)
+#1 C:\xampp\htdocs\pita\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\pita\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\pita\system\Common.php(1089): CodeIgniter\View\View->render('admin/admin_use...', Array, true)
+#4 C:\xampp\htdocs\pita\app\Controllers\Views.php(50): view('admin/admin_use...')
+#5 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\Views->view_admin_users()
+#6 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Views))
+#7 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2022-04-26 23:29:14 --> Undefined variable $users_results
+#0 C:\xampp\htdocs\pita\app\Views\admin\admin_users.php(171): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 171)
+#1 C:\xampp\htdocs\pita\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\pita\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\pita\system\Common.php(1089): CodeIgniter\View\View->render('admin/admin_use...', Array, true)
+#4 C:\xampp\htdocs\pita\app\Controllers\Views.php(50): view('admin/admin_use...')
+#5 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\Views->view_admin_users()
+#6 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Views))
+#7 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}

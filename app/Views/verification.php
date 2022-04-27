@@ -83,10 +83,6 @@
             </form>
             
         </div>
-        <p class="has-text-white">
-        <a href="">Sign Up</a> &nbsp;·&nbsp;
-        <a href="">Forgot Password</a> &nbsp;
-        </p>
       </div>
       
     </div>

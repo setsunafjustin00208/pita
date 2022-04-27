@@ -149,13 +149,309 @@
             </ul>
         </aside>
     </div>
-    <div class="column container">
-        <div class="tile is-ancestor has-text-centered">
-            <div class="tile box is-5">
-            </div>
-            <div class="tile box is-5">
-            </div>
+    <div class="column container p-4 mt-3">
+    <div class="buttons">
+        <a data-target="modal-trigger" class="button is-link modal-trigger"><i class="fa fa-graduation-cap" aria-hidden="true"></i> &nbsp; Add Student</a>
+      </div>
+      <div id= "modal-trigger" class="modal modal-fx-fadeInScale">
+            <div class="modal-background"></div>
+                <div class="modal-card modal-size">
+                        <header class="modal-card-head">
+                            <p class="modal-card-title">Add teacher</p>
+                            <button class="delete" aria-label="close"></button>
+                        </header>
+                        <section class="modal-card-body">
+                        <?=form_open('databasecontroller/add_users')?>
+                        <input type="hidden" name="date_created" value="<?=date("y_m_d H:i:s")?>">
+                        <input type="hidden" name="date_modified" value="<?=date("y_m_d H:i:s")?>">
+                        <input type="hidden" name="is_active" value="ACTIVE">
+                        <input type="hidden" name="verification" value="0">
+                        <input type="hidden" name="user_type" value="STUDENT">
+                            <div class="field">
+                                <label for="" class="label">Email</label>
+                            </div>
+                            <div class="control">
+                                <input type="email" name="email" placeholder="Ente email" class="input is-link">
+                            </div>
+                            <div class="field">
+                                <label for="" class="label">Username</label>
+                            </div>
+                            <div class="control">
+                                <input type="text" name="username" placeholder="Enter Username" class="input is-link" required>
+                            </div>
+                            <div class="field">
+                                <label for="" class="label">Password</label>
+                            </div>
+                            <div class="control">
+                                <input type="password" id="password" name="password" placeholder="Enter Password" class="input is-link" onkeyup="check();" required>
+                            </div>
+                            <div class="field">
+                                <label for="" class="label">Confirm Password</label>
+                            </div>
+                            <div class="control">
+                                <input type="password" id="confirm" placeholder="Confirm Password" class="input is-link" onkeyup="check();" required>
+                            </div>
+                            <div class="field mt-2">
+                                <label for="" class="label" id="message"></label>
+                            </div>
+                            <script>
+                                var check = function() {
+                                    if (document.getElementById('password').value == document.getElementById('confirm').value) 
+                                    {
+                                        if(document.getElementById('password').value === ""  || document.getElementById('confirm').value === "")
+                                        {
+                                            document.getElementById('message').innerHTML = '';
+                                            document.getElementById('submit').disabled = true;
+                                        }
+
+                                        else
+                                        {
+                                            document.getElementById('message').style.color = 'green';
+                                            document.getElementById('message').innerHTML = 'Passwords matched';
+                                            document.getElementById('submit').disabled = false;
+                                        }
+                                       
+                                    } 
+                                    else {
+                                        document.getElementById('message').style.color = 'red';
+                                        document.getElementById('message').innerHTML = 'Passwords not matched';
+                                        document.getElementById('submit').disabled = true;
+                                    }
+                                }
+                        </script>
+                            <div class="field">
+                                <label for="" class="label">First name</label>
+                            </div>
+                            <div class="control">
+                                <input type="text" name="fname" placeholder="Enter First Name" class="input is-link" required>
+                            </div>
+                            <div class="field">
+                                <label for="" class="label">Middle name</label>
+                            </div>
+                            <div class="control">
+                                <input type="text" name="mname" placeholder="Enter Middle name" class="input is-link" required>
+                            </div>
+                            <div class="field">
+                                <label for="" class="label">Last name</label>
+                            </div>
+                            <div class="control">
+                                <input type="text" name="lname" placeholder="Enter Last name" class="input is-link" required>
+                            </div>
+                            <div class="field">
+                                <label for="" class="label">Grade Level</label>
+                            </div>
+                            <div class="control">
+                                <input type="number" maxlength="1" name="grade" placeholder="Enter grade level" class="input is-link" required>
+                            </div>
+                            <div class="field">
+                                <label for="" class="label">Section</label>
+                            </div>
+                            <div class="control">
+                                <input type="text" name="Section" placeholder="Enter Last name" class="input is-link" required>
+                            </div>
+                        </section>
+                        <footer class="modal-card-foot">
+                            <button class="button is-success" id="submit"> <i class="fa fa-plus"></i> &nbsp; Add Teacher</button>
+                        </form>
+                            <button class="button">Cancel</button>
+                        </footer>
+                </div>
         </div>
+      <div class="table-container">
+      <table class="table is-narrow is-hoverable is-fullwidth display compact cell-border stripe"id="mytable">
+                      <script>
+                          $(document).ready( function () {
+                            $('#mytable').DataTable();
+                          });
+                      </script>
+                      <thead>
+                        <tr>
+                          <th><abbr title="Username">Username</abbr></th>
+                          <th><abbr title="First Name">F.Name</abbr></th>
+                          <th><abbr title="Middle Name">M.Name</abbr></th>
+                          <th><abbr title="Last Name">L.Name</abbr></th>
+                          <th><abbr title="Last Name">Grade</abbr></th>
+                          <th><abbr title="Last Name">Section</abbr></th>
+                          <th><abbr title="Last Name">Status</abbr></th>
+                          <th><abbr title="Actions">Actn</abbr></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                          <?php
+                            $users_builder= db_connect()->table('users');
+                            $user_results = $users_builder->getWhere(['user_type'=>'STUDENT']);
+
+                            foreach($user_results->getResult() as $userRow)
+                            {
+                          ?>
+                          <tr>
+                            <td><?=$userRow->username?></td>
+                            <td><?=$userRow->fname?></td>
+                            <td><?=$userRow->mname?></td>
+                            <td><?=$userRow->lname?></td>
+                            <td><?=$userRow->grade?></td>
+                            <td><?=$userRow->section?></td>
+                            <td><?=$userRow->is_active?></td>
+                            <td>
+                              <div class="buttons">
+                                <a data-target="modal-trigger-edit<?=$userRow->user_id?>" class="button is-success is-small modal-trigger"><i class="fa fa-edit"></i></a>
+                                <div id= "modal-trigger-edit<?=$userRow->user_id?>" class="modal modal-fx-fadeInScale">
+                                  <div class="modal-background"></div>
+                                      <div class="modal-card modal-size">
+                                              <header class="modal-card-head">
+                                                  <p class="modal-card-title">Add teacher</p>
+                                                  <button class="delete" aria-label="close"></button>
+                                              </header>
+                                              <section class="modal-card-body">
+                                              <?=form_open('databasecontroller/update_users')?>
+                                              <input type="hidden" name="date_created" value="<?=date("y_m_d H:i:s")?>">
+                                              <input type="hidden" name="date_modified" value="<?=date("y_m_d H:i:s")?>">
+                                              <input type="hidden" name="verification" value="0">
+                                              <input type="hidden" name="user_id" value="<?=$userRow->user_id?>">
+                                              <input type="hidden" name="user_type" value="<?=$userRow->user_type?>">
+                                                  <div class="field">
+                                                      <label for="" class="label">Email</label>
+                                                  </div>
+                                                  <div class="control">
+                                                      <input type="email" name="email" value="<?=$userRow->email?>" class="input is-link">
+                                                  </div>
+                                                  <div class="field">
+                                                      <label for="" class="label">Username</label>
+                                                  </div>
+                                                  <div class="control">
+                                                      <input type="text" name="username" value="<?=$userRow->username?>" class="input is-link" required>
+                                                  </div>
+                                                  <div class="field">
+                                                      <label for="" class="label">Password</label>
+                                                  </div>
+                                                  <div class="control">
+                                                      <input type="password" id="password" name="password" value="<?=$userRow->password?>" class="input is-link" onkeyup="check();" required>
+                                                  </div>
+                                                  <div class="field">
+                                                      <label for="" class="label">Confirm Password</label>
+                                                  </div>
+                                                  <div class="control">
+                                                      <input type="password" id="confirm" value="<?=$userRow->password?>" class="input is-link" onkeyup="check();" required>
+                                                  </div>
+                                                  <div class="field mt-2">
+                                                      <label for="" class="label" id="message"></label>
+                                                  </div>
+                                                  <script>
+                                                      var check = function() {
+                                                          if (document.getElementById('password').value == document.getElementById('confirm').value) 
+                                                          {
+                                                              if(document.getElementById('password').value === ""  || document.getElementById('confirm').value === "")
+                                                              {
+                                                                  document.getElementById('message').innerHTML = '';
+                                                                  document.getElementById('submit').disabled = true;
+                                                              }
+
+                                                              else
+                                                              {
+                                                                  document.getElementById('message').style.color = 'green';
+                                                                  document.getElementById('message').innerHTML = 'Passwords matched';
+                                                                  document.getElementById('submit').disabled = false;
+                                                              }
+                                                            
+                                                          } 
+                                                          else {
+                                                              document.getElementById('message').style.color = 'red';
+                                                              document.getElementById('message').innerHTML = 'Passwords not matched';
+                                                              document.getElementById('submit').disabled = true;
+                                                          }
+                                                      }
+                                              </script>
+                                                  <div class="field">
+                                                      <label for="" class="label">First name</label>
+                                                  </div>
+                                                  <div class="control">
+                                                      <input type="text" name="fname" value="<?=$userRow->fname?>" class="input is-link" required>
+                                                  </div>
+                                                  <div class="field">
+                                                      <label for="" class="label">Middle name</label>
+                                                  </div>
+                                                  <div class="control">
+                                                      <input type="text" name="mname"value="<?=$userRow->mname?>" class="input is-link" required>
+                                                  </div>
+                                                  <div class="field">
+                                                      <label for="" class="label">Last name</label>
+                                                  </div>
+                                                  <div class="control">
+                                                      <input type="text" name="lname" value="<?=$userRow->lname?>" class="input is-link" required>
+                                                  </div>
+                                                  <div class="field">
+                                                      <label for="" class="label">Grade Level</label>
+                                                  </div>
+                                                  <div class="control">
+                                                      <input type="number" maxlength="1" name="grade" value="<?=$userRow->grade?>" class="input is-link" required>
+                                                  </div>
+                                                  <div class="field">
+                                                      <label for="" class="label">Section</label>
+                                                  </div>
+                                                  <div class="control">
+                                                      <input type="text" name="Section" value="<?=$userRow->section?>" class="input is-link" required>
+                                                  </div>
+                                                  <div class="field">
+                                                      <label for="" class="label">Status</label></label>
+                                                  </div>
+                                                  <div class="control">
+                                                    <div class="select is-primary">
+                                                      <select name="is_active">
+                                                          <option value="ACTIVE">ACTIVE</option>
+                                                          <option value="DISABLED">DISABLED</option>
+                                                      </select>
+                                                    </div>
+                                                  </div>
+                                              </section>
+                                              <footer class="modal-card-foot">
+                                                  <button class="button is-success" id="submit"><i class="fa fa-refresh"></i> &nbsp; Update Student</button>
+                                              </form>
+                                                  <button class="button">Cancel</button>
+                                              </footer>
+                                      </div>
+                              </div>
+                                <a data-target="modal-trigger-delete<?=$userRow->user_id?>" class="button is-danger is-small modal-trigger"><i class="fa fa-trash"></i></a>
+                                <div id= "modal-trigger-delete<?=$userRow->user_id?>" class="modal modal-fx-fadeInScale">
+                                  <div class="modal-background"></div>
+                                      <div class="modal-card modal-size">
+                                              <header class="modal-card-head">
+                                                  <p class="modal-card-title">Delete User?</p>
+                                                  <button class="delete" aria-label="close"></button>
+                                              </header>
+                                              <section class="modal-card-body">
+                                              <?=form_open('databasecontroller/delete_users')?>
+                                                  <h2 class="subtitle">Are you sure to delete this user?</h2>
+                                                  <input type="hidden" name="user_id" value="<?=$userRow->user_id?>">
+                                                  <input type="hidden" name="user_type" value="STUDENT">
+                                              </section>
+                                              <footer class="modal-card-foot">
+                                                  <button class="button is-danger is-small"><i class="fa fa-check"></i> &nbsp;Yes</button>
+                                              </form>
+                                                  <button class="button is-link is-small"><i class="fa fa-cancel"></i>&nbsp; No</button>
+                                              </footer>
+                                      </div>
+                              </div>
+                              </div>
+                            </td>
+                          </tr>
+                          <?php
+                            }
+                          ?>
+                      </tbody>
+                      <tfoot>
+                        <tr>
+                          <th><abbr title="Username">Username</abbr></th>
+                          <th><abbr title="First Name">F.Name</abbr></th>
+                          <th><abbr title="Middle Name">M.Name</abbr></th>
+                          <th><abbr title="Last Name">L.Name</abbr></th>
+                          <th><abbr title="Last Name">Grade</abbr></th>
+                          <th><abbr title="Last Name">Section</abbr></th>
+                          <th><abbr title="Last Name">Status</abbr></th>
+                          <th><abbr title="Actions">Actn</abbr></th>
+                        </tr>
+                      </tfoot>
+                  </table>
+      </div>
     </div>
 </div>
 </body>
