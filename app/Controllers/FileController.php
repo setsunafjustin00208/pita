@@ -1,9 +1,7 @@
 <?php
 
     namespace App\Controllers;
-
     use PhpOffice\PhpSpreadsheet\Spreadsheet;
-
     use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
     class FileController extends BaseController
