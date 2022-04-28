@@ -145,7 +145,6 @@
             </p>
             <ul class="menu-list">
                 <li><a href="<?=site_url('/views/admin_overall_statistics')?>">Overall</a></li>
-                <li><a href="<?=site_url('/views/admin_users_statistics')?>">Number of users</a></li>
             </ul>
         </aside>
     </div>

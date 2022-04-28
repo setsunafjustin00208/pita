@@ -50,6 +50,7 @@
     <link rel="stylesheet" href="<?=base_url('/design/css/datatables.min.css')?>" type="text/css">
     <link rel="stylesheet" href="<?=base_url('/design/css/dataTables.bulma.css')?>" type="text/css">
     <link rel="stylesheet" href="<?=base_url('/design/css/jquery.dataTables.css')?>" type="text/css">
+    <link rel="stylesheet" href="<?=base_url('/design/css/mine.css')?>" type="text/css">
     <script src="<?=base_url('/design/js/mine.js')?>" type="text/javascript"></script>
     <script src="<?=base_url('/design/js/all.js')?>" type="text/javascript"></script>
     <script src="<?=base_url('/design/js/jquery-3.6.0.js')?>" type="text/javascript"></script>
@@ -59,6 +60,8 @@
     <script src="<?=base_url('/design/js/dataTables.bulma.js')?>" type="text/javascript"></script>
     <script src="<?=base_url('/design/js/datatables.js')?>" type="text/javascript"></script>
     <script src="<?=base_url('/design/js/jquery.dataTables.js')?>" type="text/javascript"></script>
+    <script src="<?=base_url('/design/js/chart.esm.js')?>" type="text/javascript"></script>
+    <script src="<?=base_url('/design/js/chart.min.js')?>" type="text/javascript"></script>
     <script src="<?=base_url('/design/js/acorn_interpreter.js')?>"></script>
     <script src="<?=base_url('/design/js/blockly_compressed.js')?>"></script>
     <script src="<?=base_url('/design/js/blocks_compressed.js')?>"></script>
@@ -145,17 +148,183 @@
             </p>
             <ul class="menu-list">
                 <li><a class="is-active" href="<?=site_url('/views/admin_overall_statistics')?>">Overall</a></li>
-                <li><a href="<?=site_url('/views/admin_users_statistics')?>">Number of users</a></li>
             </ul>
         </aside>
     </div>
-    <div class="column container">
-        <div class="tile is-ancestor has-text-centered">
-            <div class="tile box is-5">
-            </div>
-            <div class="tile box is-5">
-            </div>
+    <div class="column container p-3 mt-4">
+    <section class="hero is-link is-small mb-5">
+        <div class="hero-body">
+          <p class="title">
+            <i class="fa-solid fa-chart-bar"></i> &nbsp;
+              System Statistics
+          </p>
+          <p class="subtitle">
+            Overall Statistics of the system
+          </p>
         </div>
+      </section>
+      <?php
+              /**Data for the user chart */
+                $allusers_count=db_connect()->table('users');
+                $all_users = $allusers_count->countAll();
+               
+
+                $admin_count = db_connect();
+                $count_admin_query= $admin_count->query("SELECT COUNT(user_id) as admincount FROM users WHERE user_type = 'ADMIN' ");
+                $countrow = $count_admin_query->getRow();
+                if(isset($countrow))
+                {
+                  $count_admin = $countrow->admincount;
+                }
+
+                $teacher_count = db_connect();
+                $count_teacher_query= $teacher_count->query("SELECT COUNT(user_id) as teachercount FROM users WHERE user_type = 'TEACHER' ");
+                $teacherrow = $count_teacher_query->getRow();
+                if(isset($teacherrow))
+                {
+                    $count_teacher = $teacherrow->teachercount;
+                }
+
+                $student_count = db_connect();
+                $count_student_query= $student_count->query("SELECT COUNT(user_id) as studentcount FROM users WHERE user_type = 'STUDENT' ");
+                $studentrow = $count_student_query->getRow();
+                if(isset($studentrow))
+                {
+                    $count_student = $studentrow->studentcount;
+                }
+              /**Data for the user chart */
+            ?>
+      <div class="buttons">
+        <a href="<?=site_url('filecontroller/export_report')?>" class="button is-success"><i class="fa fa-file"></i>&nbsp; Export Data</a>
+      </div>
+      <div class="tile is-ancestor p-4 mt-1">
+        <style>
+        .chart-container {
+          position: relative;
+          margin: auto;
+          height: 80vh;
+          width: 80vw;
+        }
+        </style>
+        
+        <script>
+            $(function(){
+                  var ctx = document.getElementById('myChart').getContext('2d');
+                  var myChart = new Chart(ctx, {
+                  type: 'bar',
+                  data: {
+                      labels: ['Total', 'Admin', 'Teachers', 'Students'],
+                      datasets: [{
+                          label: '# of Users per Type',
+                          data: [<?=$all_users?>, <?=$count_admin?>, <?=$count_teacher?>, <?=$count_student?>],
+                          backgroundColor: [
+                              'rgba(255, 99, 132, 0.2)',
+                              'rgba(54, 162, 235, 0.2)',
+                              'rgba(255, 206, 86, 0.2)',
+                              'rgba(75, 192, 192, 0.2)'
+                          ],
+                          borderColor: [
+                              'rgba(255, 99, 132, 1)',
+                              'rgba(54, 162, 235, 1)',
+                              'rgba(255, 206, 86, 1)',
+                              'rgba(75, 192, 192, 1)'
+                          ],
+                          borderWidth: 1
+                      }]
+                  },
+                  options: {
+                      scales: {
+                          y: {
+                              beginAtZero: true
+                          }
+                      },
+                      responsive: true,
+                  }
+              });
+                  var ctx = document.getElementById('myChart2').getContext('2d');
+                  var myChart2 = new Chart(ctx, {
+                  type: 'line',
+                  data: {
+                      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                      datasets: [{
+                          label: '# of Actvities',
+                          data: [12, 19, 3, 5, 2, 3],
+                          backgroundColor: [
+                              'rgba(255, 99, 132, 0.2)',
+                              'rgba(54, 162, 235, 0.2)',
+                              'rgba(255, 206, 86, 0.2)',
+                              'rgba(75, 192, 192, 0.2)',
+                              'rgba(153, 102, 255, 0.2)',
+                              'rgba(255, 159, 64, 0.2)'
+                          ],
+                          borderColor: [
+                              'rgba(255, 99, 132, 1)',
+                              'rgba(54, 162, 235, 1)',
+                              'rgba(255, 206, 86, 1)',
+                              'rgba(75, 192, 192, 1)',
+                              'rgba(153, 102, 255, 1)',
+                              'rgba(255, 159, 64, 1)'
+                          ],
+                          borderWidth: 1
+                      }]
+                  },
+                  options: {
+                      scales: {
+                          y: {
+                              beginAtZero: true
+                          }
+                      },
+                      responsive: true,
+                  }
+              });
+              var ctx = document.getElementById('myChart3').getContext('2d');
+              var myChart3 = new Chart(ctx, {
+                  type: 'doughnut',
+                  data: {
+                      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                      datasets: [{
+                          label: '# of Interactions on Announcements',
+                          data: [12, 19, 3, 5, 2, 3],
+                          backgroundColor: [
+                              'rgba(255, 99, 132, 0.2)',
+                              'rgba(54, 162, 235, 0.2)',
+                              'rgba(255, 206, 86, 0.2)',
+                              'rgba(75, 192, 192, 0.2)',
+                              'rgba(153, 102, 255, 0.2)',
+                              'rgba(255, 159, 64, 0.2)'
+                          ],
+                          borderColor: [
+                              'rgba(255, 99, 132, 1)',
+                              'rgba(54, 162, 235, 1)',
+                              'rgba(255, 206, 86, 1)',
+                              'rgba(75, 192, 192, 1)',
+                              'rgba(153, 102, 255, 1)',
+                              'rgba(255, 159, 64, 1)'
+                          ],
+                          borderWidth: 1
+                      }]
+                  },
+                  options: {
+                      scales: {
+                          y: {
+                              beginAtZero: true
+                          }
+                      },
+                      responsive: true,
+                  }
+              });
+            });
+          </script>
+        <div class="tile box is-4 is-vertical p-4 m-1" class="chart-container">
+          <canvas id="myChart" width="100" height="100"></canvas>
+        </div>
+        <div class="tile box is-4 is-vertical p-4 m-1" class="chart-container">
+          <canvas id="myChart2" width="100" height="100"></canvas>
+        </div>
+        <div class="tile box is-4 is-vertical p-4 m-1" class="chart-container">
+          <canvas id="myChart3" width="100" height="100"></canvas>
+        </div>
+      </div>
     </div>
 </div>
 </body>

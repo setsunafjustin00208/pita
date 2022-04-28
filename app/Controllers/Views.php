@@ -65,10 +65,6 @@ class Views extends BaseController
     {
         echo view('admin/admin_statistics');
     }
-    public function admin_users_statistics()
-    {
-        echo view('admin/admin_user_statistics');
-    }
     public function admin_about_view()
     {
         echo view('admin/admin_about');
