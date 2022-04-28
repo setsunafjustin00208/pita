@@ -310,12 +310,12 @@
                                   <div class="modal-background"></div>
                                       <div class="modal-card modal-size">
                                               <header class="modal-card-head">
-                                                  <p class="modal-card-title">Add teacher</p>
+                                                  <p class="modal-card-title">Edit teacher</p>
                                                   <button class="delete" aria-label="close"></button>
                                               </header>
                                               <section class="modal-card-body">
                                               <?=form_open('databasecontroller/update_users')?>
-                                              <input type="hidden" name="date_created" value="<?=date("y_m_d H:i:s")?>">
+                                              <input type="hidden" name="date_created" value="<?=$userRow->date_created?>">
                                               <input type="hidden" name="date_modified" value="<?=date("y_m_d H:i:s")?>">
                                               <input type="hidden" name="verification" value="0">
                                               <input type="hidden" name="user_id" value="<?=$userRow->user_id?>">

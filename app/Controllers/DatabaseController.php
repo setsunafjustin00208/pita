@@ -211,6 +211,42 @@
             
         }
 
+        public function create_announcements()
+        {   
+            $title_announcement = $_POST['announcement_title'];
+            $title_announcement_query = $this->db->query("SELECT * FROM announcements WHERE announcement_title ='{$title_announcement}'");
+            
+            if($title_announcement_query->getNumRows() > 0)
+            {
+                $_SESSION['announcment_available'] = "There is an available announcment";
+                return redirect()->to('/views/view_admin');
+            }
+            else
+            {
+                $announcement_builder = $this->db->table('announcements');
+                $announcement_builder->insert($_POST);
+                return redirect()->to('/views/view_admin');
+            }
+           
+        }
+
+        public function update_announcements()
+        {
+            $ua_id = $_POST['a_id'];
+            $update_announcement_function = $this->db->table('announcements');
+            $update_announcement_function->where('a_id',$ua_id);
+            $update_announcement_function->update($_POST);
+            return redirect()->to('/views/view_admin');
+        }
+        public function delete_announcements()
+        {
+            $a_id = $_POST['a_id'];
+            $delete_announcement_function = $this->db->table('announcements');
+            $delete_announcement_function->where('a_id',$a_id);
+            $delete_announcement_function->delete($_POST);
+            return redirect()->to('/views/view_admin');
+        }
+
         
     }
 

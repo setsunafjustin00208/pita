@@ -48,7 +48,7 @@
     <link rel="stylesheet" href="<?=base_url('/design/css/animate.min.css')?>" type="text/css">
     <link rel="stylesheet" href="<?=base_url('/design/css/modal-fx.css')?>" type="text/css">
     <link rel="stylesheet" href="<?=base_url('/design/css/datatables.min.css')?>" type="text/css">
-    <link rel="stylesheet" href="<?=base_url('/design/css/dataTables.bulma.css')?>" type="text/css">
+    <link rel="stylesheet" href="<?=base_url('/design/css/dataTables.bulma.min.css')?>" type="text/css">
     <link rel="stylesheet" href="<?=base_url('/design/css/jquery.dataTables.css')?>" type="text/css">
     <script src="<?=base_url('/design/js/mine.js')?>" type="text/javascript"></script>
     <script src="<?=base_url('/design/js/all.js')?>" type="text/javascript"></script>
@@ -219,6 +219,134 @@
         </div>
       </div>
     </nav>
+    <div class="container box">
+        <div class="buttons">
+          <a data-target="modal-trigger" class="button is-link modal-trigger"><i class="fa fa-bullhorn"></i> &nbsp; Add New Announcement</a>
+          <div id= "modal-trigger" class="modal modal-fx-fadeInScale">
+                          <div class="modal-background"></div>
+                            <div class="modal-card modal-size">
+                              <header class="modal-card-head">
+                                <p class="modal-card-title">Add Announcment</p>
+                                  <button class="delete" aria-label="close"></button>
+                              </header>
+                              <section class="modal-card-body">
+                                <?=form_open('databasecontroller/create_announcements')?>
+                                  <input type="hidden" name="date_created" value="<?=date("y_m_d H:i:s")?>">
+                                  <input type="hidden" name="date_modified" value="<?=date("y_m_d H:i:s")?>">
+                                  <div class="field">
+                                     <label for="" class="label">Announcement Title</label>
+                                  </div>
+                                  <div class="control mb-5">
+                                    <input type="text" name="announcement_title" placeholder="Title" class="input is-link">
+                                  </div>
+                                  <div class="field">
+                                     <label for="" class="label">Announcement Detail</label>
+                                  </div>
+                                  <div class="control is-large">
+                                    <textarea class="textarea is-link has-fixed-size" name="announcement_details" placeholder="Details"></textarea>
+                                  </div>
+                                <footer class="modal-card-foot">
+                                  <button class="button is-success" id="submit"><i class="fa fa-plus"></i> &nbsp; Post</button>
+                                </form>
+                                  <button class="button">Cancel</button>
+                                </footer>
+                              </div>
+                        </div>
+        </div>
+        <table class="table is-narrow is-hoverable is-fullwidth display compact cell-border stripe" id="mytable">
+        <script>
+                $(document).ready( function () {
+                  $('#mytable').DataTable({
+                      stateSave: true
+                  } );
+                });
+            </script>
+            <thead>
+                <tr>
+                          <th><abbr title="Announcement_title">AnncmtTitle</abbr></th>
+                          <th><abbr title="Announcement_details">AnncmtBdy</abbr></th>
+                          <th><abbr title="Actions">Actn</abbr></th>
+                </tr>
+            </thead>
+            <tbody>
+              <?php
+                   $announcement_builder= db_connect()->table('announcements');
+                   $announcement_results = $announcement_builder->get();
+
+                   foreach($announcement_results->getResult() as $announcementRow)
+                   {
+              ?>
+              <tr>
+                  <td><?=$announcementRow->announcement_title?></td>
+                  <td><?=$announcementRow->announcement_details?></td>
+                  <td>
+                  <div class="buttons">
+                    <a data-target="modal-trigger-edit<?=$announcementRow->a_id?>" class="button is-success is-small modal-trigger"><i class="fa fa-edit"></i></a>
+                      <div id= "modal-trigger-edit<?=$announcementRow->a_id?>" class="modal modal-fx-fadeInScale">
+                          <div class="modal-background"></div>
+                            <div class="modal-card modal-size">
+                              <header class="modal-card-head">
+                                <p class="modal-card-title">Edit Announcement</p>
+                                  <button class="delete" aria-label="close"></button>
+                              </header>
+                              <section class="modal-card-body">
+                                <?=form_open('databasecontroller/update_announcements')?>
+                                  <input type="hidden" name="a_id" value="<?=$announcementRow->a_id?>">
+                                  <div class="field">
+                                      <label for="" class="label">Announcement Title</label>
+                                    </div>
+                                    <div class="control mb-5">
+                                      <input type="text" name="announcement_title" value="<?=$announcementRow->announcement_title?>" class="input is-link">
+                                    </div>
+                                    <div class="field">
+                                      <label for="" class="label">Announcement Detail</label>
+                                    </div>
+                                    <div class="control is-large">
+                                      <textarea class="textarea is-link has-fixed-size" name="announcement_details"><?=$announcementRow->announcement_details?></textarea>
+                                    </div>
+                                <footer class="modal-card-foot">
+                                  <button class="button is-success" id="submit"><i class="fa fa-refresh"></i> &nbsp; Update Announcement</button>
+                                </form>
+                                  <button class="button">Cancel</button>
+                                </footer>
+                              </div>
+                        </div>
+                        <a data-target="modal-trigger-delete<?=$announcementRow->a_id?>" class="button is-danger is-small modal-trigger"><i class="fa fa-trash"></i></a>
+                          <div id= "modal-trigger-delete<?=$announcementRow->a_id?>" class="modal modal-fx-fadeInScale">
+                            <div class="modal-background"></div>
+                                <div class="modal-card modal-size">
+                                        <header class="modal-card-head">
+                                            <p class="modal-card-title">Delete Announcement?</p>
+                                            <button class="delete" aria-label="close"></button>
+                                        </header>
+                                        <section class="modal-card-body">
+                                        <?=form_open('databasecontroller/delete_announcements')?>
+                                            <h2 class="subtitle">Are you sure to delete this Announcement?</h2>
+                                            <input type="hidden" name="a_id" value="<?=$announcementRow->a_id?>">
+                                        </section>
+                                        <footer class="modal-card-foot">
+                                            <button class="button is-danger is-small"><i class="fa fa-check"></i> &nbsp;Yes</button>
+                                        </form>
+                                            <button class="button is-link is-small"><i class="fa fa-cancel"></i>&nbsp; No</button>
+                                        </footer>
+                                </div>
+                              </div>
+                    </div>
+                  </td>
+              </tr>
+
+              <?php
+                   }
+              ?>
+            </tbody>
+            <foot>
+                <tr>
+                          <th><abbr title="Announcement_title">AnncmtTitle</abbr></th>
+                          <th><abbr title="Announcement_details">AnncmtBdy</abbr></th>
+                          <th><abbr title="Actions">Actn</abbr></th>
+                </tr>
+            </foot>
+        </table>
     </div>
 </div>
 </body>
