@@ -193,11 +193,27 @@
                     $count_student = $studentrow->studentcount;
                 }
               /**Data for the user chart */
+              /**Data for activities chart */
+                $activity_count = db_connect();
+                $count_activity_query= $activity_count->query("SELECT COUNT(activity_id) as activitycount FROM actvities");
+                $activitytrow = $count_activity_query->getRow();
+                if(isset($activitytrow))
+                {
+                    $count_activity = $activitytrow->activitycount;
+                }
+                $score_count = db_connect();
+                $count_score_query= $activity_count->query("SELECT COUNT(score_id) as scorecount FROM scores");
+                $scoretrow = $count_score_query->getRow();
+                if(isset($scoretrow))
+                {
+                    $count_score = $scoretrow->scorecount;
+                }
+              /**Data for activities chart */
             ?>
       <div class="buttons">
-        <a href="<?=site_url('filecontroller/export_report')?>" class="button is-success"><i class="fa fa-file"></i>&nbsp; Export Data</a>
+        <a href="<?=site_url('filecontroller/export_report')?>" class="button is-success"><i class="fa fa-file"></i>&nbsp; Generate Report</a>
       </div>
-      <div class="tile is-ancestor p-4 mt-1">
+      <div class="tile is-ancestor p-4 mt-1 container">
         <style>
         .chart-container {
           position: relative;
@@ -245,25 +261,22 @@
                   var myChart2 = new Chart(ctx, {
                   type: 'line',
                   data: {
-                      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                      labels: ['Total Act', 'ScoresAct','Teachers', 'Student'],
                       datasets: [{
                           label: '# of Actvities',
-                          data: [12, 19, 3, 5, 2, 3],
+                          data: [<?=$count_activity?>, <?=$count_score?>, <?=$count_teacher?>, <?=$count_student?>],
                           backgroundColor: [
                               'rgba(255, 99, 132, 0.2)',
                               'rgba(54, 162, 235, 0.2)',
                               'rgba(255, 206, 86, 0.2)',
-                              'rgba(75, 192, 192, 0.2)',
-                              'rgba(153, 102, 255, 0.2)',
-                              'rgba(255, 159, 64, 0.2)'
+                              'rgba(75, 192, 192, 0.2)'
                           ],
                           borderColor: [
                               'rgba(255, 99, 132, 1)',
                               'rgba(54, 162, 235, 1)',
                               'rgba(255, 206, 86, 1)',
-                              'rgba(75, 192, 192, 1)',
-                              'rgba(153, 102, 255, 1)',
-                              'rgba(255, 159, 64, 1)'
+                              'rgba(75, 192, 192, 1)'
+  
                           ],
                           borderWidth: 1
                       }]
@@ -279,12 +292,12 @@
               });
               var ctx = document.getElementById('myChart3').getContext('2d');
               var myChart3 = new Chart(ctx, {
-                  type: 'doughnut',
+                  type: 'radar',
                   data: {
-                      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                      labels: ['Total', 'Admin', 'Teachers', 'Students', 'Total Act', 'ScoresAct'],
                       datasets: [{
-                          label: '# of Interactions on Announcements',
-                          data: [12, 19, 3, 5, 2, 3],
+                          label: 'Total Statistics',
+                          data: [<?=$all_users?>, <?=$count_admin?>, <?=$count_teacher?>, <?=$count_student?>,<?=$count_activity?>, <?=$count_score?>],
                           backgroundColor: [
                               'rgba(255, 99, 132, 0.2)',
                               'rgba(54, 162, 235, 0.2)',
@@ -308,23 +321,31 @@
                       scales: {
                           y: {
                               beginAtZero: true
-                          }
+                          },
+                         
+        
                       },
                       responsive: true,
                   }
               });
             });
           </script>
-        <div class="tile box is-4 is-vertical p-4 m-1" class="chart-container">
+        <div class="tile is-5 is-vertical p-3 mr-6 ml-3 is-offset-2 ml-6" class="chart-container">
+          <p class="title is-4">User Chart</p>
           <canvas id="myChart" width="100" height="100"></canvas>
         </div>
-        <div class="tile box is-4 is-vertical p-4 m-1" class="chart-container">
+        <div class="tile is-5 is-vertical p-3 mr-6 ml-3" class="chart-container">
+        <p class="title is-4">Activity Chart</p>
           <canvas id="myChart2" width="100" height="100"></canvas>
         </div>
-        <div class="tile box is-4 is-vertical p-4 m-1" class="chart-container">
+      </div>
+      <div class="tile is-ancestor p-4 mt-1 container">
+        <div class="tile is-11 is-vertical p-5">
+        <p class="title is-4">Total Statistics Chart</p>
           <canvas id="myChart3" width="100" height="100"></canvas>
         </div>
       </div>
+      
     </div>
 </div>
 </body>
