@@ -142,16 +142,17 @@
         </aside>
     </div>
     <div class="column container p-4 mt-3">
-    <p>
-            <button class="button is-link p-3 m-3" onclick="runCode()" id="runButton">Run Program</button>
-        </p>
-
-    <div class="" style="width: 100%">
-        <div id="blocklyDiv"
+    <div class="buttons">
+            <button class="button is-link p-3 m-3" onclick="runCode()" id="runButton"><i class="fa-solid fa-terminal"></i> &nbsp; Run Program</button>
+    </div>
+    <div class="columns" style="width: 100%">
+        <div class="column" id="blocklyDiv"
             style="display: inline-block; height: 480px; width: 68%"></div>
-        <textarea id="output" disabled="disabled"
-            style="display: inline-block; height: 480px; width: 30%;">
+        <div class="column ">
+        <textarea name="a_output" id="output"
+            style="display: inline-block; height: 455px;" readonly class="textarea has-fixed-size has-text-black is-link">
         </textarea>
+        </div>
     </div>
     <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
         <category name="Logic" colour="%{BKY_LOGIC_HUE}">
@@ -256,7 +257,7 @@
         runButton.disabled = '';
 
         if (clearOutput) {
-            outputArea.value = 'Program output:\n=================';
+            outputArea.value = 'Program output:\n=================\n';
         }
         }
 

@@ -11,7 +11,7 @@
             if($sql_login-> getNumRows() > 0)
             {
                 $loginrow = $sql_login->getRow();
-                $userdata = array('user_id' => $loginrow->user_id, 'email' => $loginrow->email, 'username' => $loginrow->username ,'password' => $loginrow->password,'fname' => $loginrow->fname, 'mname' => $loginrow->mname, 'lname' => $loginrow->lname,'grade' => $loginrow->section, 'section' => $loginrow->section ,'user_type' => $loginrow->user_type, 'is_active' => $loginrow->is_active ,'img_pic' => $loginrow->img_pic, 'about' => $loginrow->about,'logged_in' => TRUE);
+                $userdata = array('user_id' => $loginrow->user_id, 'email' => $loginrow->email, 'username' => $loginrow->username ,'password' => $loginrow->password,'fname' => $loginrow->fname, 'mname' => $loginrow->mname, 'lname' => $loginrow->lname,'grade' => $loginrow->grade, 'section' => $loginrow->section ,'user_type' => $loginrow->user_type, 'is_active' => $loginrow->is_active ,'img_pic' => $loginrow->img_pic, 'about' => $loginrow->about,'logged_in' => TRUE);
                 $this->session->set($userdata);
 
                 if(($loginrow->is_active) ==  "DISABLED")
@@ -142,7 +142,7 @@
                 }
                 else if($user_type == 'STUDENT')
                 {
-                    return redirect()->to('/views/admin_teacher_view');
+                    return redirect()->to('/views/admin_student_view');
                 }
             }
 
@@ -242,6 +242,65 @@
             $delete_announcement_function->where('a_id',$a_id);
             $delete_announcement_function->delete($_POST);
             return redirect()->to('/views/view_admin');
+        }
+
+        public function create_teacher_announcements()
+        {   
+            $title_announcement = $_POST['announcement_title'];
+            $title_announcement_query = $this->db->query("SELECT * FROM teacher_announcements WHERE announcement_title ='{$title_announcement}'");
+            
+            if($title_announcement_query->getNumRows() > 0)
+            {
+                $_SESSION['announcment_available'] = "There is an available announcment";
+                return redirect()->to('/views/view_teacher');
+            }
+            else
+            {
+                $announcement_builder = $this->db->table('teacher_announcements');
+                $announcement_builder->insert($_POST);
+                return redirect()->to('/views/view_teacher');
+            }
+           
+        }
+
+        public function update_teacher_announcements()
+        {
+            $ua_id = $_POST['ta_id'];
+            $update_announcement_function = $this->db->table('teacher_announcements');
+            $update_announcement_function->where('ta_id',$ua_id);
+            $update_announcement_function->update($_POST);
+            return redirect()->to('/views/view_teacher');
+        }
+        public function delete_teacher_announcements()
+        {
+            $a_id = $_POST['ta_id'];
+            $delete_announcement_function = $this->db->table('teacher_announcements');
+            $delete_announcement_function->where('ta_id',$a_id);
+            $delete_announcement_function->delete($_POST);
+            return redirect()->to('/views/view_teacher');
+        }
+
+        public function add_student()
+        {
+            $user_id = $_POST['user_id'];
+            $add_student_builder = $this->db->table('users');
+            $add_student_builder->where('user_id',$user_id);
+            $add_student_builder->update($_POST);
+            return redirect()->to('/views/teacher_manage_students');
+        }
+        public function remove_student()
+        {
+            $user_id = $_POST['user_id'];
+            $remove_student_builder = $this->db->table('users');
+            $remove_student_builder->where('user_id',$user_id);
+            $remove_student_builder->update($_POST);
+            return redirect()->to('/views/teacher_manage_students');
+
+        }
+        public function validate_output()
+        {
+            $output = $_POST['a_output'];
+            echo  nl2br($output);
         }
 
 

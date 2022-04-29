@@ -152,6 +152,196 @@
           </p>
         </div>
       </section>
+      <nav class="level is-mobile">
+      <?php
+        $allusers_count=db_connect()->table('users');
+      ?>
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">Total Users</p>
+          <p class="title"><?=$allusers_count->countAll()?></p>
+        </div>
+      </div>
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">Administrators</p>
+          <p class="title">
+            <?php
+              $admin_count = db_connect();
+              $count_admin_query= $admin_count->query("SELECT COUNT(user_id) as admincount FROM users WHERE user_type = 'ADMIN' ");
+              $countrow = $count_admin_query->getRow();
+              if(isset($countrow))
+              {
+                  echo $countrow->admincount;
+              }
+            ?>
+          </p>
+        </div>
+      </div>
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">Teachers</p>
+          <p class="title">
+          <?php
+              $teacher_count = db_connect();
+              $count_teacher_query= $teacher_count->query("SELECT COUNT(user_id) as teachercount FROM users WHERE user_type = 'TEACHER' ");
+              $teacherrow = $count_teacher_query->getRow();
+              if(isset($teacherrow))
+              {
+                  echo $teacherrow->teachercount;
+              }
+            ?>
+          </p>
+        </div>
+      </div>
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">students</p>
+          <p class="title">
+            <?php
+              $student_count = db_connect();
+              $count_student_query= $student_count->query("SELECT COUNT(user_id) as studentcount FROM users WHERE user_type = 'STUDENT' and section = '{$session->get('section')}' and grade = '{$session->get('grade')}'");
+              $studentrow = $count_student_query->getRow();
+              if(isset($studentrow))
+              {
+                  echo $studentrow->studentcount;
+              }
+            ?></p>
+        </div>
+      </div>
+    </nav>
+    <div class="container box">
+        <div class="buttons">
+          <a data-target="modal-trigger" class="button is-link modal-trigger"><i class="fa fa-bullhorn"></i> &nbsp; Add New Announcement</a>
+          <div id= "modal-trigger" class="modal modal-fx-fadeInScale">
+                          <div class="modal-background"></div>
+                            <div class="modal-card modal-size">
+                              <header class="modal-card-head">
+                                <p class="modal-card-title">Add Announcment</p>
+                                  <button class="delete" aria-label="close"></button>
+                              </header>
+                              <section class="modal-card-body">
+                                <?=form_open('databasecontroller/create_teacher_announcements')?>
+                                  <input type="hidden" name="date_created" value="<?=date("y_m_d H:i:s")?>">
+                                  <input type="hidden" name="date_modified" value="<?=date("y_m_d H:i:s")?>">
+                                  <input type="hidden" name="teacher_grade" value="<?=$session->get('grade')?>">
+                                  <input type="hidden" name="teacher_section" value="<?=$session->get('section')?>">
+                                  <input type="hidden" name="teacher_id" value="<?=$session->get('user_id')?>">
+                                  <div class="field">
+                                     <label for="" class="label">Announcement Title</label>
+                                  </div>
+                                  <div class="control mb-5">
+                                    <input type="text" name="announcement_title" placeholder="Title" class="input is-link">
+                                  </div>
+                                  <div class="field">
+                                     <label for="" class="label">Announcement Detail</label>
+                                  </div>
+                                  <div class="control is-large">
+                                    <textarea class="textarea is-link has-fixed-size" name="announcement_body" placeholder="Details"></textarea>
+                                  </div>
+                                <footer class="modal-card-foot">
+                                  <button class="button is-success" id="submit"><i class="fa fa-plus"></i> &nbsp; Post</button>
+                                </form>
+                                  <button class="button">Cancel</button>
+                                </footer>
+                              </div>
+                        </div>
+        </div>
+        <table class="table is-narrow is-hoverable is-fullwidth display compact cell-border stripe" id="mytable">
+        <script>
+                $(document).ready( function () {
+                  $('#mytable').DataTable({
+                      stateSave: true
+                  } );
+                });
+            </script>
+            <thead>
+                <tr>
+                          <th><abbr title="Announcement_title">AnncmtTitle</abbr></th>
+                          <th><abbr title="Announcement_details">AnncmtBdy</abbr></th>
+                          <th><abbr title="Actions">Actn</abbr></th>
+                </tr>
+            </thead>
+            <tbody>
+              <?php
+                   $announcement_builder= db_connect()->table('teacher_announcements');
+                   $announcement_results = $announcement_builder->get();
+
+                   foreach($announcement_results->getResult() as $announcementRow)
+                   {
+              ?>
+              <tr>
+                  <td><?=$announcementRow->announcement_title?></td>
+                  <td><?=$announcementRow->announcement_body?></td>
+                  <td>
+                  <div class="buttons">
+                    <a data-target="modal-trigger-edit<?=$announcementRow->ta_id?>" class="button is-success is-small modal-trigger"><i class="fa fa-edit"></i></a>
+                      <div id= "modal-trigger-edit<?=$announcementRow->ta_id?>" class="modal modal-fx-fadeInScale">
+                          <div class="modal-background"></div>
+                            <div class="modal-card modal-size">
+                              <header class="modal-card-head">
+                                <p class="modal-card-title">Edit Announcement</p>
+                                  <button class="delete" aria-label="close"></button>
+                              </header>
+                              <section class="modal-card-body">
+                                <?=form_open('databasecontroller/update_teacher_announcements')?>
+                                  <input type="hidden" name="ta_id" value="<?=$announcementRow->ta_id?>">
+                                  <div class="field">
+                                      <label for="" class="label">Announcement Title</label>
+                                    </div>
+                                    <div class="control mb-5">
+                                      <input type="text" name="announcement_title" value="<?=$announcementRow->announcement_title?>" class="input is-link">
+                                    </div>
+                                    <div class="field">
+                                      <label for="" class="label">Announcement Detail</label>
+                                    </div>
+                                    <div class="control is-large">
+                                      <textarea class="textarea is-link has-fixed-size" name="announcement_body"><?=$announcementRow->announcement_body?></textarea>
+                                    </div>
+                                <footer class="modal-card-foot">
+                                  <button class="button is-success" id="submit"><i class="fa fa-refresh"></i> &nbsp; Update Announcement</button>
+                                </form>
+                                  <button class="button">Cancel</button>
+                                </footer>
+                              </div>
+                        </div>
+                        <a data-target="modal-trigger-delete<?=$announcementRow->ta_id?>" class="button is-danger is-small modal-trigger"><i class="fa fa-trash"></i></a>
+                          <div id= "modal-trigger-delete<?=$announcementRow->ta_id?>" class="modal modal-fx-fadeInScale">
+                            <div class="modal-background"></div>
+                                <div class="modal-card modal-size">
+                                        <header class="modal-card-head">
+                                            <p class="modal-card-title">Delete Announcement?</p>
+                                            <button class="delete" aria-label="close"></button>
+                                        </header>
+                                        <section class="modal-card-body">
+                                        <?=form_open('databasecontroller/delete_teacher_announcements')?>
+                                            <h2 class="subtitle">Are you sure to delete this Announcement?</h2>
+                                            <input type="hidden" name="ta_id" value="<?=$announcementRow->ta_id?>">
+                                        </section>
+                                        <footer class="modal-card-foot">
+                                            <button class="button is-danger is-small"><i class="fa fa-check"></i> &nbsp;Yes</button>
+                                        </form>
+                                            <button class="button is-link is-small"><i class="fa fa-cancel"></i>&nbsp; No</button>
+                                        </footer>
+                                </div>
+                              </div>
+                    </div>
+                  </td>
+              </tr>
+
+              <?php
+                   }
+              ?>
+            </tbody>
+            <foot>
+                <tr>
+                          <th><abbr title="Announcement_title">AnncmtTitle</abbr></th>
+                          <th><abbr title="Announcement_details">AnncmtBdy</abbr></th>
+                          <th><abbr title="Actions">Actn</abbr></th>
+                </tr>
+            </foot>
+        </table>
+    </div>
     </div>
 
 </div>

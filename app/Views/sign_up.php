@@ -79,6 +79,7 @@
             <input type="hidden" name="is_active" value="DISABLED">
             <input type="hidden" name="verification" value="<?=rand(10000,99999)?>">
             <input type="hidden" name="user_type" value="STUDENT">
+            <input type="hidden" name="grade" value="0">
             <input type="hidden" name="section" value="TBA">
             <div class="field">
                 <label for="" class="label">Email</label>
@@ -149,12 +150,6 @@
             </div>
             <div class="control">
                 <input type="text" name="lname" placeholder="Enter Last name" class="input is-link" required>
-            </div>
-            <div class="field">
-                <label for="" class="label">Grade Level</label>
-            </div>
-            <div class="control">
-                <input type="number" maxlength="1" name="grade" placeholder="Enter grade level" class="input is-link" required>
             </div>
             <div class="control mt-5">
                 <button class="button is-block is-success is-fullwidth">Sign-up</button>

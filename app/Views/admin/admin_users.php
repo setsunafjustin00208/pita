@@ -255,7 +255,7 @@
                                       </div>
                               </div>
                         <?php
-                          if(($userRow->user_id) != 1)
+                          if(($userRow->user_id) != $session->get('user_id'))
                           {
                         ?>
                         <button data-target="modal-trigger-change-status<?=$userRow->user_id?>"class="button is-warning modal-trigger is-small"><i class="fa-solid fa-person-military-to-person"></i></button>

@@ -1,0 +1,110 @@
+CRITICAL - 2022-04-29 01:57:19 --> syntax error, unexpected token "}", expecting "," or ";"
+#0 C:\xampp\htdocs\pita\system\Router\Router.php(175): CodeIgniter\Router\Router->autoRoute('databasecontrol...')
+#1 C:\xampp\htdocs\pita\system\CodeIgniter.php(726): CodeIgniter\Router\Router->handle('databasecontrol...')
+#2 C:\xampp\htdocs\pita\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#3 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-04-29 01:57:30 --> Undefined array key "activity_output"
+#0 C:\xampp\htdocs\pita\app\Controllers\DatabaseController.php(248): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 248)
+#1 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\DatabaseController->validate_output()
+#2 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabaseController))
+#3 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-04-29 01:59:15 --> Undefined array key "activity_output"
+#0 C:\xampp\htdocs\pita\app\Controllers\DatabaseController.php(248): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 248)
+#1 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\DatabaseController->validate_output()
+#2 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabaseController))
+#3 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-04-29 02:01:40 --> Undefined array key "a_output"
+#0 C:\xampp\htdocs\pita\app\Controllers\DatabaseController.php(248): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 248)
+#1 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\DatabaseController->validate_output()
+#2 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabaseController))
+#3 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-04-29 02:02:48 --> Undefined array key "a_output"
+#0 C:\xampp\htdocs\pita\app\Controllers\DatabaseController.php(248): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 248)
+#1 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\DatabaseController->validate_output()
+#2 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabaseController))
+#3 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-04-29 02:03:35 --> Undefined array key "a_output"
+#0 C:\xampp\htdocs\pita\app\Controllers\DatabaseController.php(248): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 248)
+#1 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\DatabaseController->validate_output()
+#2 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabaseController))
+#3 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-04-29 02:04:57 --> Undefined array key "a_output"
+#0 C:\xampp\htdocs\pita\app\Controllers\DatabaseController.php(248): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 248)
+#1 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\DatabaseController->validate_output()
+#2 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabaseController))
+#3 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+ERROR - 2022-04-29 03:32:46 --> Unknown column 'grade' in 'field list'
+CRITICAL - 2022-04-29 03:32:46 --> Unknown column 'grade' in 'field list'
+#0 C:\xampp\htdocs\pita\system\Database\MySQLi\Connection.php(292): mysqli->query('INSERT INTO `te...', 0)
+#1 C:\xampp\htdocs\pita\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `te...')
+#2 C:\xampp\htdocs\pita\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `te...')
+#3 C:\xampp\htdocs\pita\system\Database\BaseBuilder.php(1771): CodeIgniter\Database\BaseConnection->query('INSERT INTO `te...', Array, false)
+#4 C:\xampp\htdocs\pita\app\Controllers\DatabaseController.php(260): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\DatabaseController->create_teacher_announcements()
+#6 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabaseController))
+#7 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2022-04-29 03:33:31 --> Unknown column 'announcement_details' in 'field list'
+CRITICAL - 2022-04-29 03:33:31 --> Unknown column 'announcement_details' in 'field list'
+#0 C:\xampp\htdocs\pita\system\Database\MySQLi\Connection.php(292): mysqli->query('INSERT INTO `te...', 0)
+#1 C:\xampp\htdocs\pita\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `te...')
+#2 C:\xampp\htdocs\pita\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `te...')
+#3 C:\xampp\htdocs\pita\system\Database\BaseBuilder.php(1771): CodeIgniter\Database\BaseConnection->query('INSERT INTO `te...', Array, false)
+#4 C:\xampp\htdocs\pita\app\Controllers\DatabaseController.php(260): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\DatabaseController->create_teacher_announcements()
+#6 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabaseController))
+#7 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2022-04-29 03:33:57 --> Undefined property: stdClass::$a_id
+#0 C:\xampp\htdocs\pita\app\Views\teacher\teacher_home.php(319): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined prope...', 'C:\\xampp\\htdocs...', 319)
+#1 C:\xampp\htdocs\pita\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\pita\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\pita\system\Common.php(1089): CodeIgniter\View\View->render('teacher/teacher...', Array, true)
+#4 C:\xampp\htdocs\pita\app\Controllers\Views.php(44): view('teacher/teacher...')
+#5 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\Views->view_teacher()
+#6 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Views))
+#7 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2022-04-29 03:34:44 --> Undefined array key "a_id"
+#0 C:\xampp\htdocs\pita\app\Controllers\DatabaseController.php(232): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 232)
+#1 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\DatabaseController->update_announcements()
+#2 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabaseController))
+#3 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+ERROR - 2022-04-29 03:35:46 --> Unknown column 'announcement_details' in 'field list'
+CRITICAL - 2022-04-29 03:35:46 --> Unknown column 'announcement_details' in 'field list'
+#0 C:\xampp\htdocs\pita\system\Database\MySQLi\Connection.php(292): mysqli->query('UPDATE `teacher...', 0)
+#1 C:\xampp\htdocs\pita\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `teacher...')
+#2 C:\xampp\htdocs\pita\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `teacher...')
+#3 C:\xampp\htdocs\pita\system\Database\BaseBuilder.php(1913): CodeIgniter\Database\BaseConnection->query('UPDATE `teacher...', Array, false)
+#4 C:\xampp\htdocs\pita\app\Controllers\DatabaseController.php(271): CodeIgniter\Database\BaseBuilder->update(Array)
+#5 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\DatabaseController->update_teacher_announcements()
+#6 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabaseController))
+#7 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2022-04-29 05:50:00 --> Undefined array key "user_type"
+#0 C:\xampp\htdocs\pita\app\Controllers\DatabaseController.php(177): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 177)
+#1 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\DatabaseController->delete_users()
+#2 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabaseController))
+#3 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}

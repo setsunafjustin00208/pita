@@ -283,7 +283,7 @@
 
                             foreach($user_results->getResult() as $userRow)
                             {
-                              if(($userRow->user_id) != 1)
+                              if(($userRow->user_id) != $session->get('user_id'))
                               {
 
                               

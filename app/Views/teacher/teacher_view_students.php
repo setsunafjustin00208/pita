@@ -246,64 +246,7 @@
                                               </footer>
                                       </div>
                               </div>
-                        <?php
-                          if(($userRow->user_id) != 1)
-                          {
-                        ?>
-                        <button data-target="modal-trigger-change-status<?=$userRow->user_id?>"class="button is-warning modal-trigger is-small"><i class="fa-solid fa-person-military-to-person"></i></button>
-                        <div id= "modal-trigger-change-status<?=$userRow->user_id?>" class="modal modal-fx-fadeInScale">
-                                  <div class="modal-background"></div>
-                                      <div class="modal-card modal-size">
-                                              <header class="modal-card-head">
-                                                  <p class="modal-card-title">Change Account Status</p>
-                                                  <button class="delete" aria-label="close"></button>
-                                              </header>
-                                              <section class="modal-card-body">
-                                                <?=form_open('databasecontroller/update_status')?>
-                                                  <input type="hidden" name="user_id" value="<?=$userRow->user_id?>">
-                                                  <?php
-                                                      if(($userRow->is_active) ==  "ACTIVE")
-                                                      {
-                                                  ?>
-                                                  <div class="control">
-                                                    <label class="radio">
-                                                      <input type="radio" name="is_active" value="ACTIVE" checked>
-                                                      ACTIVE
-                                                    </label>
-                                                    <label class="radio">
-                                                      <input type="radio" name="is_active" value="DISABLED">
-                                                      DISABLED
-                                                    </label>
-                                                  </div>
-                                                  <?php 
-                                                     }
-                                                     else
-                                                     {
-                                                  ?>
-                                                    <div class="control">
-                                                    <label class="radio">
-                                                      <input type="radio" name="is_active" value="ACTIVE">
-                                                      ACTIVE
-                                                    </label>
-                                                    <label class="radio">
-                                                      <input type="radio" name="is_active" value="DISABLED" checked>
-                                                      DISABLED
-                                                    </label>
-                                                  </div>
-                                                  <?php
-                                                    }
-                                                  ?>
-                                              </section>
-                                              <footer class="modal-card-foot">
-                                                  <button class="button is-success">Change Status</button>
-                                                </form> 
-                                                  <button class="button is-link">Cancel</button>
-                                              </footer>
-                                      </div>
-                              </div>
-                              <?php
-                                }
-                              ?>
+                       
                     </div>
                   </td>
                 </tr>

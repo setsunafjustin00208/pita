@@ -134,14 +134,298 @@
                 Class management
             </p>
             <ul class="menu-list">
-                <li><a class="is_active" href="<?=site_url('/views/teacher_manage_students')?>">Manage Students</a></li>
+                <li><a class="is-active" href="<?=site_url('/views/teacher_manage_students')?>">Manage Students</a></li>
                 <li><a href="<?=site_url('/views/teacher_actvities')?>">Manage Actvities</a></li>
                 
             </ul>
         </aside>
     </div>
-    <div class="column container box">
+    <div class="column container p-4 mt-3">
+    <section class="hero is-link is-small mb-5">
+      <div class="hero-body">
+        <p class="title">
+          <i class="fa fa-users"></i> &nbsp;
+            Manage Students
+        </p>
+        <p class="subtitle">
+          Check if there is the Student that you are looking for.
+        </p>
+      </div>
+    </section>
+      <div class="table-container box">
+        <h1 class="title is-3">Your Class</h1>
+        <table class="table is-narrow is-hoverable is-fullwidth display compact cell-border stripe"id="mytable">
+            <script>
+                $(document).ready( function () {
+                  $('#mytable').DataTable({
+                      stateSave: true
+                  } );
+                });
+            </script>
+            <thead>
+              <tr>
+                <th><abbr title="Email">Email</abbr></th>
+                <th><abbr title="Username">Username</abbr></th>
+                <th><abbr title="Name">Name</abbr></th>
+                <th><abbr title="User Type">UsrType</abbr></th>
+                <th><abbr title="Status">Status</abbr></th>
+                <th><abbr title="Action">Actn</abbr></th>
+              </tr>
+            </thead>
+            <tbody>
+                <?php
+                  $users_builder= db_connect()->table('users');
+                  $user_results = $users_builder->getWhere(['user_type'=>'STUDENT','grade' => $session->get('grade'),'section'=> $session->get('section')]);
 
+                  foreach($user_results->getResult() as $userRow)
+                  {
+                ?>
+                <tr>
+                  <td><?=$userRow->email?></td>
+                  <td><?=$userRow->username?></td>
+                  <td><?=$userRow->lname?>,&nbsp;<?=$userRow->fname?>&nbsp;<?=$userRow->mname?></td>
+                  <td><?=$userRow->user_type?></td>
+                  <td><?=$userRow->is_active?></td>
+                  <td>
+                    <div class="buttons">
+                        <button data-target="modal-trigger-view-info<?=$userRow->user_id?>" class="button is-success is-small modal-trigger"><i class="fa-solid fa-eye"></i></button>
+                        <div id= "modal-trigger-view-info<?=$userRow->user_id?>" class="modal modal-fx-fadeInScale">
+                                  <div class="modal-background"></div>
+                                      <div class="modal-card modal-size">
+                                              <header class="modal-card-head">
+                                                  <p class="modal-card-title">User Account Information</p>
+                                                  <button class="delete" aria-label="close"></button>
+                                              </header>
+                                              <section class="modal-card-body">
+                                                <form action="">
+                                                  <div class="field">
+                                                      <label for="" class="label">Email:</label>
+                                                  </div>
+                                                  <div class="control mb-2">
+                                                      <input type="email" value="<?=$userRow->email?>" class="input is-link has-text-black" disabled>
+                                                  </div>
+                                                  <div class="field">
+                                                      <label for="" class="label">Password:</label>
+                                                  </div>
+                                                  <div class="control mb-2">
+                                                      <input type="text" value="<?=$userRow->password?>" class="input is-link has-text-black" disabled>
+                                                  </div>
+                                                  <div class="field">
+                                                      <label for="" class="label">First name:</label>
+                                                  </div>
+                                                  <div class="control mb-2">
+                                                      <input type="text" value="<?=$userRow->fname?>" class="input is-link has-text-black" disabled>
+                                                  </div>
+                                                  <div class="field">
+                                                      <label for="" class="label">Middle name:</label>
+                                                  </div>
+                                                  <div class="control mb-2">
+                                                      <input type="text" value="<?=$userRow->mname?>" class="input is-link has-text-black" disabled>
+                                                  </div>
+                                                  <div class="field">
+                                                      <label for="" class="label">Last name:</label>
+                                                  </div>
+                                                  <div class="control mb-2">
+                                                      <input type="text" value="<?=$userRow->lname?>" class="input is-link has-text-black" disabled>
+                                                  </div>
+                                                  <div class="field">
+                                                      <label for="" class="label">Grade:</label>
+                                                  </div>
+                                                  <div class="control mb-2">
+                                                      <input type="text" value="<?=$userRow->grade?>" class="input is-link has-text-black" disabled>
+                                                  </div>
+                                                  <div class="field">
+                                                      <label for="" class="label">Section:</label>
+                                                  </div>
+                                                  <div class="control mb-2">
+                                                      <input type="text" value="<?=$userRow->section?>" class="input is-link has-text-black" disabled>
+                                                  </div>
+                                                </form>
+                                              </section>
+                                              <footer class="modal-card-foot">
+                                                  <button class="button is-link">Done</button>
+                                              </footer>
+                                      </div>
+                              </div>
+                              <button data-target="modal-trigger-delete<?=$userRow->user_id?>" class="button is-danger is-small modal-trigger"><i class="fa-solid fa-minus"></i></button>
+                              <div id= "modal-trigger-delete<?=$userRow->user_id?>" class="modal modal-fx-fadeInScale">
+                                  <div class="modal-background"></div>
+                                      <div class="modal-card modal-size">
+                                              <header class="modal-card-head">
+                                                  <p class="modal-card-title">Delete User?</p>
+                                                  <button class="delete" aria-label="close"></button>
+                                              </header>
+                                              <section class="modal-card-body">
+                                              <?=form_open('databasecontroller/remove_student')?>
+                                                  <h2 class="subtitle">Are you sure to remove this student?</h2>
+                                                  <input type="hidden" name="user_id" value="<?=$userRow->user_id?>">
+                                                  <input type="hidden" name="grade" value="0">
+                                                  <input type="hidden" name="section" value="TBA">
+                                              </section>
+                                              <footer class="modal-card-foot">
+                                                  <button class="button is-danger is-small"><i class="fa fa-check"></i> &nbsp;Yes</button>
+                                              </form>
+                                                  <button class="button is-link is-small"><i class="fa fa-cancel"></i>&nbsp; No</button>
+                                              </footer>
+                                      </div>
+                              </div>
+                       
+                    </div>
+                  </td>
+                </tr>
+                <?php
+                  }
+                ?>
+            </tbody>
+            <tfoot>
+              <tr>
+                <th><abbr title="Email">Email</abbr></th>
+                <th><abbr title="Username">Username</abbr></th>
+                <th><abbr title="Name">Name</abbr></th>
+                <th><abbr title="User Type">UsrType</abbr></th>
+                <th><abbr title="Status">Status</abbr></th>
+                <th><abbr title="Action">Actn</abbr></th>
+              </tr>
+            </tfoot>
+        </table>
+      </div>
+      <div class="table-container mt-6 box">
+      <h1 class="title is-3">Available Students</h1>
+        <table class="table is-narrow is-hoverable is-fullwidth display compact cell-border stripe"id="mytable2">
+            <script>
+                $(document).ready( function () {
+                  $('#mytable2').DataTable({
+                      stateSave: true
+                  } );
+                });
+            </script>
+            <thead>
+              <tr>
+                <th><abbr title="Email">Email</abbr></th>
+                <th><abbr title="Username">Username</abbr></th>
+                <th><abbr title="Name">Name</abbr></th>
+                <th><abbr title="User Type">UsrType</abbr></th>
+                <th><abbr title="Status">Status</abbr></th>
+                <th><abbr title="Action">Actn</abbr></th>
+              </tr>
+            </thead>
+            <tbody>
+                <?php
+                  $users_builder= db_connect()->table('users');
+                  $user_results = $users_builder->getWhere(['user_type'=>'STUDENT','grade' => 0,'section'=> 'TBA']);
+
+                  foreach($user_results->getResult() as $userRow)
+                  {
+                ?>
+                <tr>
+                  <td><?=$userRow->email?></td>
+                  <td><?=$userRow->username?></td>
+                  <td><?=$userRow->lname?>,&nbsp;<?=$userRow->fname?>&nbsp;<?=$userRow->mname?></td>
+                  <td><?=$userRow->user_type?></td>
+                  <td><?=$userRow->is_active?></td>
+                  <td>
+                    <div class="buttons">
+                        <button data-target="modal-trigger-view-info<?=$userRow->user_id?>" class="button is-success is-small modal-trigger"><i class="fa-solid fa-eye"></i></button>
+                        <div id= "modal-trigger-view-info<?=$userRow->user_id?>" class="modal modal-fx-fadeInScale">
+                                  <div class="modal-background"></div>
+                                      <div class="modal-card modal-size">
+                                              <header class="modal-card-head">
+                                                  <p class="modal-card-title">User Account Information</p>
+                                                  <button class="delete" aria-label="close"></button>
+                                              </header>
+                                              <section class="modal-card-body">
+                                                <form action="">
+                                                  <div class="field">
+                                                      <label for="" class="label">Email:</label>
+                                                  </div>
+                                                  <div class="control mb-2">
+                                                      <input type="email" value="<?=$userRow->email?>" class="input is-link has-text-black" disabled>
+                                                  </div>
+                                                  <div class="field">
+                                                      <label for="" class="label">Password:</label>
+                                                  </div>
+                                                  <div class="control mb-2">
+                                                      <input type="text" value="<?=$userRow->password?>" class="input is-link has-text-black" disabled>
+                                                  </div>
+                                                  <div class="field">
+                                                      <label for="" class="label">First name:</label>
+                                                  </div>
+                                                  <div class="control mb-2">
+                                                      <input type="text" value="<?=$userRow->fname?>" class="input is-link has-text-black" disabled>
+                                                  </div>
+                                                  <div class="field">
+                                                      <label for="" class="label">Middle name:</label>
+                                                  </div>
+                                                  <div class="control mb-2">
+                                                      <input type="text" value="<?=$userRow->mname?>" class="input is-link has-text-black" disabled>
+                                                  </div>
+                                                  <div class="field">
+                                                      <label for="" class="label">Last name:</label>
+                                                  </div>
+                                                  <div class="control mb-2">
+                                                      <input type="text" value="<?=$userRow->lname?>" class="input is-link has-text-black" disabled>
+                                                  </div>
+                                                  <div class="field">
+                                                      <label for="" class="label">Grade:</label>
+                                                  </div>
+                                                  <div class="control mb-2">
+                                                      <input type="text" value="<?=$userRow->grade?>" class="input is-link has-text-black" disabled>
+                                                  </div>
+                                                  <div class="field">
+                                                      <label for="" class="label">Section:</label>
+                                                  </div>
+                                                  <div class="control mb-2">
+                                                      <input type="text" value="<?=$userRow->section?>" class="input is-link has-text-black" disabled>
+                                                  </div>
+                                                </form>
+                                              </section>
+                                              <footer class="modal-card-foot">
+                                                  <button class="button is-link">Done</button>
+                                              </footer>
+                                      </div>
+                              </div>
+                              <button data-target="modal-trigger-add<?=$userRow->user_id?>" class="button is-warning is-small modal-trigger"><i class="fa-solid fa-plus"></i></button>
+                              <div id= "modal-trigger-add<?=$userRow->user_id?>" class="modal modal-fx-fadeInScale">
+                                  <div class="modal-background"></div>
+                                      <div class="modal-card modal-size">
+                                              <header class="modal-card-head">
+                                                  <p class="modal-card-title">Delete User?</p>
+                                                  <button class="delete" aria-label="close"></button>
+                                              </header>
+                                              <section class="modal-card-body">
+                                              <?=form_open('databasecontroller/add_student')?>
+                                              <h2 class="subtitle">Are you sure to add this student?</h2>
+                                                  <input type="hidden" name="user_id" value="<?=$userRow->user_id?>">
+                                                  <input type="hidden" name="grade" value="<?=$session->get('grade')?>">
+                                                  <input type="hidden" name="section" value="<?=$session->get('section')?>">
+                                              </section>
+                                              <footer class="modal-card-foot">
+                                                  <button class="button is-danger is-small"><i class="fa fa-check"></i> &nbsp;Yes</button>
+                                              </form>
+                                                  <button class="button is-link is-small"><i class="fa fa-cancel"></i>&nbsp; No</button>
+                                              </footer>
+                                      </div>
+                              </div>
+                       
+                    </div>
+                  </td>
+                </tr>
+                <?php
+                  }
+                ?>
+            </tbody>
+            <tfoot>
+              <tr>
+                <th><abbr title="Email">Email</abbr></th>
+                <th><abbr title="Username">Username</abbr></th>
+                <th><abbr title="Name">Name</abbr></th>
+                <th><abbr title="User Type">UsrType</abbr></th>
+                <th><abbr title="Status">Status</abbr></th>
+                <th><abbr title="Action">Actn</abbr></th>
+              </tr>
+            </tfoot>
+        </table>
+      </div>
     </div>
 
 </div>
