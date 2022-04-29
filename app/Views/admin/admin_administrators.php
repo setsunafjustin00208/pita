@@ -103,7 +103,7 @@
           <i class="fa fa-user"></i>&nbsp;
             About me
           </a>
-          <a href="<?=site_url('/views/admin_about_view')?>" class="navbar-item">
+          <a href="<?=site_url('/views/admin_profile_view')?>" class="navbar-item">
            <i class="fa fa-user-edit"></i>&nbsp;
             Profile
           </a>
@@ -247,11 +247,11 @@
                                 <label for="" class="label">Last name</label>
                             </div>
                             <div class="control">
-                                <input type="text" name="lname" placeholder="Enter Last name" class="input is-link" required>
+                                <input type="text" name="lname" placeholder="Section" class="input is-link" required>
                             </div>
                         </section>
                         <footer class="modal-card-foot">
-                            <button class="button is-success" id="submit"> <i class="fa fa-plus"></i> &nbsp; Add Teacher</button>
+                            <button class="button is-success" id="submit"> <i class="fa fa-plus"></i> &nbsp; Add Administrator</button>
                         </form>
                             <button class="button">Cancel</button>
                         </footer>

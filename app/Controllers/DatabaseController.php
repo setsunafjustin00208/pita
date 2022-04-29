@@ -11,7 +11,7 @@
             if($sql_login-> getNumRows() > 0)
             {
                 $loginrow = $sql_login->getRow();
-                $userdata = array('user_id' => $loginrow->user_id, 'fname' => $loginrow->fname, 'mname' => $loginrow->mname, 'lname' => $loginrow->lname, 'user_type' => $loginrow->user_type, 'is_active' => $loginrow->is_active ,'logged_in' => TRUE);
+                $userdata = array('user_id' => $loginrow->user_id, 'email' => $loginrow->email, 'username' => $loginrow->username ,'password' => $loginrow->password,'fname' => $loginrow->fname, 'mname' => $loginrow->mname, 'lname' => $loginrow->lname, 'user_type' => $loginrow->user_type, 'is_active' => $loginrow->is_active ,'img_pic' => $loginrow->img_pic, 'about' => $loginrow->about,'logged_in' => TRUE);
                 $this->session->set($userdata);
 
                 if(($loginrow->is_active) ==  "DISABLED")
@@ -169,9 +169,6 @@
            {
                 return redirect()->to('/views/admin_student_view');
            }
-           
-
-
 
         }
         public function delete_users()
@@ -246,6 +243,7 @@
             $delete_announcement_function->delete($_POST);
             return redirect()->to('/views/view_admin');
         }
+
 
         
     }

@@ -103,7 +103,7 @@
           <i class="fa fa-user"></i>&nbsp;
             About me
           </a>
-          <a href="<?=site_url('/views/admin_about_view')?>" class="navbar-item">
+          <a href="<?=site_url('/views/admin_profile_view')?>" class="navbar-item">
            <i class="fa fa-user-edit"></i>&nbsp;
             Profile
           </a>
@@ -148,14 +148,86 @@
             </ul>
         </aside>
     </div>
-    <div class="column container">
-        <div class="tile is-ancestor has-text-centered">
-            <div class="tile box is-5">
+    <div class="column container p-4 mt-3 columns box">
+      <div class="content column is-7">
+      <section class="hero is-link is-small mb-5">
+          <div class="hero-body">
+            <p class="title">
+              <i class="fas fa-user"></i> &nbsp;
+                About Me
+            </p>
+          </div>
+        </section>
+          <form>
+            <div class="tile is-ancestor mb-6 mt-2">
+              <div class="tile is-4 is-vertical box">
+                <figure class="image is-128x128">
+                  <?php
+                      if($session->get('img_pic'))
+                      {
+
+                  ?>
+                  <img src="<?=$session->get('img_pic')?>">
+                  <?php
+                      }
+                      else
+                      {
+                  ?>
+                    <img src="https://bulma.io/images/placeholders/128x128.png">
+                  <?php
+                       
+                      }
+                  ?>
+                </figure>
+              </div>
+              <div class="tile is-vertical ml-3 pl-3">
+                <div class="field">
+                  <label for="" class="label">About</label>
+                </div>
+                <div class="control">
+                  <textarea class="textarea has-fixed-size has-text-black" name="announcement_details" disabled><?=$session->get('about')?></textarea>
+                </div>
+              </div>
             </div>
-            <div class="tile box is-5">
+            <div class="field">
+              <label for="" class="label">Email</label>
             </div>
+            <div class="control">
+                <input type="email" name="email" value="<?=$session->get('email')?>" class="input has-text-black" disabled>
+            </div>
+            <div class="field">
+                <label for="" class="label">Username</label>
+            </div>
+            <div class="control">
+                <input type="text" name="username" value="<?=$session->get('username')?>" class="input has-text-black" disabled>
+            </div>
+            <div class="field">
+                <label for="" class="label">Password</label>
+            </div>
+            <div class="control">
+                <input type="password" id="password" name="password" value="<?=$session->get('password')?>" class="input has-text-black" disabled>
+            </div>
+            <div class="field">
+                <label for="" class="label">First name</label>
+            </div>
+            <div class="control">
+                <input type="text" name="fname" value="<?=$session->get('fname')?>" class="input has-text-black" disabled>
+            </div>
+            <div class="field">
+                <label for="" class="label">Middle name</label>
+            </div>
+            <div class="control">
+                <input type="text" name="mname" value="<?=$session->get('mname')?>" class="input has-text-black" disabled>
+            </div>
+            <div class="field">
+                <label for="" class="label">Last name</label>
+            </div>
+            <div class="control">
+                <input type="text" name="lname" value="<?=$session->get('lname')?>" class="input has-text-black" disabled>
+            </div>
+          </form>
         </div>
-    </div>
+      </div>
 </div>
 </body>
 </html>

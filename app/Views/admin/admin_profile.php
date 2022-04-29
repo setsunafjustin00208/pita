@@ -103,7 +103,7 @@
           <i class="fa fa-user"></i>&nbsp;
             About me
           </a>
-          <a href="<?=site_url('/views/admin_about_view')?>" class="navbar-item">
+          <a href="<?=site_url('/views/admin_profile_view')?>" class="navbar-item">
            <i class="fa fa-user-edit"></i>&nbsp;
             Profile
           </a>
@@ -148,14 +148,125 @@
             </ul>
         </aside>
     </div>
-    <div class="column container">
-        <div class="tile is-ancestor has-text-centered">
-            <div class="tile box is-5">
+    <div class="column container p-4 mt-3 columns box">
+      <div class="content column is-7">
+      <section class="hero is-link is-small mb-5">
+          <div class="hero-body">
+            <p class="title">
+              <i class="fa fa-user-edit"></i> &nbsp;
+                Edit profile
+            </p>
+              <?php
+                if(isset( $_SESSION['message']))
+                {
+                  $message = $_SESSION['message'];
+                  echo "<p class='subtitle'>".$message."</p>";
+                  unset($_SESSION['message']);
+                }
+              ?>
+          </div>
+        </section>
+          <?=form_open_multipart('filecontroller/update_user_profile')?>
+            <input type="hidden" name="user_id" value="<?=$session->get('user_id')?>">
+            <input type="hidden" name="usertype" value="<?=$session->get('user_type')?>">
+            <div class="tile is-ancestor mb-6 mt-2">
+              <div class="tile is-4 is-vertical box">
+                <figure class="image is-128x128 mb-6">
+                  <?php
+                      if($session->get('img_pic'))
+                      {
+
+                  ?>
+                  <img src="<?=$session->get('img_pic')?>">
+                  <?php
+                      }
+                      else
+                      {
+                  ?>
+                    <img src="https://bulma.io/images/placeholders/128x128.png">
+                  <?php
+                       
+                      }
+                  ?>
+                </figure>
+                <div id="file-js-example" class="file has-name is-small is-boxed ml-4 pr-3">
+                  <label class="file-label">
+                    <input class="file-input" type="file" name="userfile">
+                    <span class="file-cta">
+                      <span class="file-icon">
+                        <i class="fas fa-upload"></i>
+                      </span>
+                      <span class="file-label">
+                        Choose a file…
+                      </span>
+                    </span>
+                    <span class="file-name">
+                      No file uploaded
+                    </span>
+                  </label>
+                </div>
+
+                <script>
+                  const fileInput = document.querySelector('#file-js-example input[type=file]');
+                  fileInput.onchange = () => {
+                    if (fileInput.files.length > 0) {
+                      const fileName = document.querySelector('#file-js-example .file-name');
+                      fileName.textContent = fileInput.files[0].name;
+                    }
+                  }
+                </script>
+              </div>
+              <div class="tile is-vertical ml-3 pl-3">
+                <div class="field">
+                  <label for="" class="label">About</label>
+                </div>
+                <div class="control is-large">
+                  <textarea class="textarea has-fixed-size has-text-black is-large" name="about"><?=$session->get('about')?></textarea>
+                </div>
+              </div>
             </div>
-            <div class="tile box is-5">
+            <div class="field">
+              <label for="" class="label">Email</label>
             </div>
+            <div class="control">
+                <input type="email" name="email" value="<?=$session->get('email')?>" class="input has-text-black">
+            </div>
+            <div class="field">
+                <label for="" class="label">Username</label>
+            </div>
+            <div class="control">
+                <input type="text" name="username" value="<?=$session->get('username')?>" class="input has-text-black">
+            </div>
+            <div class="field">
+                <label for="" class="label">Password</label>
+            </div>
+            <div class="control">
+                <input type="password" id="password" name="password" value="<?=$session->get('password')?>" class="input has-text-black">
+            </div>
+            <div class="field">
+                <label for="" class="label">First name</label>
+            </div>
+            <div class="control">
+                <input type="text" name="fname" value="<?=$session->get('fname')?>" class="input has-text-black">
+            </div>
+            <div class="field">
+                <label for="" class="label">Middle name</label>
+            </div>
+            <div class="control">
+                <input type="text" name="mname" value="<?=$session->get('mname')?>" class="input has-text-black">
+            </div>
+            <div class="field">
+                <label for="" class="label">Last name</label>
+            </div>
+            <div class="control">
+                <input type="text" name="lname" value="<?=$session->get('lname')?>" class="input has-text-black">
+            </div>
+            <div class="buttons mt-4">
+                <button class="button is-info is-large"><i class="fa fa-refresh"></i>&nbsp; Update Profile</button>
+            </div>
+          </?form>
         </div>
-    </div>
+      </div>
 </div>
 </body>
 </html>

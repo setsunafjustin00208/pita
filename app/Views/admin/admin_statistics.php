@@ -106,7 +106,7 @@
           <i class="fa fa-user"></i>&nbsp;
             About me
           </a>
-          <a href="<?=site_url('/views/admin_about_view')?>" class="navbar-item">
+          <a href="<?=site_url('/views/admin_profile_view')?>" class="navbar-item">
            <i class="fa fa-user-edit"></i>&nbsp;
             Profile
           </a>

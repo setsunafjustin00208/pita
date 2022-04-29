@@ -1,6 +1,7 @@
 <?php
 
     namespace App\Controllers;
+    use CodeIgniter\Files\File;
     use PhpOffice\PhpSpreadsheet\Spreadsheet;
     use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
@@ -113,6 +114,47 @@
 		    flush();
 		    readfile($file_name);
             return redirect()->to('/views/view_admin');
+        }
+        public function update_user_profile()
+        {
+            $validationRule = [
+                'userfile' => [
+                    'label' => 'Image File',
+                    'rules' => 'uploaded[userfile]'
+                        . '|is_image[userfile]'
+                        . '|mime_in[userfile,image/jpg,image/jpeg,image/gif,image/png,image/webp]'
+                        . '|max_size[userfile,10000]'
+                        . '|max_dims[userfile,11024,1768]',
+                ],
+            ];
+            if (! $this->validate($validationRule)) {
+                $data = ['errors' => $this->validator->getErrors()];
+                $_SESSION['message'] = 'invalid file upload or no file selected';
+                return redirect()->to('/views/admin_profile_view');
+            }
+    
+            $img = $this->request->getFile('userfile');
+            $namefile = $img->getName();
+            $img->move(ROOTPATH.'public/assets/uploads',$namefile);
+            $filepath = base_url().'/assets/uploads/'.$namefile;
+            $update_profile_builder = $this->db->table('users');
+            $update_user_data = [
+                'email' => $_POST['email'],
+                'username' => $_POST['username'],
+                'password' => $_POST['password'],
+                'fname' => $_POST['fname'],
+                'mname' => $_POST['mname'],
+                'lname' => $_POST['lname'],
+                'about' => $_POST['about'],
+                'img_pic' => $filepath
+            ];
+            $update_profile_builder->where('user_id',$_POST['user_id']);
+            $update_profile_builder->set($update_user_data);
+            $update_profile_builder->update();
+            $new_userdata = array('email' => $_POST['email'], 'username' => $_POST['username'] ,'password' => $_POST['password'],'fname' => $_POST['fname'], 'mname' => $_POST['mname'], 'lname' => $_POST['lname'],'img_pic' => $filepath, 'about' => $_POST['about'],'logged_in' => TRUE);
+            $this->session->set($new_userdata);
+            $_SESSION['message'] = 'update success';
+            return redirect()->to('/views/admin_profile_view');
         }
     }
 

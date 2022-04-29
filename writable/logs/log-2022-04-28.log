@@ -238,3 +238,144 @@ CRITICAL - 2022-04-28 07:28:08 --> Undefined variable $count_activty_query
 #7 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
 #8 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
 #9 {main}
+CRITICAL - 2022-04-28 20:14:46 --> Array to string conversion
+#0 C:\xampp\htdocs\pita\app\Views\admin\admin_profile.php(163): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string...', 'C:\\xampp\\htdocs...', 163)
+#1 C:\xampp\htdocs\pita\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\pita\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\pita\system\Common.php(1089): CodeIgniter\View\View->render('admin/admin_pro...', Array, true)
+#4 C:\xampp\htdocs\pita\app\Controllers\Views.php(74): view('admin/admin_pro...')
+#5 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\Views->admin_profile_view()
+#6 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Views))
+#7 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2022-04-28 20:14:54 --> Array to string conversion
+#0 C:\xampp\htdocs\pita\app\Views\admin\admin_profile.php(163): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string...', 'C:\\xampp\\htdocs...', 163)
+#1 C:\xampp\htdocs\pita\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\pita\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\pita\system\Common.php(1089): CodeIgniter\View\View->render('admin/admin_pro...', Array, true)
+#4 C:\xampp\htdocs\pita\app\Controllers\Views.php(74): view('admin/admin_pro...')
+#5 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\Views->admin_profile_view()
+#6 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Views))
+#7 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2022-04-28 20:15:18 --> Array to string conversion
+#0 C:\xampp\htdocs\pita\app\Views\admin\admin_profile.php(164): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string...', 'C:\\xampp\\htdocs...', 164)
+#1 C:\xampp\htdocs\pita\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\pita\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\pita\system\Common.php(1089): CodeIgniter\View\View->render('admin/admin_pro...', Array, true)
+#4 C:\xampp\htdocs\pita\app\Controllers\Views.php(74): view('admin/admin_pro...')
+#5 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\Views->admin_profile_view()
+#6 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Views))
+#7 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2022-04-28 20:16:16 --> Array to string conversion
+#0 C:\xampp\htdocs\pita\app\Views\admin\admin_profile.php(164): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string...', 'C:\\xampp\\htdocs...', 164)
+#1 C:\xampp\htdocs\pita\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\pita\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\pita\system\Common.php(1089): CodeIgniter\View\View->render('admin/admin_pro...', Array, true)
+#4 C:\xampp\htdocs\pita\app\Controllers\Views.php(74): view('admin/admin_pro...')
+#5 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\Views->admin_profile_view()
+#6 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Views))
+#7 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2022-04-28 20:19:42 --> Undefined constant "App\Controllers\PUBLICPATH"
+#0 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\FileController->update_user_profile()
+#1 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\FileController))
+#2 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2022-04-28 20:26:36 --> mime_content_type(C:\xampp\htdocs\pita\writable\uploads20220428/1651195596_74d4c91087356fea83cb.png): Failed to open stream: No such file or directory
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'mime_content_ty...', 'C:\\xampp\\htdocs...', 140)
+#1 C:\xampp\htdocs\pita\app\Controllers\FileController.php(140): mime_content_type('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\FileController->update_user_profile()
+#3 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\FileController))
+#4 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2022-04-28 20:38:02 --> mkdir(): No such file or directory
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'mkdir(): No suc...', 'C:\\xampp\\htdocs...', 176)
+#1 C:\xampp\htdocs\pita\system\HTTP\Files\UploadedFile.php(176): mkdir('C:\\xampp\\htdocs...', 511, true)
+#2 C:\xampp\htdocs\pita\system\HTTP\Files\UploadedFile.php(130): CodeIgniter\HTTP\Files\UploadedFile->setPath('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\pita\app\Controllers\FileController.php(139): CodeIgniter\HTTP\Files\UploadedFile->move('C:\\xampp\\htdocs...')
+#4 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\FileController->update_user_profile()
+#5 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\FileController))
+#6 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-04-28 20:38:28 --> mkdir(): No such file or directory
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'mkdir(): No suc...', 'C:\\xampp\\htdocs...', 176)
+#1 C:\xampp\htdocs\pita\system\HTTP\Files\UploadedFile.php(176): mkdir('C:\\xampp\\htdocs...', 511, true)
+#2 C:\xampp\htdocs\pita\system\HTTP\Files\UploadedFile.php(130): CodeIgniter\HTTP\Files\UploadedFile->setPath('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\pita\app\Controllers\FileController.php(139): CodeIgniter\HTTP\Files\UploadedFile->move('C:\\xampp\\htdocs...')
+#4 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\FileController->update_user_profile()
+#5 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\FileController))
+#6 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-04-28 21:05:08 --> Could not move file php7EC9.tmp to ../public/assests/uploads/ ()
+#0 C:\xampp\htdocs\pita\system\HTTP\Files\UploadedFile.php(149): CodeIgniter\HTTP\Exceptions\HTTPException::forMoveFailed('php7EC9.tmp', '../public/asses...', '')
+#1 C:\xampp\htdocs\pita\app\Controllers\FileController.php(139): CodeIgniter\HTTP\Files\UploadedFile->move('../public/asses...', 'C:\\xampp\\tmp\\ph...')
+#2 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\FileController->update_user_profile()
+#3 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\FileController))
+#4 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2022-04-28 21:07:59 --> Could not move file php1BCC.tmp to ../public/assests/uploads/ ()
+#0 C:\xampp\htdocs\pita\system\HTTP\Files\UploadedFile.php(149): CodeIgniter\HTTP\Exceptions\HTTPException::forMoveFailed('php1BCC.tmp', '../public/asses...', '')
+#1 C:\xampp\htdocs\pita\app\Controllers\FileController.php(137): CodeIgniter\HTTP\Files\UploadedFile->move('../public/asses...', 'C:\\xampp\\tmp\\ph...')
+#2 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\FileController->update_user_profile()
+#3 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\FileController))
+#4 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2022-04-28 21:09:08 --> fopen(http://localhost/pita/public/assests/uploads/index.html): Failed to open stream: HTTP wrapper does not support writeable connections
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'fopen(http://lo...', 'C:\\xampp\\htdocs...', 179)
+#1 C:\xampp\htdocs\pita\system\HTTP\Files\UploadedFile.php(179): fopen('http://localhos...', 'x+b')
+#2 C:\xampp\htdocs\pita\system\HTTP\Files\UploadedFile.php(130): CodeIgniter\HTTP\Files\UploadedFile->setPath('http://localhos...')
+#3 C:\xampp\htdocs\pita\app\Controllers\FileController.php(137): CodeIgniter\HTTP\Files\UploadedFile->move('http://localhos...', 'C:\\xampp\\tmp\\ph...')
+#4 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\FileController->update_user_profile()
+#5 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\FileController))
+#6 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-04-28 21:11:15 --> fopen(http://localhost/pita/public/assests/uploads/index.html): Failed to open stream: HTTP wrapper does not support writeable connections
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'fopen(http://lo...', 'C:\\xampp\\htdocs...', 179)
+#1 C:\xampp\htdocs\pita\system\HTTP\Files\UploadedFile.php(179): fopen('http://localhos...', 'x+b')
+#2 C:\xampp\htdocs\pita\system\HTTP\Files\UploadedFile.php(130): CodeIgniter\HTTP\Files\UploadedFile->setPath('http://localhos...')
+#3 C:\xampp\htdocs\pita\app\Controllers\FileController.php(137): CodeIgniter\HTTP\Files\UploadedFile->move('http://localhos...', 'C:\\xampp\\tmp\\ph...')
+#4 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\FileController->update_user_profile()
+#5 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\FileController))
+#6 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-04-28 21:12:36 --> Could not move file php53B5.tmp to C:\xampp\htdocs\pita\public/assests/uploads/ ()
+#0 C:\xampp\htdocs\pita\system\HTTP\Files\UploadedFile.php(149): CodeIgniter\HTTP\Exceptions\HTTPException::forMoveFailed('php53B5.tmp', 'C:\\xampp\\htdocs...', '')
+#1 C:\xampp\htdocs\pita\app\Controllers\FileController.php(137): CodeIgniter\HTTP\Files\UploadedFile->move('C:\\xampp\\htdocs...', 'C:\\xampp\\tmp\\ph...')
+#2 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\FileController->update_user_profile()
+#3 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\FileController))
+#4 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2022-04-28 21:13:28 --> Could not move file php1FA1.tmp to C:\xampp\htdocs\pita\public\assests\uploads/ ()
+#0 C:\xampp\htdocs\pita\system\HTTP\Files\UploadedFile.php(149): CodeIgniter\HTTP\Exceptions\HTTPException::forMoveFailed('php1FA1.tmp', 'C:\\xampp\\htdocs...', '')
+#1 C:\xampp\htdocs\pita\app\Controllers\FileController.php(137): CodeIgniter\HTTP\Files\UploadedFile->move('C:\\xampp\\htdocs...', 'C:\\xampp\\tmp\\ph...')
+#2 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\FileController->update_user_profile()
+#3 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\FileController))
+#4 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+ERROR - 2022-04-28 22:12:24 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ''admin\'' at line 1
+CRITICAL - 2022-04-28 22:12:24 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ''admin\'' at line 1
+#0 C:\xampp\htdocs\pita\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT * FROM U...', 0)
+#1 C:\xampp\htdocs\pita\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM U...')
+#2 C:\xampp\htdocs\pita\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM U...')
+#3 C:\xampp\htdocs\pita\app\Controllers\DatabaseController.php(10): CodeIgniter\Database\BaseConnection->query('SELECT * FROM U...')
+#4 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\DatabaseController->login()
+#5 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabaseController))
+#6 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
