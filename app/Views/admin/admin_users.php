@@ -144,7 +144,7 @@
                 Statistics
             </p>
             <ul class="menu-list">
-                <li><a href="<?=site_url('/views/admin_overall_statistics')?>">Overall</a></li>
+                <li><a href="<?=site_url('/views/admin_overall_statistics')?>">System Statistics</a></li>
             </ul>
         </aside>
     </div>

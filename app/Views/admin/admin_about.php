@@ -144,11 +144,11 @@
                 Statistics
             </p>
             <ul class="menu-list">
-                <li><a href="<?=site_url('/views/admin_overall_statistics')?>">Overall</a></li>
+                <li><a href="<?=site_url('/views/admin_overall_statistics')?>">System Statistics</a></li>
             </ul>
         </aside>
     </div>
-    <div class="column container p-4 mt-3 columns box">
+    <div class="column container p-4 mt-3 columns">
       <div class="content column is-7">
       <section class="hero is-link is-small mb-5">
           <div class="hero-body">

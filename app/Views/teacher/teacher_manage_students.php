@@ -126,7 +126,7 @@
                 General
             </p>
             <ul class="menu-list">
-                <li><a class="is-active" href="<?=site_url('/views/view_teacher')?>">Dashboard</a></li>
+                <li><a href="<?=site_url('/views/view_teacher')?>">Dashboard</a></li>
                 <li><a href="<?=site_url('/views/teacher_ide')?>">Intergrated Dev. Env</a></li>
                 <li><a href="<?=site_url('/views/teacher_view_students')?>">Students List</a></li>
             </ul>
@@ -134,24 +134,14 @@
                 Class management
             </p>
             <ul class="menu-list">
-                <li><a href="<?=site_url('/views/teacher_manage_students')?>">Manage Students</a></li>
+                <li><a class="is_active" href="<?=site_url('/views/teacher_manage_students')?>">Manage Students</a></li>
                 <li><a href="<?=site_url('/views/teacher_actvities')?>">Manage Actvities</a></li>
                 
             </ul>
         </aside>
     </div>
-    <div class="column container p-4 mt-3">
-    <section class="hero is-link is-small mb-5">
-        <div class="hero-body">
-          <p class="title">
-            <i class="fa-solid fa-table-columns"></i> &nbsp;
-              Dashboard
-          </p>
-          <p class="subtitle">
-            How is your day?
-          </p>
-        </div>
-      </section>
+    <div class="column container box">
+
     </div>
 
 </div>

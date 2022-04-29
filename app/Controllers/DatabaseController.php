@@ -11,7 +11,7 @@
             if($sql_login-> getNumRows() > 0)
             {
                 $loginrow = $sql_login->getRow();
-                $userdata = array('user_id' => $loginrow->user_id, 'email' => $loginrow->email, 'username' => $loginrow->username ,'password' => $loginrow->password,'fname' => $loginrow->fname, 'mname' => $loginrow->mname, 'lname' => $loginrow->lname, 'user_type' => $loginrow->user_type, 'is_active' => $loginrow->is_active ,'img_pic' => $loginrow->img_pic, 'about' => $loginrow->about,'logged_in' => TRUE);
+                $userdata = array('user_id' => $loginrow->user_id, 'email' => $loginrow->email, 'username' => $loginrow->username ,'password' => $loginrow->password,'fname' => $loginrow->fname, 'mname' => $loginrow->mname, 'lname' => $loginrow->lname,'grade' => $loginrow->section, 'section' => $loginrow->section ,'user_type' => $loginrow->user_type, 'is_active' => $loginrow->is_active ,'img_pic' => $loginrow->img_pic, 'about' => $loginrow->about,'logged_in' => TRUE);
                 $this->session->set($userdata);
 
                 if(($loginrow->is_active) ==  "DISABLED")

@@ -379,3 +379,39 @@ CRITICAL - 2022-04-28 22:12:24 --> You have an error in your SQL syntax; check t
 #6 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
 #7 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
 #8 {main}
+CRITICAL - 2022-04-28 23:02:23 --> Undefined variable $status
+#0 C:\xampp\htdocs\pita\app\Views\teacher\teacher_home.php(15): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 15)
+#1 C:\xampp\htdocs\pita\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\pita\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\pita\system\Common.php(1089): CodeIgniter\View\View->render('teacher/teacher...', Array, true)
+#4 C:\xampp\htdocs\pita\app\Controllers\Views.php(44): view('teacher/teacher...')
+#5 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\Views->view_teacher()
+#6 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Views))
+#7 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2022-04-28 23:02:58 --> Undefined variable $status
+#0 C:\xampp\htdocs\pita\app\Views\teacher\teacher_home.php(15): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 15)
+#1 C:\xampp\htdocs\pita\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\pita\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\pita\system\Common.php(1089): CodeIgniter\View\View->render('teacher/teacher...', Array, true)
+#4 C:\xampp\htdocs\pita\app\Controllers\Views.php(44): view('teacher/teacher...')
+#5 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\Views->view_teacher()
+#6 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Views))
+#7 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2022-04-28 23:25:23 --> Undefined array key "user_type"
+#0 C:\xampp\htdocs\pita\app\Controllers\FileController.php(156): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 156)
+#1 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\FileController->update_user_profile()
+#2 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\FileController))
+#3 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-04-28 23:26:19 --> Undefined array key "user_type"
+#0 C:\xampp\htdocs\pita\app\Controllers\FileController.php(120): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 120)
+#1 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\FileController->update_user_profile()
+#2 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\FileController))
+#3 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}

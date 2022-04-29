@@ -144,11 +144,11 @@
                 Statistics
             </p>
             <ul class="menu-list">
-                <li><a href="<?=site_url('/views/admin_overall_statistics')?>">Overall</a></li>
+                <li><a href="<?=site_url('/views/admin_overall_statistics')?>">System Statistics</a></li>
             </ul>
         </aside>
     </div>
-    <div class="column container p-4 mt-3 columns box">
+    <div class="column container p-4 mt-3 columns">
       <div class="content column is-7">
       <section class="hero is-link is-small mb-5">
           <div class="hero-body">
@@ -168,7 +168,7 @@
         </section>
           <?=form_open_multipart('filecontroller/update_user_profile')?>
             <input type="hidden" name="user_id" value="<?=$session->get('user_id')?>">
-            <input type="hidden" name="usertype" value="<?=$session->get('user_type')?>">
+            <input type="hidden" name="user_type" value="<?=$usertype?>">
             <div class="tile is-ancestor mb-6 mt-2">
               <div class="tile is-4 is-vertical box">
                 <figure class="image is-128x128 mb-6">

@@ -117,6 +117,7 @@
         }
         public function update_user_profile()
         {
+            $user_type= $_POST['user_type'];
             $validationRule = [
                 'userfile' => [
                     'label' => 'Image File',
@@ -130,7 +131,19 @@
             if (! $this->validate($validationRule)) {
                 $data = ['errors' => $this->validator->getErrors()];
                 $_SESSION['message'] = 'invalid file upload or no file selected';
-                return redirect()->to('/views/admin_profile_view');
+                if($user_type == 'ADMIN')
+                {
+                    return redirect()->to('/views/admin_profile_view');
+                }
+                else if($user_type == 'TEACHER')
+                {
+                    return redirect()->to('/views/teacher_profile');
+                }
+                else if($user_type == 'STUDENT')
+                {
+                    return redirect()->to('/views/admin_profile_view');
+                }
+               
             }
     
             $img = $this->request->getFile('userfile');
@@ -153,8 +166,22 @@
             $update_profile_builder->update();
             $new_userdata = array('email' => $_POST['email'], 'username' => $_POST['username'] ,'password' => $_POST['password'],'fname' => $_POST['fname'], 'mname' => $_POST['mname'], 'lname' => $_POST['lname'],'img_pic' => $filepath, 'about' => $_POST['about'],'logged_in' => TRUE);
             $this->session->set($new_userdata);
+            
+
             $_SESSION['message'] = 'update success';
-            return redirect()->to('/views/admin_profile_view');
+            if($user_type == 'ADMIN')
+            {
+                return redirect()->to('/views/admin_profile_view');
+            }
+            else if($user_type == 'TEACHER')
+            {
+                return redirect()->to('/views/teacher_profile');
+            }
+            else if($user_type == 'STUDENT')
+            {
+                return redirect()->to('/views/admin_profile_view');
+            }
+           
         }
     }
 

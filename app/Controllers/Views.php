@@ -73,7 +73,38 @@ class Views extends BaseController
     {
         echo view('admin/admin_profile');
     }
+ /**End for admins */
 
+ /** For Teachers */
+    public function teacher_about()
+    {
+        echo view('teacher/teacher_about');
+    }
+    public function teacher_profile()
+    {
+        echo view('teacher/teacher_profile');
+    }
+    public function teacher_ide()
+    {
+        echo view('teacher/teacher_ide');
+    }
+    public function teacher_actvities()
+    {
+        echo view('teacher/teacher_activities');
+    }
+    public function teacher_view_students()
+    {
+        echo view('teacher/teacher_view_students');
+    }
+    public function teacher_manage_students()
+    {
+        echo view('teacher/teacher_manage_students');
+    }
+    public function teacher_activity_results()
+    {
+        echo view('teacher/teacher_activity_results');
+    }
+/** For Teachers */
 
 }
 
