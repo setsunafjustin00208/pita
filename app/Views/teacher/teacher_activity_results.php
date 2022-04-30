@@ -165,8 +165,8 @@
             <thead>
                 <tr>
                           <th><abbr title="Student name">Student Name</abbr></th>
-                          <th><abbr title="Score">Scores</abbr></th>
-                          <th><abbr title="Actions">Actn</abbr></th>
+                          <th><abbr title="Score">Score</abbr></th>
+                          <th><abbr title="Student Output">Student Output</abbr></th>
                 </tr>
             </thead>
             <tbody>
@@ -182,6 +182,7 @@
               <tr>
                   <td><?=$activityRow->fname?>&nbsp;<?=$activityRow->mname?>&nbsp;<?=$activityRow->lname?></td>
                   <td><?=$activityRow->activity_score?></td>
+                  <td><?=$activityRow->student_output?></td>
 
               </tr>
 
@@ -192,8 +193,8 @@
             <foot>
                 <tr>
                           <th><abbr title="Student name">Student Name</abbr></th>
-                          <th><abbr title="Score">Scores</abbr></th>
-                          <th><abbr title="Actions">Actn</abbr></th>
+                          <th><abbr title="Score">Score</abbr></th>
+                          <th><abbr title="Student Output">Student Output</abbr></th>
                 </tr>
             </foot>
         </table>
