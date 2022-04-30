@@ -168,7 +168,7 @@
             $this->session->set($new_userdata);
             
 
-            $_SESSION['message'] = 'update success';
+            $_SESSION['message'] = 'Update success';
             if($user_type == 'ADMIN')
             {
                 return redirect()->to('/views/admin_profile_view');

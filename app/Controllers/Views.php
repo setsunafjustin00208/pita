@@ -102,6 +102,7 @@ class Views extends BaseController
     }
     public function teacher_activity_results()
     {
+        $_SESSION['activity_id'] = $this->request->uri->getSegment(3);
         echo view('teacher/teacher_activity_results');
     }
 /** For Teachers */

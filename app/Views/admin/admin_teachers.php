@@ -416,7 +416,6 @@
                                               <footer class="modal-card-foot">
                                                   <button class="button is-success" id="submit"><i class="fa fa-refresh"></i> &nbsp; Update Teacher</button>
                                               </form>
-                                                  <button class="button">Cancel</button>
                                               </footer>
                                       </div>
                               </div>

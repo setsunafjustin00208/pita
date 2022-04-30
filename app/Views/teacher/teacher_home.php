@@ -66,12 +66,12 @@
     <script src="<?=base_url('/design/js/javascript_compressed.js')?>"></script>
     <script src="<?=base_url('/design/js/msg/js/en.js')?>"></script>
     <script src="<?=base_url('/design/js/wait_block.js')?>"></script>
-    <title>Hello Admin</title>
+    <title>Hello&nbsp;<?=session()->get('fname')?></title>
 </head>
 <body>
 <nav class="navbar is-link" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <a class="navbar-item" href="<?=site_url('/views/view_admin')?>">
+    <a class="navbar-item" href="<?=site_url('/views/view_teacher')?>">
       <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
     </a>
 
@@ -153,38 +153,30 @@
         </div>
       </section>
       <nav class="level is-mobile">
-      <?php
-        $allusers_count=db_connect()->table('users');
-      ?>
+     
       <div class="level-item has-text-centered">
         <div>
-          <p class="heading">Total Users</p>
-          <p class="title"><?=$allusers_count->countAll()?></p>
-        </div>
-      </div>
-      <div class="level-item has-text-centered">
-        <div>
-          <p class="heading">Administrators</p>
+          <p class="heading">Total Actvities</p>
           <p class="title">
             <?php
-              $admin_count = db_connect();
-              $count_admin_query= $admin_count->query("SELECT COUNT(user_id) as admincount FROM users WHERE user_type = 'ADMIN' ");
-              $countrow = $count_admin_query->getRow();
-              if(isset($countrow))
-              {
-                  echo $countrow->admincount;
-              }
+                $activity_count = db_connect();
+                $count_activity_query= $activity_count->query("SELECT COUNT(activity_id) as activitycount FROM actvities WHERE teacher_id = '{$session->get('user_id')}'");
+                $activityrow = $count_activity_query->getRow();
+                if(isset($activityrow))
+                {
+                    echo $activityrow->activitycount;
+                }
             ?>
           </p>
         </div>
       </div>
       <div class="level-item has-text-centered">
         <div>
-          <p class="heading">Teachers</p>
+          <p class="heading">Total Announcements</p>
           <p class="title">
           <?php
               $teacher_count = db_connect();
-              $count_teacher_query= $teacher_count->query("SELECT COUNT(user_id) as teachercount FROM users WHERE user_type = 'TEACHER' ");
+              $count_teacher_query= $teacher_count->query("SELECT COUNT(ta_id) as teachercount FROM teacher_announcements WHERE teacher_id = '{$session->get('user_id')}' ");
               $teacherrow = $count_teacher_query->getRow();
               if(isset($teacherrow))
               {
@@ -242,7 +234,6 @@
                                 <footer class="modal-card-foot">
                                   <button class="button is-success" id="submit"><i class="fa fa-plus"></i> &nbsp; Post</button>
                                 </form>
-                                  <button class="button">Cancel</button>
                                 </footer>
                               </div>
                         </div>

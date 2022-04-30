@@ -297,6 +297,57 @@
             return redirect()->to('/views/teacher_manage_students');
 
         }
+        public function create_activity()
+        {   
+            $title_activity = $_POST['activity_title'];
+            $title_activity_query = $this->db->query("SELECT * FROM actvities WHERE activity_title ='{$title_activity}'");
+            
+            if($title_activity_query->getNumRows() > 0)
+            {
+                $_SESSION['activity_available'] = "Activity Available";
+                return redirect()->to('/views/teacher_actvities');
+            }
+            else
+            {
+                $activty_builder = $this->db->table('actvities');
+                $activty_builder->insert($_POST);
+                $score_query_get_act_id =$activty_builder->getWhere(['activity_title' => $title_activity]);
+                foreach($score_query_get_act_id->getResult() as $id)
+                {
+                    $score_builder = $this->db->table('scores');
+                    $activity_data = 
+                    [
+                        'teacher_id' => $_POST['teacher_id'],
+                        'activity_id' => $id->activity_id ,
+                        'grade' => $_POST['grade'],
+                        'section' => $_POST['section'],
+                        'date_created' => $_POST['date_created'],
+                        'date_modified' => $_POST['date_modified']
+                    ];
+                    $score_builder->insert($activity_data);
+                }
+                
+                return redirect()->to('/views/teacher_actvities');
+            }
+           
+        }
+
+        public function update_activity()
+        {
+            $act_id = $_POST['activity_id'];
+            $update_announcement_function = $this->db->table('actvities');
+            $update_announcement_function->where('activity_id',$act_id);
+            $update_announcement_function->update($_POST);
+            return redirect()->to('/views/teacher_actvities');
+        }
+        public function delete_activity()
+        {
+            $act_id = $_POST['activity_id'];
+            $delete_announcement_function = $this->db->table('actvities');
+            $delete_announcement_function->where('activity_id',$act_id);
+            $delete_announcement_function->delete($_POST);
+            return redirect()->to('/views/teacher_actvities');
+        }
         public function validate_output()
         {
             $output = $_POST['a_output'];

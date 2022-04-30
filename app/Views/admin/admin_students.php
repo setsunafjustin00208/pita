@@ -263,7 +263,6 @@
                         <footer class="modal-card-foot">
                             <button class="button is-success" id="submit"> <i class="fa fa-plus"></i> &nbsp; Add Student</button>
                         </form>
-                            <button class="button">Cancel</button>
                         </footer>
                 </div>
         </div>

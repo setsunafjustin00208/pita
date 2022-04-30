@@ -37,6 +37,7 @@
       }
 
     }
+    $uri = new \CodeIgniter\HTTP\URI();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,12 +67,12 @@
     <script src="<?=base_url('/design/js/javascript_compressed.js')?>"></script>
     <script src="<?=base_url('/design/js/msg/js/en.js')?>"></script>
     <script src="<?=base_url('/design/js/wait_block.js')?>"></script>
-    <title>Hello Admin</title>
+    <title>Hello&nbsp;<?=session()->get('fname')?></title>
 </head>
 <body>
 <nav class="navbar is-link" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <a class="navbar-item" href="<?=site_url('/views/view_admin')?>">
+    <a class="navbar-item" href="<?=site_url('/views/view_teacher')?>">
       <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
     </a>
 
@@ -135,13 +136,68 @@
             </p>
             <ul class="menu-list">
                 <li><a href="<?=site_url('/views/teacher_manage_students')?>">Manage Students</a></li>
-                <li><a href="<?=site_url('/views/teacher_actvities')?>">Manage Actvities</a></li>
+                <li><a class="is-active" href="<?=site_url('/views/teacher_actvities')?>">Manage Actvities</a></li>
                 
             </ul>
         </aside>
     </div>
-    <div class="column container box">
+    <div class="column container p-4 mt-3">
+    <section class="hero is-link is-small mb-5">
+        <div class="hero-body">
+          <p class="title">
+            <i class="fa-solid fa-tasks"></i> &nbsp;
+              List of Students
+          </p>
+          <p class="subtitle">
+            Who took the activity
+          </p>
+        </div>
+      </section>
+    <div class="container box">
+        <table class="table is-narrow is-hoverable is-fullwidth display compact cell-border stripe" id="mytable">
+        <script>
+                $(document).ready( function () {
+                  $('#mytable').DataTable({
+                      stateSave: true
+                  } );
+                });
+            </script>
+            <thead>
+                <tr>
+                          <th><abbr title="Student name">Student Name</abbr></th>
+                          <th><abbr title="Score">Scores</abbr></th>
+                          <th><abbr title="Actions">Actn</abbr></th>
+                </tr>
+            </thead>
+            <tbody>
+              <?php
+                   $activity_builder= db_connect()->table('scores');
+                   $activity_builder->select('*');
+                   $activity_builder->join('users','users.user_id = scores.student_id','inner');
+                   $activity_results = $activity_builder->getWhere(['scores.activity_id' => $_SESSION['activity_id'],'scores.teacher_id' => session()->get('user_id'),'users.user_type' => 'STUDENT','users.section' => $session->get('section'),'users.grade'=>$session->get('grade')]);
 
+                   foreach($activity_results->getResult() as $activityRow)
+                   {
+              ?>
+              <tr>
+                  <td><?=$activityRow->fname?>&nbsp;<?=$activityRow->mname?>&nbsp;<?=$activityRow->lname?></td>
+                  <td><?=$activityRow->activity_score?></td>
+
+              </tr>
+
+              <?php
+                   }
+              ?>
+            </tbody>
+            <foot>
+                <tr>
+                          <th><abbr title="Student name">Student Name</abbr></th>
+                          <th><abbr title="Score">Scores</abbr></th>
+                          <th><abbr title="Actions">Actn</abbr></th>
+                </tr>
+            </foot>
+        </table>
+    </div>
     </div>
 
 </div>
