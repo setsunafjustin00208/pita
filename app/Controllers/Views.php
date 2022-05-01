@@ -106,6 +106,31 @@ class Views extends BaseController
         echo view('teacher/teacher_activity_results');
     }
 /** For Teachers */
+/** For Students */
+
+    public function student_activity()
+    {
+        echo view('student/student_activity');
+    }
+    public function student_do_activity()
+    {
+        $_SESSION['act_id'] = $this->request->uri->getSegment(3);
+        echo view('student/student_do_activity');
+    }
+    public function student_about()
+    {
+        echo view('student/student_about');
+    }
+    public function student_profile()
+    {
+        echo view('student/student_profile');
+    }
+    public function student_ide()
+    {
+        echo view('student/student_ide');
+    }
+    
+/** For Students */
 
 }
 

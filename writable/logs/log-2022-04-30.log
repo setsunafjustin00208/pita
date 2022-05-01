@@ -206,3 +206,36 @@ CRITICAL - 2022-04-30 08:26:07 --> Undefined variable $teacher_count
 #7 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
 #8 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
 #9 {main}
+CRITICAL - 2022-04-30 17:52:33 --> syntax error, unexpected token ";", expecting identifier or variable or "{" or "$"
+#0 C:\xampp\htdocs\pita\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#1 C:\xampp\htdocs\pita\system\Common.php(1089): CodeIgniter\View\View->render('student/student...', Array, true)
+#2 C:\xampp\htdocs\pita\app\Controllers\Views.php(39): view('student/student...')
+#3 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\Views->view_student()
+#4 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Views))
+#5 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-04-30 17:52:38 --> syntax error, unexpected token ";", expecting identifier or variable or "{" or "$"
+#0 C:\xampp\htdocs\pita\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#1 C:\xampp\htdocs\pita\system\Common.php(1089): CodeIgniter\View\View->render('student/student...', Array, true)
+#2 C:\xampp\htdocs\pita\app\Controllers\Views.php(39): view('student/student...')
+#3 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\Views->view_student()
+#4 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Views))
+#5 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2022-04-30 17:59:25 --> Unknown column 'teacher_section' in 'where clause'
+CRITICAL - 2022-04-30 17:59:25 --> Unknown column 'teacher_section' in 'where clause'
+#0 C:\xampp\htdocs\pita\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT COUNT(ac...', 0)
+#1 C:\xampp\htdocs\pita\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(ac...')
+#2 C:\xampp\htdocs\pita\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(ac...')
+#3 C:\xampp\htdocs\pita\app\Views\student\student_home.php(163): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(ac...')
+#4 C:\xampp\htdocs\pita\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\pita\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#6 C:\xampp\htdocs\pita\system\Common.php(1089): CodeIgniter\View\View->render('student/student...', Array, true)
+#7 C:\xampp\htdocs\pita\app\Controllers\Views.php(39): view('student/student...')
+#8 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\Views->view_student()
+#9 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Views))
+#10 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#12 {main}

@@ -14,11 +14,11 @@
     {
       if($status == 'ACTIVE')
       {
-        if($usertype != 'TEACHER')
+        if($usertype != 'STUDENT')
         {
-          if($usertype == 'STUDENT')
+          if($usertype == 'TEACHER')
           {
-            header("Location:".site_url('/views/view_student'));
+            header("Location:".site_url('/views/view_teacher'));
             exit();
           }
           else if ($usertype == 'ADMIN')
@@ -66,12 +66,12 @@
     <script src="<?=base_url('/design/js/javascript_compressed.js')?>"></script>
     <script src="<?=base_url('/design/js/msg/js/en.js')?>"></script>
     <script src="<?=base_url('/design/js/wait_block.js')?>"></script>
-    <title>Hello&nbsp;<?=session()->get('fname')?></title>
+    <title>Hello Admin</title>
 </head>
 <body>
 <nav class="navbar is-link" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <a class="navbar-item" href="<?=site_url('/views/view_teacher')?>">
+    <a class="navbar-item" href="<?=site_url('/views/view_admin')?>">
       <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
     </a>
 
@@ -100,11 +100,11 @@
           <i class="fa fa-cog"></i>
         </a>
         <div class="navbar-dropdown is-right">
-          <a href="<?=site_url('/views/teacher_about')?>" class="navbar-item">
+        <a href="<?=site_url('/views/student_about')?>" class="navbar-item">
           <i class="fa fa-user"></i>&nbsp;
             About me
           </a>
-          <a href="<?=site_url('/views/teacher_profile')?>" class="navbar-item">
+          <a href="<?=site_url('/views/student_profile')?>" class="navbar-item">
            <i class="fa fa-user-edit"></i>&nbsp;
             Profile
           </a>
@@ -126,45 +126,62 @@
                 General
             </p>
             <ul class="menu-list">
-                <li><a href="<?=site_url('/views/view_teacher')?>">Dashboard</a></li>
-                <li><a class="is-active" href="<?=site_url('/views/teacher_ide')?>">Intergrated Dev. Env</a></li>
-                <li><a href="<?=site_url('/views/teacher_view_students')?>">Students List</a></li>
-                
-            </ul>
-            <p class="menu-label">
-                Class management
-            </p>
-            <ul class="menu-list">
-                <li><a href="<?=site_url('/views/teacher_manage_students')?>">Manage Students</a></li>
-                <li><a href="<?=site_url('/views/teacher_actvities')?>">Manage Actvities</a></li>
+                <li><a href="<?=site_url('/views/view_student')?>">Dashboard</a></li>
+                <li><a href="<?=site_url('/views/student_ide')?>">Intergrated Dev. Env</a></li>
+                <li><a class="is-active" href="<?=site_url('/views/student_activity')?>">Activities</a></li>
                 
             </ul>
         </aside>
     </div>
     <div class="column container p-4 mt-3">
-    <section class="hero is-link is-small mb-5">
-        <div class="hero-body">
-          <p class="title">
-            <i class="fa-solid fa-code"></i> &nbsp;
-              Integrated Development Environment
-          </p>
-          <p class="subtitle">
-            Test your code
-          </p>
+    <?=form_open('filecontroller/validate_output')?>
+    <input type="hidden"  name="activity_id" value="<?=$_SESSION['act_id']?>">
+    <input type="hidden"  name="student_id" value="<?=$session->get('user_id')?>">
+    <div class="buttons columns">
+        <div class="column is-9">
+         <button class="button is-link p-3 m-3 mt-6" onclick="runCode()" id="runButton"><i class="fa fa-terminal" aria-hidden="true"></i>&nbsp; Run Program</button>
         </div>
-      </section>
-    <div class="buttons">
-            <button class="button is-link p-3 m-3" onclick="runCode()" id="runButton"><i class="fa-solid fa-terminal"></i> &nbsp; Run Program</button>
+        <div class="column is-3">
+        <div id="file-js-example" class="file has-name is-small is-boxed ml-4 pr-3">
+                  <label class="file-label">
+                    <input class="file-input" type="file" name="userfile2">
+                    <span class="file-cta">
+                      <span class="file-icon">
+                        <i class="fas fa-upload"></i>
+                      </span>
+                      <span class="file-label">
+                        upload code (scrsht)
+                      </span>
+                    </span>
+                    <span class="file-name">
+                        No file uploaded
+                    </span>
+                  </label>
+                </div>
+                <script>
+                  const fileInput = document.querySelector('#file-js-example input[type=file]');
+                  fileInput.onchange = () => {
+                    if (fileInput.files.length > 0) {
+                      const fileName = document.querySelector('#file-js-example .file-name');
+                      fileName.textContent = fileInput.files[0].name;
+                    }
+                  }
+                </script>
+                 <button class="button is-success p-3 mt-5 ml-5"><i class="fa-solid fa-file-code"></i> &nbsp;  Submit Output</button>
+        </div>
     </div>
     <div class="columns" style="width: 100%">
+        
         <div class="column" id="blocklyDiv"
-            style="display: inline-block; height: 480px; width: 68%"></div>
+            style="display: inline-block; height: 480px; width: 68%"><h1 class="subtitle mb-5">Intergrated Development Environment</h1></div>
         <div class="column ">
+        <h1 class="subtitle mb-5">Code Output</h1>
         <textarea name="a_output" id="output"
             style="display: inline-block; height: 455px;" readonly class="textarea has-fixed-size has-text-black is-link">
         </textarea>
         </div>
     </div>
+    </form>
     <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
         <category name="Logic" colour="%{BKY_LOGIC_HUE}">
         <block type="controls_if"></block>
@@ -268,7 +285,7 @@
         runButton.disabled = '';
 
         if (clearOutput) {
-            outputArea.value = 'Program output:\n=================\n';
+            outputArea.value = '';
         }
         }
 
@@ -315,7 +332,7 @@
                     setTimeout(runner, 10);
                 } else {
                     // Program is complete.
-                    outputArea.value += '\n\n<< Program complete >>';
+                    outputArea.value += '';
                     resetInterpreter();
                     resetStepUi(false);
                 }

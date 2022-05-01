@@ -14,11 +14,11 @@
     {
       if($status == 'ACTIVE')
       {
-        if($usertype != 'TEACHER')
+        if($usertype != 'STUDENT')
         {
-          if($usertype == 'STUDENT')
+          if($usertype == 'TEACHER')
           {
-            header("Location:".site_url('/views/view_student'));
+            header("Location:".site_url('/views/view_teacher'));
             exit();
           }
           else if ($usertype == 'ADMIN')
@@ -66,12 +66,12 @@
     <script src="<?=base_url('/design/js/javascript_compressed.js')?>"></script>
     <script src="<?=base_url('/design/js/msg/js/en.js')?>"></script>
     <script src="<?=base_url('/design/js/wait_block.js')?>"></script>
-    <title>Hello&nbsp;<?=session()->get('fname')?></title>
+    <title>Hello Admin</title>
 </head>
 <body>
 <nav class="navbar is-link" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <a class="navbar-item" href="<?=site_url('/views/view_teacher')?>">
+    <a class="navbar-item" href="<?=site_url('/views/view_admin')?>">
       <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
     </a>
 
@@ -100,11 +100,11 @@
           <i class="fa fa-cog"></i>
         </a>
         <div class="navbar-dropdown is-right">
-          <a href="<?=site_url('/views/teacher_about')?>" class="navbar-item">
+        <a href="<?=site_url('/views/student_about')?>" class="navbar-item">
           <i class="fa fa-user"></i>&nbsp;
             About me
           </a>
-          <a href="<?=site_url('/views/teacher_profile')?>" class="navbar-item">
+          <a href="<?=site_url('/views/student_profile')?>" class="navbar-item">
            <i class="fa fa-user-edit"></i>&nbsp;
             Profile
           </a>
@@ -126,17 +126,9 @@
                 General
             </p>
             <ul class="menu-list">
-                <li><a href="<?=site_url('/views/view_teacher')?>">Dashboard</a></li>
-                <li><a class="is-active" href="<?=site_url('/views/teacher_ide')?>">Intergrated Dev. Env</a></li>
-                <li><a href="<?=site_url('/views/teacher_view_students')?>">Students List</a></li>
-                
-            </ul>
-            <p class="menu-label">
-                Class management
-            </p>
-            <ul class="menu-list">
-                <li><a href="<?=site_url('/views/teacher_manage_students')?>">Manage Students</a></li>
-                <li><a href="<?=site_url('/views/teacher_actvities')?>">Manage Actvities</a></li>
+                <li><a href="<?=site_url('/views/view_student')?>">Dashboard</a></li>
+                <li><a class="is-active" href="<?=site_url('/views/student_ide')?>">Intergrated Dev. Env</a></li>
+                <li><a href="<?=site_url('/views/student_activity')?>">Activities</a></li>
                 
             </ul>
         </aside>

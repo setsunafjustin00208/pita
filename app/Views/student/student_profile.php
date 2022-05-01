@@ -100,7 +100,7 @@
           <i class="fa fa-cog"></i>
         </a>
         <div class="navbar-dropdown is-right">
-          <a href="<?=site_url('/views/student_about')?>" class="navbar-item">
+         <a href="<?=site_url('/views/student_about')?>" class="navbar-item">
           <i class="fa fa-user"></i>&nbsp;
             About me
           </a>
@@ -132,87 +132,125 @@
             </ul>
         </aside>
     </div>
-    <div class="column container p-4 mt-3">
-    <section class="hero is-link is-small mb-5">
-        <div class="hero-body">
-          <p class="title">
-            <i class="fa-solid fa-table-columns"></i> &nbsp;
-              Dashboard
-          </p>
-          <p class="subtitle">
-            How is your day? Your Here at Grade <?=$session->get('grade')?> Section <?=$session->get('section')?>
-          </p>
-        </div>
-      </section>
-      <nav class="level is-mobile">
-     
-      <div class="level-item has-text-centered">
-        <div>
-          <p class="heading">Total Actvities</p>
-          <p class="title">
-            <?php
-                $activity_count = db_connect();
-                $count_activity_query= $activity_count->query("SELECT COUNT(activity_id) as activitycount FROM actvities WHERE section = '{$session->get('section')}'");
-                $activityrow = $count_activity_query->getRow();
-                if(isset($activityrow))
+    <d<div class="column container p-4 mt-3 columns">
+      <div class="content column is-7">
+      <section class="hero is-link is-small mb-5">
+          <div class="hero-body">
+            <p class="title">
+              <i class="fa fa-user-edit"></i> &nbsp;
+                Edit profile
+            </p>
+              <?php
+                if(isset( $_SESSION['message']))
                 {
-                    echo $activityrow->activitycount;
+                  $message = $_SESSION['message'];
+                  echo "<p class='subtitle'>".$message."</p>";
+                  unset($_SESSION['message']);
                 }
-            ?>
-          </p>
-        </div>
-      </div>
-      <div class="level-item has-text-centered">
-        <div>
-          <p class="heading">Total Announcements</p>
-          <p class="title">
-          <?php
-              $teacher_count = db_connect();
-              $count_teacher_query= $teacher_count->query("SELECT COUNT(ta_id) as teachercount FROM teacher_announcements WHERE teacher_section = '{$session->get('section')}' ");
-              $teacherrow = $count_teacher_query->getRow();
-              if(isset($teacherrow))
-              {
-                  echo $teacherrow->teachercount;
-              }
-            ?>
-          </p>
-        </div>
-      </div>
-      <div class="level-item has-text-centered">
-        <div>
-          <p class="heading">students</p>
-          <p class="title">
-            <?php
-              $student_count = db_connect();
-              $count_student_query= $student_count->query("SELECT COUNT(user_id) as studentcount FROM users WHERE user_type = 'STUDENT' and section = '{$session->get('section')}' and grade = '{$session->get('grade')}'");
-              $studentrow = $count_student_query->getRow();
-              if(isset($studentrow))
-              {
-                  echo $studentrow->studentcount;
-              }
-            ?></p>
-        </div>
-      </div>
-    </nav>
-    <div class="container box">
-        <?php
-            $teacher_announcment_builder = db_connect()->table('teacher_announcements');
-            $teacher_announcment_builder->orderBy('ta_id','DESC');
-            $teacher_announcment_query = $teacher_announcment_builder->getWhere(['teacher_section' => $session->get('section'), 'teacher_grade' => $session->get('grade')],1);
-            foreach($teacher_announcment_query->getResult() as $ta_row)
-            {
+              ?>
+          </div>
+        </section>
+          <?=form_open_multipart('filecontroller/update_user_profile')?>
+            <input type="hidden" name="user_id" value="<?=$session->get('user_id')?>">
+            <input type="hidden" name="user_type" value="<?=$usertype?>">
+            <div class="tile is-ancestor mb-6 mt-2">
+              <div class="tile is-4 is-vertical box">
+                <figure class="image is-128x128 mb-6">
+                  <?php
+                      if($session->get('img_pic'))
+                      {
 
-            
-        ?>
-        <h1 class="title">Announcements:</h1>
-        <h1 class="subtitle mt-5"><?=$ta_row->announcement_title?></h1>
-        <textarea class="textarea has-fixed-size" name="" id="" cols="30" rows="10" readonly><?=$ta_row->announcement_body?></textarea>
-        <?php
-            }
-        ?>
-    </div>
-    </div>
+                  ?>
+                  <img src="<?=$session->get('img_pic')?>">
+                  <?php
+                      }
+                      else
+                      {
+                  ?>
+                    <img src="https://bulma.io/images/placeholders/128x128.png">
+                  <?php
+                       
+                      }
+                  ?>
+                </figure>
+                <div id="file-js-example" class="file has-name is-small is-boxed ml-4 pr-3">
+                  <label class="file-label">
+                    <input class="file-input" type="file" name="userfile">
+                    <span class="file-cta">
+                      <span class="file-icon">
+                        <i class="fas fa-upload"></i>
+                      </span>
+                      <span class="file-label">
+                        Choose a file…
+                      </span>
+                    </span>
+                    <span class="file-name">
+                      No file uploaded
+                    </span>
+                  </label>
+                </div>
 
+                <script>
+                  const fileInput = document.querySelector('#file-js-example input[type=file]');
+                  fileInput.onchange = () => {
+                    if (fileInput.files.length > 0) {
+                      const fileName = document.querySelector('#file-js-example .file-name');
+                      fileName.textContent = fileInput.files[0].name;
+                    }
+                  }
+                </script>
+              </div>
+              <div class="tile is-vertical ml-3 pl-3">
+                <div class="field">
+                  <label for="" class="label">About</label>
+                </div>
+                <div class="control is-large">
+                  <textarea class="textarea has-fixed-size has-text-black is-large" name="about"><?=$session->get('about')?></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="field">
+              <label for="" class="label">Email</label>
+            </div>
+            <div class="control">
+                <input type="email" name="email" value="<?=$session->get('email')?>" class="input has-text-black">
+            </div>
+            <div class="field">
+                <label for="" class="label">Username</label>
+            </div>
+            <div class="control">
+                <input type="text" name="username" value="<?=$session->get('username')?>" class="input has-text-black">
+            </div>
+            <div class="field">
+                <label for="" class="label">Password</label>
+            </div>
+            <div class="control">
+                <input type="password" id="password" name="password" value="<?=$session->get('password')?>" class="input has-text-black">
+            </div>
+            <div class="field">
+                <label for="" class="label">First name</label>
+            </div>
+            <div class="control">
+                <input type="text" name="fname" value="<?=$session->get('fname')?>" class="input has-text-black">
+            </div>
+            <div class="field">
+                <label for="" class="label">Middle name</label>
+            </div>
+            <div class="control">
+                <input type="text" name="mname" value="<?=$session->get('mname')?>" class="input has-text-black">
+            </div>
+            <div class="field">
+                <label for="" class="label">Last name</label>
+            </div>
+            <div class="control">
+                <input type="text" name="lname" value="<?=$session->get('lname')?>" class="input has-text-black">
+            </div>
+            <div class="buttons mt-4">
+                <button class="button is-info is-large"><i class="fa fa-refresh"></i>&nbsp; Update Profile</button>
+            </div>
+          </?form>
+        </div>
+      </div>
 </div>
 </body>
 </html>

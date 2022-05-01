@@ -16,7 +16,7 @@
       {
         if($usertype != 'STUDENT')
         {
-          if($usertype == 'STUDENT')
+          if($usertype == 'TEACHER')
           {
             header("Location:".site_url('/views/view_teacher'));
             exit();
@@ -100,7 +100,7 @@
           <i class="fa fa-cog"></i>
         </a>
         <div class="navbar-dropdown is-right">
-          <a href="<?=site_url('/views/student_about')?>" class="navbar-item">
+            <a href="<?=site_url('/views/student_about')?>" class="navbar-item">
           <i class="fa fa-user"></i>&nbsp;
             About me
           </a>
@@ -126,9 +126,9 @@
                 General
             </p>
             <ul class="menu-list">
-                <li><a class="is-active" href="<?=site_url('/views/view_student')?>">Dashboard</a></li>
+                <li><a href="<?=site_url('/views/view_student')?>">Dashboard</a></li>
                 <li><a href="<?=site_url('/views/student_ide')?>">Intergrated Dev. Env</a></li>
-                <li><a href="<?=site_url('/views/student_activity')?>">Activities</a></li>
+                <li><a class="is-active" href="<?=site_url('/views/student_activity')?>">Activities</a></li>
             </ul>
         </aside>
     </div>
@@ -136,80 +136,60 @@
     <section class="hero is-link is-small mb-5">
         <div class="hero-body">
           <p class="title">
-            <i class="fa-solid fa-table-columns"></i> &nbsp;
-              Dashboard
+            <i class="fa-solid fa-tasks"></i> &nbsp;
+              Activities
           </p>
           <p class="subtitle">
-            How is your day? Your Here at Grade <?=$session->get('grade')?> Section <?=$session->get('section')?>
+            View and do your activities
           </p>
         </div>
       </section>
-      <nav class="level is-mobile">
-     
-      <div class="level-item has-text-centered">
-        <div>
-          <p class="heading">Total Actvities</p>
-          <p class="title">
-            <?php
-                $activity_count = db_connect();
-                $count_activity_query= $activity_count->query("SELECT COUNT(activity_id) as activitycount FROM actvities WHERE section = '{$session->get('section')}'");
-                $activityrow = $count_activity_query->getRow();
-                if(isset($activityrow))
-                {
-                    echo $activityrow->activitycount;
-                }
-            ?>
-          </p>
-        </div>
-      </div>
-      <div class="level-item has-text-centered">
-        <div>
-          <p class="heading">Total Announcements</p>
-          <p class="title">
-          <?php
-              $teacher_count = db_connect();
-              $count_teacher_query= $teacher_count->query("SELECT COUNT(ta_id) as teachercount FROM teacher_announcements WHERE teacher_section = '{$session->get('section')}' ");
-              $teacherrow = $count_teacher_query->getRow();
-              if(isset($teacherrow))
-              {
-                  echo $teacherrow->teachercount;
-              }
-            ?>
-          </p>
-        </div>
-      </div>
-      <div class="level-item has-text-centered">
-        <div>
-          <p class="heading">students</p>
-          <p class="title">
-            <?php
-              $student_count = db_connect();
-              $count_student_query= $student_count->query("SELECT COUNT(user_id) as studentcount FROM users WHERE user_type = 'STUDENT' and section = '{$session->get('section')}' and grade = '{$session->get('grade')}'");
-              $studentrow = $count_student_query->getRow();
-              if(isset($studentrow))
-              {
-                  echo $studentrow->studentcount;
-              }
-            ?></p>
-        </div>
-      </div>
-    </nav>
     <div class="container box">
-        <?php
-            $teacher_announcment_builder = db_connect()->table('teacher_announcements');
-            $teacher_announcment_builder->orderBy('ta_id','DESC');
-            $teacher_announcment_query = $teacher_announcment_builder->getWhere(['teacher_section' => $session->get('section'), 'teacher_grade' => $session->get('grade')],1);
-            foreach($teacher_announcment_query->getResult() as $ta_row)
-            {
+        <table class="table is-narrow is-hoverable is-fullwidth display compact cell-border stripe" id="mytable">
+        <script>
+                $(document).ready( function () {
+                  $('#mytable').DataTable({
+                      stateSave: true
+                  } );
+                });
+            </script>
+            <thead>
+                <tr>
+                          <th><abbr title="Activity_title">ActTitle</abbr></th>
+                          <th><abbr title="Activity_details">ActBdy</abbr></th>
+                          <th><abbr title="Actions">Actn</abbr></th>
+                </tr>
+            </thead>
+            <tbody>
+              <?php
+                   $activity_builder= db_connect()->table('actvities');
+                   $activity_results = $activity_builder->getWhere(['grade' => $session->get('grade'), 'section' => $session->get('section') ]);
 
-            
-        ?>
-        <h1 class="title">Announcements:</h1>
-        <h1 class="subtitle mt-5"><?=$ta_row->announcement_title?></h1>
-        <textarea class="textarea has-fixed-size" name="" id="" cols="30" rows="10" readonly><?=$ta_row->announcement_body?></textarea>
-        <?php
-            }
-        ?>
+                   foreach($activity_results->getResult() as $activityRow)
+                   {
+              ?>
+              <tr>
+                  <td><?=$activityRow->activity_title?></td>
+                  <td><?=$activityRow->activity_details?></td>
+                  <td>
+                  <div class="buttons">
+                        <a href="<?=site_url('/views/student_do_activity')?>/<?=$activityRow->activity_id?>" class="button is-link is-small"><i class="fa fa-eye"></i></a>
+                    </div>
+                  </td>
+              </tr>
+
+              <?php
+                   }
+              ?>
+            </tbody>
+            <foot>
+                <tr>
+                          <th><abbr title="Activity_title">ActTitle</abbr></th>
+                          <th><abbr title="Activity_details">ActBdy</abbr></th>
+                          <th><abbr title="Actions">Actn</abbr></th>
+                </tr>
+            </foot>
+        </table>
     </div>
     </div>
 

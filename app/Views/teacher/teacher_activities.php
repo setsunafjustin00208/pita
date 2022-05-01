@@ -218,7 +218,7 @@
             <tbody>
               <?php
                    $activity_builder= db_connect()->table('actvities');
-                   $activity_results = $activity_builder->get();
+                   $activity_results = $activity_builder->getWhere(['grade' => $session->get('grade'), 'section' => $session->get('section') ]);
 
                    foreach($activity_results->getResult() as $activityRow)
                    {
@@ -256,7 +256,7 @@
                                     <textarea class="textarea is-link has-fixed-size" name="activity_details"><?=$activityRow->activity_details?></textarea>
                                   </div>
                                   <div class="field">
-                                     <label for="" class="label">Activity Title</label>
+                                     <label for="" class="label">Activity output</label>
                                   </div>
                                   <div class="control mb-5">
                                     <input type="text" name="activity_output" value="<?=$activityRow->activity_output?>" class="input is-link">

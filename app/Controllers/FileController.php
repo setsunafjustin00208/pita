@@ -179,9 +179,56 @@
             }
             else if($user_type == 'STUDENT')
             {
-                return redirect()->to('/views/admin_profile_view');
+                return redirect()->to('/views/student_profile');
             }
            
+        }
+        public function validate_output()
+        {
+            $output = nl2br($_POST['a_output']);
+            $student_id = $_POST['student_id'];
+            $activity_id = $_POST['activity_id'];
+
+            $validationRule = [
+                'userfile2' => [
+                    'label' => 'Image File',
+                    'rules' => 'uploaded[userfile]'
+                        . '|is_image[userfile]'
+                        . '|mime_in[userfile,image/jpg,image/jpeg,image/gif,image/png,image/webp]'
+                        . '|max_size[userfile,10000]'
+                        . '|max_dims[userfile,11024,1768]',
+                ],
+            ];
+            if (! $this->validate($validationRule)) {
+                $data = ['errors' => $this->validator->getErrors()];
+                $_SESSION['message'] = 'invalid file upload or no file selected';
+                return redirect()->to('/views/student_do_activity');
+               
+            }
+            $activity_output_builder = $this->db->table('actvities');
+            $activity_output_builder->select('*');
+            $activity_output_builder->join('scores','scores.activity_id = actvities.activity_id','inner');
+            $output_query = $activity_output_builder->getWhere(['act' => $output]);
+            foreach($output_query->getResult() as $outputrow)
+            {
+                if(($outputrow->activity_output) != $output)
+                {
+                   $score = 0;
+                    
+                }
+                else
+                {
+                    
+                }
+                $img = $this->request->getFile('userfile2');
+                $namefile2 = $img->getName();
+                $img->move(ROOTPATH.'public/assets/uploads',$namefile2);
+                $filepath = base_url().'/assets/uploads/'.$namefile2;
+                $score_builder = $this->db->table('scores');
+                return redirect()->to('/views/student_do_activity');
+            }
+            
+            
         }
     }
 
