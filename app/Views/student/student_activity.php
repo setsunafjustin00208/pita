@@ -140,7 +140,17 @@
               Activities
           </p>
           <p class="subtitle">
-            View and do your activities
+              <?php
+              if(isset($_SESSION['message']))
+              {
+                 print_r($_SESSION['message']);
+                unset($_SESSION['message']);
+              }
+              else
+              {
+                echo "View and do your activities";
+              }
+            ?>
           </p>
         </div>
       </section>
@@ -173,7 +183,24 @@
                   <td><?=$activityRow->activity_details?></td>
                   <td>
                   <div class="buttons">
+                      <?php
+                        $actvity_verification = db_connect()->table('scores');
+                        $ver =  $actvity_verification->getWhere(['student_id'=>$session->get('user_id'),'activity_id' =>$activityRow->activity_id]);
+                        $rowscore = $ver->getRow();
+                        if(isset($rowscore))
+                        {
+
+                        }
+                        else
+                        {
+                    
+                       
+                      ?>
                         <a href="<?=site_url('/views/student_do_activity')?>/<?=$activityRow->activity_id?>" class="button is-link is-small"><i class="fa fa-eye"></i></a>
+                    <?php
+                         }
+                      
+                    ?>
                     </div>
                   </td>
               </tr>

@@ -167,6 +167,7 @@
                           <th><abbr title="Student name">Student Name</abbr></th>
                           <th><abbr title="Score">Score</abbr></th>
                           <th><abbr title="Student Output">Student Output</abbr></th>
+                          <th><abbr title="Student Evidence">View Code</abbr></th>
                 </tr>
             </thead>
             <tbody>
@@ -183,6 +184,27 @@
                   <td><?=$activityRow->fname?>&nbsp;<?=$activityRow->mname?>&nbsp;<?=$activityRow->lname?></td>
                   <td><?=$activityRow->activity_score?></td>
                   <td><?=$activityRow->student_output?></td>
+                  <td>
+                    <div class="buttons">
+                      <a data-target="modal-trigger-view<?=$activityRow->activity_id?>" class="button is-warning is-small modal-trigger"><i class="fa fa-eye"></i></a>
+                      <div id= "modal-trigger-view<?=$activityRow->activity_id?>" class="modal modal-fx-fadeInScale">
+                          <div class="modal-background"></div>
+                            <div class="modal-card modal-size">
+                              <header class="modal-card-head">
+                                <p class="modal-card-title">Edit Activity</p>
+                                  <button class="delete" aria-label="close"></button>
+                              </header>
+                              <section class="modal-card-body">
+                              <figure class="image">
+                                <img src="<?=$activityRow->student_evidence?>">
+                              </figure>
+                                <footer class="modal-card-foot">
+                                  <button class="button">Cancel</button>
+                                </footer>
+                              </div>
+                        </div>
+                    </div>
+                  </td>
 
               </tr>
 
@@ -195,6 +217,7 @@
                           <th><abbr title="Student name">Student Name</abbr></th>
                           <th><abbr title="Score">Score</abbr></th>
                           <th><abbr title="Student Output">Student Output</abbr></th>
+                          <th><abbr title="Student Evidence">View Code</abbr></th>
                 </tr>
             </foot>
         </table>

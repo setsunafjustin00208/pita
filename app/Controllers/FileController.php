@@ -147,7 +147,7 @@
             }
     
             $img = $this->request->getFile('userfile');
-            $namefile = $img->getName();
+            $namefile = $img->getRandomName();
             $img->move(ROOTPATH.'public/assets/uploads',$namefile);
             $filepath = base_url().'/assets/uploads/'.$namefile;
             $update_profile_builder = $this->db->table('users');
@@ -185,51 +185,78 @@
         }
         public function validate_output()
         {
+           
             $output = nl2br($_POST['a_output']);
             $student_id = $_POST['student_id'];
             $activity_id = $_POST['activity_id'];
-
+            $grade = $_POST['grade'];
+            $section = $_POST['section'];
             $validationRule = [
                 'userfile2' => [
                     'label' => 'Image File',
-                    'rules' => 'uploaded[userfile]'
-                        . '|is_image[userfile]'
-                        . '|mime_in[userfile,image/jpg,image/jpeg,image/gif,image/png,image/webp]'
-                        . '|max_size[userfile,10000]'
-                        . '|max_dims[userfile,11024,1768]',
+                    'rules' => 'uploaded[userfile2]'
+                        . '|is_image[userfile2]'
+                        . '|mime_in[userfile2,image/jpg,image/jpeg,image/gif,image/png,image/webp]'
+                        . '|max_size[userfile2,10000]'
+                        . '|max_dims[userfile2,11024,1768]',
                 ],
             ];
-            if (! $this->validate($validationRule)) {
+            if (! $this->validate($validationRule)) 
+            {
                 $data = ['errors' => $this->validator->getErrors()];
-                $_SESSION['message'] = 'invalid file upload or no file selected';
-                return redirect()->to('/views/student_do_activity');
+                $_SESSION['message'] = $data;
+                return redirect()->to('/views/student_activity');
                
             }
-            $activity_output_builder = $this->db->table('actvities');
-            $activity_output_builder->select('*');
-            $activity_output_builder->join('scores','scores.activity_id = actvities.activity_id','inner');
-            $output_query = $activity_output_builder->getWhere(['act' => $output]);
-            foreach($output_query->getResult() as $outputrow)
-            {
-                if(($outputrow->activity_output) != $output)
-                {
-                   $score = 0;
-                    
-                }
-                else
-                {
-                    
-                }
-                $img = $this->request->getFile('userfile2');
-                $namefile2 = $img->getName();
-                $img->move(ROOTPATH.'public/assets/uploads',$namefile2);
-                $filepath = base_url().'/assets/uploads/'.$namefile2;
-                $score_builder = $this->db->table('scores');
-                return redirect()->to('/views/student_do_activity');
-            }
-            
-            
+                $img2 = $this->request->getFile('userfile2');
+                $namefile2 = $img2->getRandomName();
+                $img2->move(ROOTPATH.'public/assets/uploads',$namefile2);
+                $filepath2 = base_url().'/assets/uploads/'.$namefile2;
+
+           $output_builder = $this->db->table('actvities');
+           $query_output = $output_builder->getWhere(['activity_output' => $output],1);
+           $queryRow = $query_output->getRow();
+           if(isset($queryRow))
+           {
+
+                $score_builder =  $this->db->table('scores');
+                $data_score = 
+                [
+                    'teacher_id' => $queryRow->teacher_id ,
+                    'student_id' => $student_id,
+                    'activity_id' => $activity_id,
+                    'activity_score' => $queryRow->activity_score,
+                    'student_output' => $output,
+                    'student_evidence' => $filepath2,
+                    'grade' => $grade,
+                    'section' => $section,
+                    'date_created' => date("y_m_d H:i:s"),
+                    'date_modified' => date("y_m_d H:i:s")
+                ];
+                $score_builder->insert($data_score);
+                return redirect()->to('/views/student_activity');
+           }
+           else
+           {
+                $score_builder =  $this->db->table('scores');
+                $data_score = 
+                [
+                    'teacher_id' => $queryRow->activity_score,
+                    'student_id' => $student_id,
+                    'activity_id' => $activity_id,
+                    'activity_score' => 0,
+                    'student_output' => $output,
+                    'student_evidence' => $filepath2,
+                    'grade' => $grade,
+                    'section' => $section,
+                    'date_created' => date("y_m_d H:i:s"),
+                    'date_modified' => date("y_m_d H:i:s")
+                ];
+                $score_builder->insert($data_score);
+                return redirect()->to('/views/student_activity');
+           }
         }
+        
     }
 
 ?>

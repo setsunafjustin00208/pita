@@ -1,5 +1,6 @@
 <?php
     namespace App\Controllers;
+    use CodeIgniter\Files\File;
 
     class DatabaseController extends BaseController
     {
@@ -36,7 +37,6 @@
                     {
                         return redirect()->to('/views/view_student');
                     }
-
             }    
         
         }
@@ -335,10 +335,7 @@
             $delete_announcement_function->delete($_POST);
             return redirect()->to('/views/teacher_actvities');
         }
-        
-
-
-        
+         
     }
 
 

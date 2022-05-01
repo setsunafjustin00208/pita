@@ -36,6 +36,15 @@
           exit();
       }
 
+      $actvity_verification = db_connect()->table('scores');
+      $ver =  $actvity_verification->getWhere(['student_id'=>$session->get('user_id'),'activity_id' => $_SESSION['act_id']]);
+      $rowscore = $ver->getRow();
+      if(isset($rowscore))
+      {
+        header("Location:".site_url('/views/student_activity'));
+        exit();
+      }
+
     }
 ?>
 <!DOCTYPE html>
@@ -66,7 +75,7 @@
     <script src="<?=base_url('/design/js/javascript_compressed.js')?>"></script>
     <script src="<?=base_url('/design/js/msg/js/en.js')?>"></script>
     <script src="<?=base_url('/design/js/wait_block.js')?>"></script>
-    <title>Hello Admin</title>
+    <title>Hello&nbsp;<?=session()->get('fname')?>/title>
 </head>
 <body>
 <nav class="navbar is-link" role="navigation" aria-label="main navigation">
@@ -134,9 +143,11 @@
         </aside>
     </div>
     <div class="column container p-4 mt-3">
-    <?=form_open('filecontroller/validate_output')?>
+    <?=form_open_multipart('filecontroller/validate_output')?>
     <input type="hidden"  name="activity_id" value="<?=$_SESSION['act_id']?>">
     <input type="hidden"  name="student_id" value="<?=$session->get('user_id')?>">
+    <input type="hidden"  name="grade" value="<?=$session->get('grade')?>">
+    <input type="hidden"  name="section" value="<?=$session->get('section')?>">
     <div class="buttons columns">
         <div class="column is-9">
          <button class="button is-link p-3 m-3 mt-6" onclick="runCode()" id="runButton"><i class="fa fa-terminal" aria-hidden="true"></i>&nbsp; Run Program</button>
@@ -150,14 +161,15 @@
                         <i class="fas fa-upload"></i>
                       </span>
                       <span class="file-label">
-                        upload code (scrsht)
+                        Upload code (scrsht)
                       </span>
                     </span>
                     <span class="file-name">
-                        No file uploaded
+                      No file uploaded
                     </span>
                   </label>
                 </div>
+
                 <script>
                   const fileInput = document.querySelector('#file-js-example input[type=file]');
                   fileInput.onchange = () => {
@@ -174,14 +186,14 @@
         
         <div class="column" id="blocklyDiv"
             style="display: inline-block; height: 480px; width: 68%"><h1 class="subtitle mb-5">Intergrated Development Environment</h1></div>
-        <div class="column ">
+        <div class="column">
         <h1 class="subtitle mb-5">Code Output</h1>
         <textarea name="a_output" id="output"
             style="display: inline-block; height: 455px;" readonly class="textarea has-fixed-size has-text-black is-link">
         </textarea>
         </div>
     </div>
-    </form>
+    </?form>
     <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
         <category name="Logic" colour="%{BKY_LOGIC_HUE}">
         <block type="controls_if"></block>
@@ -246,7 +258,7 @@
         // Add an API function for the alert() block, generated for "text_print" blocks.
         var wrapper = function(text) {
             text = text ? text.toString() : '';
-            outputArea.value = outputArea.value + '\n' + text;
+            outputArea.value = outputArea.value + text;
         };
         interpreter.setProperty(globalObject, 'alert',
             interpreter.createNativeFunction(wrapper));

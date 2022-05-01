@@ -66,7 +66,7 @@
     <script src="<?=base_url('/design/js/javascript_compressed.js')?>"></script>
     <script src="<?=base_url('/design/js/msg/js/en.js')?>"></script>
     <script src="<?=base_url('/design/js/wait_block.js')?>"></script>
-    <title>Hello Admin</title>
+    <title>Hello&nbsp;<?=session()->get('fname')?></title>
 </head>
 <body>
 <nav class="navbar is-link" role="navigation" aria-label="main navigation">

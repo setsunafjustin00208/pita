@@ -239,3 +239,19 @@ CRITICAL - 2022-04-30 17:59:25 --> Unknown column 'teacher_section' in 'where cl
 #10 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
 #11 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
 #12 {main}
+CRITICAL - 2022-04-30 22:58:39 --> Request URI segment is out of range: 3
+#0 C:\xampp\htdocs\pita\system\HTTP\URI.php(529): CodeIgniter\HTTP\Exceptions\HTTPException::forURISegmentOutOfRange(3)
+#1 C:\xampp\htdocs\pita\app\Controllers\Views.php(118): CodeIgniter\HTTP\URI->getSegment(3)
+#2 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\Views->student_do_activity()
+#3 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Views))
+#4 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2022-04-30 23:08:21 --> Request URI segment is out of range: 3
+#0 C:\xampp\htdocs\pita\system\HTTP\URI.php(529): CodeIgniter\HTTP\Exceptions\HTTPException::forURISegmentOutOfRange(3)
+#1 C:\xampp\htdocs\pita\app\Controllers\Views.php(118): CodeIgniter\HTTP\URI->getSegment(3)
+#2 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\Views->student_do_activity()
+#3 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Views))
+#4 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
