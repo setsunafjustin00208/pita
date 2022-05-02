@@ -30,10 +30,10 @@
       }
       else
       {
-          $_SESSION['wrongLogInTitle'] = "Account Inactive";
-          $_SESSION['wrongLogIn'] = "Enter Code first";
-          header('Location:'.site_url('views/login_page'));
-          exit();
+        $_SESSION['Activate'] = "Account Inactive";
+        $_SESSION['ActivateCode'] = "Enter Code first";
+        header('Location:'.site_url('views/verification_page'));
+        exit();
       }
 
     }

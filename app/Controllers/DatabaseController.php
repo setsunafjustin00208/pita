@@ -24,7 +24,7 @@
                 {
                     $userdata = array('user_id' => $loginrow->user_id, 'email' => $loginrow->email, 'username' => $loginrow->username ,'password' => $loginrow->password,'fname' => $loginrow->fname, 'mname' => $loginrow->mname, 'lname' => $loginrow->lname,'grade' => $loginrow->grade, 'section' => $loginrow->section ,'user_type' => $loginrow->user_type, 'is_active' => $loginrow->is_active ,'img_pic' => $loginrow->img_pic, 'about' => $loginrow->about,'logged_in' => TRUE);
                     $this->session->set($userdata);
-                    
+
                     if(($loginrow->user_type) == "ADMIN")
                     {
                         return redirect()->to('/views/view_admin');
@@ -68,11 +68,11 @@
             }
             else
             {
-               
+                $verification_messsage = "Welcome user!\n\n\n Here is Your Verification Code:".$_POST['verification']."\n\n\nIgnore this email if anyone use your email without permission";
                 $this->email->setFrom('akantor_verification@outlook.com', 'Akantor Programmer');
                 $this->email->setTo($email_string);
                 $this->email->setSubject('Verification Code');
-                $this->email->setMessage('Welcome user! <br><br>Here is Your Verification Code:'.$_POST['verification']. '<br><br>Ignore this email if anyone use your email without permission');
+                $this->email->setMessage($verification_messsage);
                 $this->email->send();
                 $sign_up_query_builder=$this->db->table('users');
                 $sign_up_query_builder->insert($_POST);
@@ -83,10 +83,11 @@
         }
         public function email_test()
         {   
+            $sample_message = "Hello \r\n World \r\n Gundam";
             $this->email->setFrom('akantor_verification@outlook.com', 'Akantor Programmer');
             $this->email->setTo('setsunafjustin002@gmail.com');
             $this->email->setSubject('Email Test');
-            $this->email->setMessage('Testing the email class.');
+            $this->email->setMessage($sample_message);
             $this->email->send();
 
             

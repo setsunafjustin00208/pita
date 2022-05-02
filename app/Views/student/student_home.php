@@ -32,7 +32,7 @@
       {
           $_SESSION['wrongLogInTitle'] = "Account Inactive";
           $_SESSION['wrongLogIn'] = "Enter Code first";
-          header('Location:'.site_url('views/login_page'));
+          header('Location:'.site_url('views/verification_page'));
           exit();
       }
 
@@ -94,6 +94,13 @@
     </div>
 
     <div class="navbar-end">
+     <!-- <?=form_open('views/search_user')?>
+        <div class="navbar-item">
+            <input type="text" class="input" name="key" placeholder="Search user..." aria-label="Search">
+            &nbsp;
+            <button class="button is-success" type="submit"><i class="fa fa-search"></i></button>
+          </div>
+        </form> -->
       <div class="navbar-item">
       <div class="navbar-item has-dropdown is-hoverable ">
         <a class="navbar-link">

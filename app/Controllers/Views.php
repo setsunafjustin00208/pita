@@ -132,6 +132,11 @@ class Views extends BaseController
     
 /** For Students */
 
+    public function search_user()
+    {
+        echo view('search_user');
+    }
+
 }
 
 

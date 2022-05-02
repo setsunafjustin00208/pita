@@ -54,6 +54,7 @@ class BaseController extends Controller
         $this->session = \Config\Services::session();
         $this->email = \Config\Services::email();
         $this->uri = new \CodeIgniter\HTTP\URI();
+        $this->thottler = \Config\Services::throttler();
         
         
         

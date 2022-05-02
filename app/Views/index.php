@@ -34,7 +34,6 @@
     <link rel="stylesheet" href="<?=base_url('/design/css/all.css')?>" type="text/css">
     <link rel="stylesheet" href="<?=base_url('/design/css/bulma.css')?>" type="text/css">
     <link rel="stylesheet" href="<?=base_url('/design/css/animate.min.css')?>" type="text/css">
-    <link href="https://cdn.jsdelivr.net/gh/vaibhav111tandon/vov.css@latest/vov.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="<?=base_url('/design/css/modal-fx.css')?>" type="text/css">
     <link rel="stylesheet" href="<?=base_url('/design/css/datatables.min.css')?>" type="text/css">
     <link rel="stylesheet" href="<?=base_url('/design/css/dataTables.bulma.css')?>" type="text/css">
@@ -141,58 +140,15 @@
                         <a data-target="modal-trigger" class="button is-link modal-trigger">
                             Log in
                         </a>
+                       <!-- <a href="<?=site_url('databasecontroller/email_test')?>" class="button is-link modal-trigger">
+                            Test email
+                        </a> -->
                     </div>
                 </div>
             </div>
         </div>
     </nav>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Functions to open and close a modal
-            function openModal($el) {
-                $el.classList.add('is-active');
-            }
-
-            function closeModal($el) {
-                $el.classList.remove('is-active');
-            }
-
-            function closeAllModals() {
-                (document.querySelectorAll('.modal') || []).forEach(($modal) => {
-                closeModal($modal);
-                });
-            }
-
-            // Add a click event on buttons to open a specific modal
-            (document.querySelectorAll('.modal-trigger') || []).forEach(($trigger) => {
-                const modal = $trigger.dataset.target;
-                const $target = document.getElementById(modal);
-                console.log($target);
-
-                $trigger.addEventListener('click', () => {
-                openModal($target);
-                });
-            });
-
-            // Add a click event on various child elements to close the parent modal
-            (document.querySelectorAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button') || []).forEach(($close) => {
-                const $target = $close.closest('.modal');
-
-                $close.addEventListener('click', () => {
-                closeModal($target);
-                });
-            });
-
-            // Add a keyboard event to close all modals
-            document.addEventListener('keydown', (event) => {
-                const e = event || window.event;
-
-                if (e.keyCode === 27) { // Escape key
-                closeAllModals();
-                }
-            });
-            });
-    </script>
+    
  <div id= "modal-trigger" class="modal modal-fx-fadeInScale">
             <div class="modal-background"></div>
                 <div class="modal-card modal-size">
@@ -318,30 +274,42 @@
         </div>
         <div class="container mb-6">
         <div class="container content has-background-light box p-3 mt-5 are-large animate__animated animate__backInUp">
-            <h1 class="animate__animated animate__backInLeft">Welcome To PITA</h1>
-            <p></p>
-            <h2>Announcment</h2>
-            <?php
-                    $announcement_builder = db_connect()->table('announcements');
-                    $announcement_builder->orderBy('a_id','DESC');
-                    $announcement_builder->limit(1);
-                    $announcement = $announcement_builder->get();
-                    $announcementRow = $announcement->getRow();
-                    
-                    if(isset($announcementRow))
-                    {
-            ?>
-            <h3><?=$announcementRow->announcement_title?></h3>
-            <p>
-                <?=nl2br($announcementRow->announcement_details)?>
-            </p>
-            <?php
-                    }
-            ?>
+            <section class="hero is-link is-small box animate__animated animate__backInLeft animate__delay-1s">
+                <div class="hero-body">
+                    <p class="title">
+                        Welcome To PITA
+                    </p>
+                    <p class="subtitle box has-background-info">
+                        The <u>Program-Block Interface for Teaching Application</u> is a Web based block by block programming interface with activities given by the teacher for further understanding how to code. In a Visual way!
+                    </p>
+                
+                </div>
+                </section>
+            <div class="content box animate__animated animate__backInRight animate__delay-1s">
+                <h2>ANNOUNCEMENT:</h2>
+                <?php
+                        $announcement_builder = db_connect()->table('announcements');
+                        $announcement_builder->orderBy('a_id','DESC');
+                        $announcement_builder->limit(1);
+                        $announcement = $announcement_builder->get();
+                        $announcementRow = $announcement->getRow();
+                        
+                        if(isset($announcementRow))
+                        {
+                ?>
+                <h3><?=$announcementRow->announcement_title?></h3>
+                <p>
+                    <?=nl2br($announcementRow->announcement_details)?>
+                </p>
+                <?php
+                        }
+                ?>
+            </div>
+            
             
         </div>
         <div class="container has-background-light p-3 box animate__animated animate__backInUp animate__delay-1s">
-            <h1 class="title animate__animated animate__backInLeft animate__delay-1s"><strong>Try It:</strong> </h1>
+            <h1 class="title animate__animated animate__backInLeft animate__delay-2s"><strong>Try It:</strong> </h1>
                 <div class="buttons animate__animated animate__backInUp animate__delay-2s">
                     <button class="button is-link p-3 m-3" onclick="runCode()" id="runButton"><i class="fa-solid fa-terminal"></i> &nbsp; Run Program</button>
                 </div>
