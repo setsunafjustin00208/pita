@@ -269,6 +269,7 @@
                                               <section class="modal-card-body">
                                                 <?=form_open('databasecontroller/update_status')?>
                                                   <input type="hidden" name="user_id" value="<?=$userRow->user_id?>">
+                                                  <input type="hidden" name="email" value="<?=$userRow->email?>">
                                                   <?php
                                                       if(($userRow->is_active) ==  "ACTIVE")
                                                       {

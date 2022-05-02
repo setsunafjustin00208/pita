@@ -204,7 +204,7 @@
             if (! $this->validate($validationRule)) 
             {
                 $data = ['errors' => $this->validator->getErrors()];
-                $_SESSION['message'] = $data;
+                $_SESSION['message'] = "No Valid photo attached or Invalid file format";
                 return redirect()->to('/views/student_activity');
                
             }

@@ -128,7 +128,16 @@
             <ul class="menu-list">
                 <li><a class="is-active" href="<?=site_url('/views/view_student')?>">Dashboard</a></li>
                 <li><a href="<?=site_url('/views/student_ide')?>">Intergrated Dev. Env</a></li>
-                <li><a href="<?=site_url('/views/student_activity')?>">Activities</a></li>
+                <li>
+                  <?php
+                     if($session->get('section') != 'TBA' && $session->get('grade') != 0)
+                     {
+                  ?>
+                  <a href="<?=site_url('/views/student_activity')?>">Activities</a>
+                  <?php
+                     }
+                  ?>
+                </li>
             </ul>
         </aside>
     </div>
@@ -140,7 +149,20 @@
               Dashboard
           </p>
           <p class="subtitle">
+            <?php
+              if($session->get('section') == 'TBA' && $session->get('grade') == 0)
+              {
+                echo "Wait for someone assigned you in a class";
+              }
+              else
+              {
+
+            ?>
+           
             How is your day? Your Here at Grade <?=$session->get('grade')?> Section <?=$session->get('section')?>
+            <?php
+                }
+            ?>
           </p>
         </div>
       </section>

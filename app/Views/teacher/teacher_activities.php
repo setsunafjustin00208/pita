@@ -284,7 +284,7 @@
                                         </header>
                                         <section class="modal-card-body">
                                         <?=form_open('databasecontroller/delete_activity')?>
-                                            <h2 class="subtitle">Are you sure to delete this Announcement?</h2>
+                                            <h2 class="subtitle">Are you sure to delete this Activity?</h2>
                                             <input type="hidden" name="activity_id" value="<?=$activityRow->activity_id?>">
                                         </section>
                                         <footer class="modal-card-foot">

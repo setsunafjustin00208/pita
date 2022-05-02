@@ -12,25 +12,26 @@
             if($sql_login-> getNumRows() > 0)
             {
                 $loginrow = $sql_login->getRow();
-                $userdata = array('user_id' => $loginrow->user_id, 'email' => $loginrow->email, 'username' => $loginrow->username ,'password' => $loginrow->password,'fname' => $loginrow->fname, 'mname' => $loginrow->mname, 'lname' => $loginrow->lname,'grade' => $loginrow->grade, 'section' => $loginrow->section ,'user_type' => $loginrow->user_type, 'is_active' => $loginrow->is_active ,'img_pic' => $loginrow->img_pic, 'about' => $loginrow->about,'logged_in' => TRUE);
-                $this->session->set($userdata);
 
                 if(($loginrow->is_active) ==  "DISABLED")
                 {
                     $_SESSION['Activate'] = "Account Inactive";
                     $_SESSION['ActivateCode'] = "Enter Code first";
-                    header('Location:'.site_url('views/verification-page'));
-                    exit();
+                    return redirect()->to('/views/verification_page');
                 }
 
                 else if(($loginrow->is_active) ==  "ACTIVE")
                 {
+                    $userdata = array('user_id' => $loginrow->user_id, 'email' => $loginrow->email, 'username' => $loginrow->username ,'password' => $loginrow->password,'fname' => $loginrow->fname, 'mname' => $loginrow->mname, 'lname' => $loginrow->lname,'grade' => $loginrow->grade, 'section' => $loginrow->section ,'user_type' => $loginrow->user_type, 'is_active' => $loginrow->is_active ,'img_pic' => $loginrow->img_pic, 'about' => $loginrow->about,'logged_in' => TRUE);
+                    $this->session->set($userdata);
+                    
                     if(($loginrow->user_type) == "ADMIN")
                     {
                         return redirect()->to('/views/view_admin');
                     }
                     else if(($loginrow->user_type) == "TEACHER")
                     {
+                        
                     return redirect()->to('/views/view_teacher');
                     }
                     else if(($loginrow->user_type) == "STUDENT")
@@ -67,17 +68,29 @@
             }
             else
             {
+               
+                $this->email->setFrom('akantor_verification@outlook.com', 'Akantor Programmer');
+                $this->email->setTo($email_string);
+                $this->email->setSubject('Verification Code');
+                $this->email->setMessage('Welcome user! <br><br>Here is Your Verification Code:'.$_POST['verification']. '<br><br>Ignore this email if anyone use your email without permission');
+                $this->email->send();
                 $sign_up_query_builder=$this->db->table('users');
                 $sign_up_query_builder->insert($_POST);
-                $email = \Config\Services::email();
-                $email->setFrom('akantor_verification@outlook.com', 'Akantor Programmer');
-                $email->setTo($email_string);
-                $email->setSubject('Verification Code');
-                $email->setMessage('Welcome user! <br><br>Here is Your Verification Code:'.$_POST['verification']. '<br><br>Ignore this email if anyone use your email without permission');
-                $email->send();
                 return redirect()->to('/views/verification_page');
+                
             }
             
+        }
+        public function email_test()
+        {   
+            $this->email->setFrom('akantor_verification@outlook.com', 'Akantor Programmer');
+            $this->email->setTo('setsunafjustin002@gmail.com');
+            $this->email->setSubject('Email Test');
+            $this->email->setMessage('Testing the email class.');
+            $this->email->send();
+
+            
+
         }
         public function verification()
         {
@@ -86,7 +99,12 @@
             $verification_data=$verification_builder->getWhere(['verification'=>$verification_code]);
             if($verification_data)
             {
-                $verification_builder->set(['is_active','verification'],['ACTIVE',0]);
+                $vdata = 
+                [
+                    'is_active' => 'ACTIVE',
+                    'verification' => 0
+                ];
+                $verification_builder->set($vdata);
                 $verification_builder->where('verification',$verification_code);
                 $verification_builder->update();
                 return redirect()->to('/views/login_page');
@@ -95,7 +113,7 @@
             {
                 $_SESSION['Activate'] = "Account Inactive";
                 $_SESSION['ActivateCode'] = "Enter Code first";
-                header('Location:'.site_url('views/verification-page'));
+                header('Location:'.site_url('views/verification_page'));
                 exit();
             }
 
@@ -200,11 +218,35 @@
             $status_user_id = $_POST['user_id'];
             $user_status_update = $_POST['is_active'];
 
-            $status_update = $this->db->table('users');
-            $status_update->set('is_active',$user_status_update);
-            $status_update->where('user_id',$status_user_id);
-            $status_update->update();
-            return redirect()->to('/views/view_admin_users');
+            if($user_status_update == "DISABLED")
+            {
+                $vercode = rand(00000,99999);
+                $email_string2 = $_POST['email'];
+                
+                $this->email->setFrom('akantor_verification@outlook.com', 'Akantor Programmer');
+                $this->email->setTo($email_string2);
+                $this->email->setSubject('Verification Code');
+                $this->email->setMessage('Seems your account got disabled due to reasons! <br><br>Here is Your Verification Code:'.$vercode. '<br><br>Ignore this email if anyone use your email without permission');
+                $this->email->send();
+                $status_update = $this->db->table('users');
+                $status_update_data = [
+                    'is_active' => $user_status_update,
+                    'verification' => $vercode
+                ];
+                $status_update->set($status_update_data);
+                $status_update->where('user_id',$status_user_id);
+                $status_update->update();
+                return redirect()->to('/views/view_admin_users');
+            }
+            else
+            {
+                $status_update = $this->db->table('users');
+                $status_update->set('is_active',$user_status_update);
+                $status_update->where('user_id',$status_user_id);
+                $status_update->update();
+                return redirect()->to('/views/view_admin_users');
+            }
+           
             
         }
 

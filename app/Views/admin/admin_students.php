@@ -400,17 +400,6 @@
                                                   <div class="control">
                                                       <input type="text" name="Section" value="<?=$userRow->section?>" class="input is-link" required>
                                                   </div>
-                                                  <div class="field">
-                                                      <label for="" class="label">Status</label></label>
-                                                  </div>
-                                                  <div class="control">
-                                                    <div class="select is-primary">
-                                                      <select name="is_active">
-                                                          <option value="ACTIVE">ACTIVE</option>
-                                                          <option value="DISABLED">DISABLED</option>
-                                                      </select>
-                                                    </div>
-                                                  </div>
                                               </section>
                                               <footer class="modal-card-foot">
                                                   <button class="button is-success" id="submit"><i class="fa fa-refresh"></i> &nbsp; Update Student</button>

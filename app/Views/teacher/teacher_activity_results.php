@@ -191,7 +191,7 @@
                           <div class="modal-background"></div>
                             <div class="modal-card modal-size">
                               <header class="modal-card-head">
-                                <p class="modal-card-title">Edit Activity</p>
+                                <p class="modal-card-title">View Code</p>
                                   <button class="delete" aria-label="close"></button>
                               </header>
                               <section class="modal-card-body">

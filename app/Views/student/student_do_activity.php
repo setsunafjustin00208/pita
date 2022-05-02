@@ -44,6 +44,7 @@
         header("Location:".site_url('/views/student_activity'));
         exit();
       }
+      
 
     }
 ?>
@@ -75,7 +76,7 @@
     <script src="<?=base_url('/design/js/javascript_compressed.js')?>"></script>
     <script src="<?=base_url('/design/js/msg/js/en.js')?>"></script>
     <script src="<?=base_url('/design/js/wait_block.js')?>"></script>
-    <title>Hello&nbsp;<?=session()->get('fname')?>/title>
+    <title>Hello&nbsp;<?=session()->get('fname')?></title>
 </head>
 <body>
 <nav class="navbar is-link" role="navigation" aria-label="main navigation">
@@ -246,6 +247,7 @@
         Blockly.Xml.domToWorkspace(document.getElementById('startBlocks'),
                                 demoWorkspace);
 
+
         // Exit is used to signal the end of a script.
         Blockly.JavaScript.addReservedWords('exit');
 
@@ -363,6 +365,7 @@
             // Something changed. Parser needs to be reloaded.
             resetInterpreter();
             generateCodeAndLoadIntoInterpreter();
+            
         }
         });
     </script>
