@@ -34,6 +34,7 @@
     <link rel="stylesheet" href="<?=base_url('/design/css/all.css')?>" type="text/css">
     <link rel="stylesheet" href="<?=base_url('/design/css/bulma.css')?>" type="text/css">
     <link rel="stylesheet" href="<?=base_url('/design/css/animate.min.css')?>" type="text/css">
+    <link href="https://cdn.jsdelivr.net/gh/vaibhav111tandon/vov.css@latest/vov.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="<?=base_url('/design/css/modal-fx.css')?>" type="text/css">
     <link rel="stylesheet" href="<?=base_url('/design/css/datatables.min.css')?>" type="text/css">
     <link rel="stylesheet" href="<?=base_url('/design/css/dataTables.bulma.css')?>" type="text/css">
@@ -316,26 +317,38 @@
                 </div>
         </div>
         <div class="container mb-6">
-        <div class="container content has-background-light box p-3 mt-5">
-            <h1>Hello World</h1>
-            <p>Lorem ipsum<sup><a>[1]</a></sup> dolor sit amet, consectetur adipiscing elit. Nulla accumsan, metus ultrices eleifend gravida, nulla nunc varius lectus, nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque. Sub<sub>script</sub> works as well!</p>
-            <h2>Second level</h2>
-            <p>Curabitur accumsan turpis pharetra <strong>augue tincidunt</strong> blandit. Quisque condimentum maximus mi, sit amet commodo arcu rutrum id. Proin pretium urna vel cursus venenatis. Suspendisse potenti. Etiam mattis sem rhoncus lacus dapibus facilisis. Donec at dignissim dui. Ut et neque nisl.</p>
-            <ul>
-                <li>In fermentum leo eu lectus mollis, quis dictum mi aliquet.</li>
-                <li>Morbi eu nulla lobortis, lobortis est in, fringilla felis.</li>
-                <li>Aliquam nec felis in sapien venenatis viverra fermentum nec lectus.</li>
-                <li>Ut non enim metus.</li>
-            </ul>     
+        <div class="container content has-background-light box p-3 mt-5 are-large animate__animated animate__backInUp">
+            <h1 class="animate__animated animate__backInLeft">Welcome To PITA</h1>
+            <p></p>
+            <h2>Announcment</h2>
+            <?php
+                    $announcement_builder = db_connect()->table('announcements');
+                    $announcement_builder->orderBy('a_id','DESC');
+                    $announcement_builder->limit(1);
+                    $announcement = $announcement_builder->get();
+                    $announcementRow = $announcement->getRow();
+                    
+                    if(isset($announcementRow))
+                    {
+            ?>
+            <h3><?=$announcementRow->announcement_title?></h3>
+            <p>
+                <?=nl2br($announcementRow->announcement_details)?>
+            </p>
+            <?php
+                    }
+            ?>
+            
         </div>
-        <div class="container has-background-light p-3 box">
-                <div class="buttons">
+        <div class="container has-background-light p-3 box animate__animated animate__backInUp animate__delay-1s">
+            <h1 class="title animate__animated animate__backInLeft animate__delay-1s"><strong>Try It:</strong> </h1>
+                <div class="buttons animate__animated animate__backInUp animate__delay-2s">
                     <button class="button is-link p-3 m-3" onclick="runCode()" id="runButton"><i class="fa-solid fa-terminal"></i> &nbsp; Run Program</button>
                 </div>
-                <div class="columns" style="width: 100%">
+                <div class="columns animate__animated animate__backInUp animate__delay-3s" style="width: 100%">
                     <div class="column" id="blocklyDiv"
                         style="display: inline-block; height: 480px; width: 68%"></div>
-                    <div class="column ">
+                    <div class="column animate__animated animate__backInUp animate__delay-4s">
                     <textarea name="a_output" id="output"
                         style="display: inline-block; height: 455px;" readonly class="textarea has-fixed-size has-text-black is-link">
                     </textarea>
@@ -518,7 +531,7 @@
         <footer class="footer">
         <div class="content has-text-centered">
             <p>
-            <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+            <strong>PITA</strong> by <a href="https://github.com/setsunafjustin00208">Justin Ed Pierre Cabrales Tecson</a>. The source code is licensed
             <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
             is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
             </p>

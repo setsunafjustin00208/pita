@@ -123,6 +123,21 @@
 <div class="columns">
 <div class="column container is-2 box mt-3 ml-2">
         <aside class="menu">
+        <figure class="image is-128x128 ml-4">
+            <?php
+                if(!$session->get('img_pic'))
+                {
+                  echo '<img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">';
+                }
+                else
+                {
+                  ?>
+                  <img class="is-rounded" src="<?=$session->get('img_pic')?>">
+             <?php     
+                }
+
+            ?>
+          </figure>
             <p class="menu-label">
                 General
             </p>
