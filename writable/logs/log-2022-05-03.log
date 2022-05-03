@@ -67,3 +67,14 @@ CRITICAL - 2022-05-03 01:31:01 --> Unknown column 'activity_score' in 'field lis
 #7 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
 #8 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
 #9 {main}
+CRITICAL - 2022-05-03 02:12:08 --> Undefined property: stdClass::$activity_score
+#0 C:\xampp\htdocs\pita\app\Views\teacher\teacher_activity_results.php(202): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined prope...', 'C:\\xampp\\htdocs...', 202)
+#1 C:\xampp\htdocs\pita\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\pita\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\pita\system\Common.php(1089): CodeIgniter\View\View->render('teacher/teacher...', Array, true)
+#4 C:\xampp\htdocs\pita\app\Controllers\Views.php(106): view('teacher/teacher...')
+#5 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\Views->teacher_activity_results('9')
+#6 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Views))
+#7 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}

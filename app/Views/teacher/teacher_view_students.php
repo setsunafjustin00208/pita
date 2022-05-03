@@ -214,6 +214,23 @@
                                               </header>
                                               <section class="modal-card-body">
                                                 <form action="">
+                                                <div class="control mb-2">
+                                                  <figure class="image is-128x128 ml-4">
+                                                      <?php
+                                                          if(!$userRow->img_pic)
+                                                          {
+                                                            echo '<img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">';
+                                                          }
+                                                          else
+                                                          {
+                                                            ?>
+                                                            <img class="is-rounded" src="<?=$userRow->img_pic?>">
+                                                      <?php     
+                                                          }
+
+                                                      ?>
+                                                    </figure>
+                                                  </div>
                                                   <div class="field">
                                                       <label for="" class="label">Email:</label>
                                                   </div>

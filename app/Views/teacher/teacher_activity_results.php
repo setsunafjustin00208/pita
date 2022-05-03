@@ -199,7 +199,7 @@
               ?>
               <tr>
                   <td><?=$activityRow->fname?>&nbsp;<?=$activityRow->mname?>&nbsp;<?=$activityRow->lname?></td>
-                  <td><?=$activityRow->activity_score?></td>
+                  <td><?=$activityRow->student_score?></td>
                   <td><?=$activityRow->student_output?></td>
                   <td>
                     <div class="buttons">

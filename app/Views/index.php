@@ -58,6 +58,7 @@
     body, html
     {
         height: 100%;
+        scroll-behavior:smooth;
     }
 
     .bg 
@@ -87,10 +88,12 @@
 <body class="bg">
     <nav class="navbar is-info" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-            <a class="navbar-item">
+            <a class="navbar-item" aria-disabled="true">
                 <figure class="image">
                     <i><img src="<?=base_url('/design/images/PITA.png')?>" width="1280" height="1280"></i>
                 </figure>
+                &nbsp;
+               <strong>PITA</strong> 
             </a>
 
             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -311,7 +314,7 @@
                 </div>
                 <div class="columns animate__animated animate__backInUp animate__delay-3s" style="width: 100%">
                     <div class="column" id="blocklyDiv"
-                        style="display: inline-block; height: 480px; width: 68%"></div>
+                        style="display: inline-block; height: 480px; width: 100%"></div>
                     <div class="column animate__animated animate__backInUp animate__delay-4s">
                     <textarea name="a_output" id="output"
                         style="display: inline-block; height: 455px;" readonly class="textarea has-fixed-size has-text-black is-link">
