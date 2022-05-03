@@ -63,7 +63,7 @@
     .bg 
     {
         /* The image used */
-        background-image: url("<?=base_url('/design/images/bg.jpg')?>");
+        background-image: url("<?=base_url('/design/images/bg.gif')?>");
 
         /* Full height */
         height: 100%;
@@ -87,8 +87,10 @@
 <body class="bg">
     <nav class="navbar is-info" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-            <a class="navbar-item" href="https://bulma.io">
-            <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+            <a class="navbar-item">
+                <figure class="image">
+                    <i><img src="<?=base_url('/design/images/PITA.png')?>" width="1280" height="1280"></i>
+                </figure>
             </a>
 
             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -100,12 +102,12 @@
 
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
-            <a class="navbar-item">
+            <a href="<?=base_url()?>" class="navbar-item">
                 Home
             </a>
 
-            <a class="navbar-item">
-                Documentation
+            <a data-target="about" class="navbar-item">
+                About
             </a>
 
             <div class="navbar-item has-dropdown is-hoverable">
@@ -275,11 +277,20 @@
         <div class="container mb-6">
         <div class="container content has-background-light box p-3 mt-5 are-large animate__animated animate__backInUp">
             <section class="hero is-link is-small box animate__animated animate__backInLeft animate__delay-1s">
-                <div class="hero-body">
-                    <p class="title">
-                        Welcome To PITA
-                    </p>
-                    <p class="subtitle box has-background-info">
+                <div id="about" class="hero-body">
+                    <div class="columns">
+                      <div class="column is-2 animate__animated animate__bounceIn animate__delay-2s">
+                            <figure class="image is-128x128">
+                                <i><img src="<?=base_url('/design/images/PITA.png')?>" width="1280" height="1280"></i>
+                            </figure>
+                      </div>
+                      <div class="column animate__animated animate__bounceInDown animate__delay-2s">
+                        <p class="title pt-6">
+                            Welcome To PITA
+                        </p>
+                      </div>
+                    </div>
+                    <p class="subtitle box has-background-info animate__animated animate__bounceInUp animate__delay-3s">
                         The <u>Program-Block Interface for Teaching Application</u> is a Web based block by block programming interface with activities given by the teacher for further understanding how to code. In a Visual way!
                     </p>
                 

@@ -70,7 +70,7 @@
     <script src="<?=base_url('/design/js/popper.min.js')?>" type="text/javascript"></script>
     <script src="<?=base_url('/design/js/modal-fx.js')?>" type="text/javascript"></script>
     <script src="<?=base_url('/design/js/sweetalert2.all.min.js')?>" type="text/javascript"></script>
-    <title>Error Credentials</title>
+    <title>Log-In</title>
 </head>
 <body>
 <div class="hero is-fullheight is-link">
@@ -83,7 +83,7 @@
         <div class="box">
             <center>
             <div class="box image is-128x128">
-                    <img src="https://miro.medium.com/proxy/0*4fHRBbNhF_1jpdCM.jpeg">
+                    <img src="<?=base_url('/design/images/PITA.png')?>">
              </div>
              </center>
         <div class="title has-text-grey is-6">Please enter your right username and password.</div>
@@ -103,8 +103,7 @@
             
         </div>
         <p class="has-text-white">
-        <a href="">Sign Up</a> &nbsp;·&nbsp;
-        <a href="">Forgot Password</a> &nbsp;
+        <a href="<?=site_url('/views/signup_page')?>">Sign Up</a>
         </p>
       </div>
       

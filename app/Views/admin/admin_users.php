@@ -71,7 +71,9 @@
 <nav class="navbar is-link" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item" href="<?=site_url('/views/view_admin')?>">
-      <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+      <figure class="image">
+            <i><img src="<?=base_url('/design/images/PITA.png')?>" width="1280" height="1280"></i>
+      </figure>
     </a>
 
     <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -220,6 +222,23 @@
                                               </header>
                                               <section class="modal-card-body">
                                                 <form action="">
+                                                  <div class="control mb-2">
+                                                  <figure class="image is-128x128 ml-4">
+                                                      <?php
+                                                          if(!$userRow->img_pic)
+                                                          {
+                                                            echo '<img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">';
+                                                          }
+                                                          else
+                                                          {
+                                                            ?>
+                                                            <img class="is-rounded" src="<?=$userRow->img_pic?>">
+                                                      <?php     
+                                                          }
+
+                                                      ?>
+                                                    </figure>
+                                                  </div>
                                                   <div class="field">
                                                       <label for="" class="label">Email:</label>
                                                   </div>

@@ -69,7 +69,7 @@
         <div class="box">
             <center>
             <div class="box image is-128x128">
-                    <img src="https://miro.medium.com/proxy/0*4fHRBbNhF_1jpdCM.jpeg">
+                    <img src="<?=base_url('/design/images/PITA.png')?>">
              </div>
              </center>
         <div class="title has-text-grey is-6">Please enter your Verification that is sent to your email.</div>
