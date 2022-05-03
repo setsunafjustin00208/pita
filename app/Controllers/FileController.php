@@ -225,7 +225,7 @@
                     'teacher_id' => $queryRow->teacher_id ,
                     'student_id' => $student_id,
                     'activity_id' => $activity_id,
-                    'activity_score' => $queryRow->activity_score,
+                    'student_score' => $queryRow->activity_score,
                     'student_output' => $output,
                     'student_evidence' => $filepath2,
                     'grade' => $grade,
@@ -241,10 +241,10 @@
                 $score_builder =  $this->db->table('scores');
                 $data_score = 
                 [
-                    'teacher_id' => $queryRow->activity_score,
+                    'teacher_id' => $queryRow->teacher_id,
                     'student_id' => $student_id,
                     'activity_id' => $activity_id,
-                    'activity_score' => 0,
+                    'student_score' => 0,
                     'student_output' => $output,
                     'student_evidence' => $filepath2,
                     'grade' => $grade,

@@ -106,40 +106,25 @@
                 Home
             </a>
 
-            <a data-target="about" class="navbar-item">
+            <a href="#about" class="navbar-item">
                 About
             </a>
-
-            <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-link">
-                More
-                </a>
-
-                <div class="navbar-dropdown">
-                <a class="navbar-item">
-                    About
-                </a>
-                <a class="navbar-item">
-                    Jobs
-                </a>
-                <a class="navbar-item">
-                    Contact
-                </a>
-                <hr class="navbar-divider">
-                <a class="navbar-item">
-                    Report an issue
-                </a>
-                </div>
-            </div>
+            <a href="#try" class="navbar-item">
+                Try it!
+            </a>
             </div>
 
             <div class="navbar-end">
                 <div class="navbar-item">
                     <div class="buttons">
                         <a data-target="modal-trigger-2" class="button is-primary modal-trigger">
+                        <i class="fa-solid fa-user-plus"></i>
+                        &nbsp;
                             <strong>Sign up</strong>
                         </a>
                         <a data-target="modal-trigger" class="button is-link modal-trigger">
+                        <i class="fa-solid fa-right-to-bracket"></i>
+                            &nbsp;
                             Log in
                         </a>
                        <!-- <a href="<?=site_url('databasecontroller/email_test')?>" class="button is-link modal-trigger">
@@ -297,7 +282,7 @@
                 </div>
                 </section>
             <div class="content box animate__animated animate__backInRight animate__delay-1s">
-                <h2>ANNOUNCEMENT:</h2>
+                <h2 class="animate__animated animate__bounceIn animate__delay-2s">ANNOUNCEMENT:</h2>
                 <?php
                         $announcement_builder = db_connect()->table('announcements');
                         $announcement_builder->orderBy('a_id','DESC');
@@ -308,8 +293,8 @@
                         if(isset($announcementRow))
                         {
                 ?>
-                <h3><?=$announcementRow->announcement_title?></h3>
-                <p>
+                <h3 class="animate__animated animate__bounceInLeft animate__delay-3s"><?=$announcementRow->announcement_title?></h3>
+                <p class="animate__animated animate__bounceInRight animate__delay-4s">
                     <?=nl2br($announcementRow->announcement_details)?>
                 </p>
                 <?php
@@ -319,7 +304,7 @@
             
             
         </div>
-        <div class="container has-background-light p-3 box animate__animated animate__backInUp animate__delay-1s">
+        <div id="try" class="container has-background-light p-3 box animate__animated animate__backInUp animate__delay-1s">
             <h1 class="title animate__animated animate__backInLeft animate__delay-2s"><strong>Try It:</strong> </h1>
                 <div class="buttons animate__animated animate__backInUp animate__delay-2s">
                     <button class="button is-link p-3 m-3" onclick="runCode()" id="runButton"><i class="fa-solid fa-terminal"></i> &nbsp; Run Program</button>

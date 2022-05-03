@@ -193,6 +193,7 @@
                 <tr>
                           <th><abbr title="Activity_title">ActTitle</abbr></th>
                           <th><abbr title="Activity_details">ActBdy</abbr></th>
+                          <th><abbr title="Activity_output">output</abbr></th>
                           <th><abbr title="Actions">Actn</abbr></th>
                 </tr>
             </thead>
@@ -207,6 +208,7 @@
               <tr>
                   <td><?=$activityRow->activity_title?></td>
                   <td><?=$activityRow->activity_details?></td>
+                  <td><?=$activityRow->activity_output?></td>
                   <td>
                   <div class="buttons">
                       <?php
@@ -215,7 +217,40 @@
                         $rowscore = $ver->getRow();
                         if(isset($rowscore))
                         {
+                      ?>
+                        <a data-target="modal-trigger-view<?=$rowscore->score_id?>" class="button is-warning is-small modal-trigger"><i class="fa fa-eye"></i></a>
+                                <div id= "modal-trigger-view<?=$rowscore->score_id?>" class="modal modal-fx-fadeInScale">
+                                  <div class="modal-background"></div>
+                                      <div class="modal-card modal-size">
+                                              <header class="modal-card-head">
+                                                  <p class="modal-card-title">Results</p>
+                                                  <button class="delete" aria-label="close"></button>
+                                              </header>
+                                              <section class="modal-card-body">
+                                                <form>
+                                                <div class="field">
+                                                      <label for="" class="label">Score</label>
+                                                  </div>
+                                                  <div class="control mb-5">
+                                                      <input type="text" value="<?=$rowscore->student_score?>/<?=$activityRow->activity_score?>" class="input is-link" disabled>
+                                                  </div>
+                                                  <div class="field">
+                                                      <label for="" class="label">Code output</label>
+                                                  </div>
+                                                  <div class="control">
+                                                     <figure class="image">
+                                                        <img src="<?=$rowscore->student_evidence?>">
+                                                     </figure>
+                                                  </div>
+                                                </form>
+                                              </section>
+                                              <footer class="modal-card-foot">
 
+                                                  <button class="button is-link is-small"><i class="fa fa-close"></i>&nbsp; Close</button>
+                                              </footer>
+                                      </div>
+                              </div>
+                      <?php 
                         }
                         else
                         {

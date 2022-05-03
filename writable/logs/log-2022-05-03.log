@@ -1,0 +1,69 @@
+CRITICAL - 2022-05-03 01:13:55 --> Undefined variable $actvity_builder
+#0 C:\xampp\htdocs\pita\app\Views\student\student_activity.php(202): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 202)
+#1 C:\xampp\htdocs\pita\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\pita\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\pita\system\Common.php(1089): CodeIgniter\View\View->render('student/student...', Array, true)
+#4 C:\xampp\htdocs\pita\app\Controllers\Views.php(113): view('student/student...')
+#5 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\Views->student_activity()
+#6 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Views))
+#7 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2022-05-03 01:14:09 --> Column 'grade' in where clause is ambiguous
+CRITICAL - 2022-05-03 01:14:09 --> Column 'grade' in where clause is ambiguous
+#0 C:\xampp\htdocs\pita\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\pita\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\pita\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\pita\system\Database\BaseBuilder.php(1588): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\pita\app\Views\student\student_activity.php(204): CodeIgniter\Database\BaseBuilder->getWhere(Array)
+#5 C:\xampp\htdocs\pita\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#6 C:\xampp\htdocs\pita\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#7 C:\xampp\htdocs\pita\system\Common.php(1089): CodeIgniter\View\View->render('student/student...', Array, true)
+#8 C:\xampp\htdocs\pita\app\Controllers\Views.php(113): view('student/student...')
+#9 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\Views->student_activity()
+#10 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Views))
+#11 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#13 {main}
+ERROR - 2022-05-03 01:14:29 --> Column 'grade' in where clause is ambiguous
+CRITICAL - 2022-05-03 01:14:29 --> Column 'grade' in where clause is ambiguous
+#0 C:\xampp\htdocs\pita\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\pita\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\pita\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\pita\system\Database\BaseBuilder.php(1588): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\pita\app\Views\student\student_activity.php(204): CodeIgniter\Database\BaseBuilder->getWhere(Array)
+#5 C:\xampp\htdocs\pita\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#6 C:\xampp\htdocs\pita\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#7 C:\xampp\htdocs\pita\system\Common.php(1089): CodeIgniter\View\View->render('student/student...', Array, true)
+#8 C:\xampp\htdocs\pita\app\Controllers\Views.php(113): view('student/student...')
+#9 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\Views->student_activity()
+#10 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Views))
+#11 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#13 {main}
+CRITICAL - 2022-05-03 01:27:51 --> Attempt to read property "activity_score" on null
+#0 C:\xampp\htdocs\pita\app\Controllers\FileController.php(244): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read...', 'C:\\xampp\\htdocs...', 244)
+#1 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\FileController->validate_output()
+#2 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\FileController))
+#3 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-05-03 01:29:24 --> Attempt to read property "teacher_id" on null
+#0 C:\xampp\htdocs\pita\app\Controllers\FileController.php(244): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read...', 'C:\\xampp\\htdocs...', 244)
+#1 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\FileController->validate_output()
+#2 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\FileController))
+#3 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+ERROR - 2022-05-03 01:31:01 --> Unknown column 'activity_score' in 'field list'
+CRITICAL - 2022-05-03 01:31:01 --> Unknown column 'activity_score' in 'field list'
+#0 C:\xampp\htdocs\pita\system\Database\MySQLi\Connection.php(292): mysqli->query('INSERT INTO `sc...', 0)
+#1 C:\xampp\htdocs\pita\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sc...')
+#2 C:\xampp\htdocs\pita\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sc...')
+#3 C:\xampp\htdocs\pita\system\Database\BaseBuilder.php(1771): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sc...', Array, false)
+#4 C:\xampp\htdocs\pita\app\Controllers\FileController.php(236): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\xampp\htdocs\pita\system\CodeIgniter.php(832): App\Controllers\FileController->validate_output()
+#6 C:\xampp\htdocs\pita\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\FileController))
+#7 C:\xampp\htdocs\pita\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\pita\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}

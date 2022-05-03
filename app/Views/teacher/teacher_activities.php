@@ -199,10 +199,10 @@
                                     <textarea class="textarea is-link has-fixed-size" name="activity_details" placeholder="Instructions"></textarea>
                                   </div>
                                   <div class="field">
-                                     <label for="" class="label">Activity Title</label>
+                                     <label for="" class="label">Activity output</label>
                                   </div>
                                   <div class="control mb-5">
-                                    <input type="text" name="activity_output" placeholder="Output" class="input is-link">
+                                    <textarea class="textarea is-link has-fixed-size" name="activity_output" placeholder="Instructions"></textarea>
                                   </div>
                                   <div class="field">
                                      <label for="" class="label">Activity Score</label>
@@ -276,7 +276,7 @@
                                      <label for="" class="label">Activity output</label>
                                   </div>
                                   <div class="control mb-5">
-                                    <input type="text" name="activity_output" value="<?=$activityRow->activity_output?>" class="input is-link">
+                                    <textarea class="textarea is-link has-fixed-size" name="activity_output" placeholder="Instructions"><?=$activityRow->activity_output?></textarea>
                                   </div>
                                   <div class="field">
                                      <label for="" class="label">Activity Score</label>
