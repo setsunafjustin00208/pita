@@ -173,7 +173,7 @@
         <div class="column is-3">
         <div id="file-js-example" class="file has-name is-small is-boxed ml-4 pr-3">
                   <label class="file-label">
-                    <input class="file-input" type="file" name="userfile2">
+                    <input class="file-input" type="file" name="userfile2" required>
                     <span class="file-cta">
                       <span class="file-icon">
                         <i class="fas fa-upload"></i>

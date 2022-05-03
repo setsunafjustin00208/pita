@@ -16,6 +16,8 @@ class Views extends BaseController
     }
     public function signup_page()
     {
+        $_SESSION['MayUserNaIto'] = "Enter your personal Data";
+        $_SESSION['MayUserNaItoTitle'] = "Sign up";
         echo view('sign_up');
     }
     public function verification_page()

@@ -24,20 +24,20 @@
     }
                 if(isset($_SESSION['MayUserNaIto']))
                 {
-                    $loginmessage  = $_SESSION['MayUserNaIto'];
+                    $loginmessage2  = $_SESSION['MayUserNaIto'];
                 }
                 else
                 {
-                    $loginmessage  = "";
+                    $loginmessage2  = "Enter your personal Data";
                 }
 
                 if(isset($_SESSION['MayUserNaItoTitle']))
                 {
-                    $loginmessagetitle  = $_SESSION['MayUserNaItoTitle'];
+                    $loginmessagetitle2  = $_SESSION['MayUserNaItoTitle'];
                 }
                 else
                 {
-                    $loginmessage  = "";
+                    $loginmessage2  = "Sign up";
                 }
 ?>
 <!DOCTYPE html>
@@ -56,16 +56,16 @@
     <script src="<?=base_url('/design/js/popper.min.js')?>" type="text/javascript"></script>
     <script src="<?=base_url('/design/js/modal-fx.js')?>" type="text/javascript"></script>
     <script src="<?=base_url('/design/js/sweetalert2.all.min.js')?>" type="text/javascript"></script>
-    <title>Error Credentials</title>
+    <title>Sign-Up</title>
 </head>
 <body>
 <div class="hero is-fullheight is-link">
 <div class="hero-body">
     <div class="container is-max-desktop has-text-centered">
       <div class="column is-5 is-offset-3">
-      <h1 class="title has-text-white is-4"><?=$loginmessagetitle?></h1>
+      <h1 class="title has-text-white is-4"><?=$loginmessagetitle2?></h1>
         <hr class="login-hr">
-        <p class="subtitle is-6 has-text-white"><?=$loginmessage?>!</p>
+        <p class="subtitle is-6 has-text-white"><?=$loginmessage2?>!</p>
         <div class="box">
             <center>
             <div class="box image is-128x128">

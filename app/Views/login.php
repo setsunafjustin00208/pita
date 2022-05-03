@@ -40,17 +40,10 @@
                 {
                     $loginmessage  = $_SESSION['wrongLogIn'];
                 }
-                else
-                {
-                    $loginmessage = "Log-In To Your account";
-                }
+               
                 if(isset($_SESSION['wrongLogInTitle']))
                 {
                     $loginmessageTitle  = $_SESSION['wrongLogInTitle'];
-                }
-                else
-                {
-                    $loginmessageTitle = "Log-In To Your account";
                 }
                 
 ?>

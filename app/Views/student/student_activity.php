@@ -218,7 +218,7 @@
                         if(isset($rowscore))
                         {
                       ?>
-                        <a data-target="modal-trigger-view<?=$rowscore->score_id?>" class="button is-warning is-small modal-trigger"><i class="fa fa-eye"></i></a>
+                        <a data-target="modal-trigger-view<?=$rowscore->score_id?>" class="button is-warning is-small modal-trigger"><i class="fa fa-eye"></i>&nbsp; View my output</a>
                                 <div id= "modal-trigger-view<?=$rowscore->score_id?>" class="modal modal-fx-fadeInScale">
                                   <div class="modal-background"></div>
                                       <div class="modal-card modal-size">
@@ -257,7 +257,7 @@
                     
                        
                       ?>
-                        <a href="<?=site_url('/views/student_do_activity')?>/<?=$activityRow->activity_id?>" class="button is-link is-small"><i class="fa fa-eye"></i></a>
+                        <a href="<?=site_url('/views/student_do_activity')?>/<?=$activityRow->activity_id?>" class="button is-link is-small"><i class="fa fa-eye"></i>&nbsp; Do the activity</a>
                     <?php
                          }
                       
