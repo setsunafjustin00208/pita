@@ -12,6 +12,8 @@ class Views extends BaseController
 
     public function login_page()
     {
+        $_SESSION['wrongLogIn'] = "Login your Account";
+        $_SESSION['wrongLogInTitle'] = "Login";
         echo view('login');
     }
     public function signup_page()

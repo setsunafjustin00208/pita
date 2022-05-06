@@ -66,6 +66,7 @@
     <script src="<?=base_url('/design/js/javascript_compressed.js')?>"></script>
     <script src="<?=base_url('/design/js/msg/js/en.js')?>"></script>
     <script src="<?=base_url('/design/js/wait_block.js')?>"></script>
+    <script src="<?=base_url('/design/js/storage.js')?>"></script>
     <title>Hello&nbsp;<?=session()->get('fname')?></title>
 </head>
 <body>
@@ -236,6 +237,8 @@
                                 demoWorkspace);
 
         // Exit is used to signal the end of a script.
+        setTimeout(BlocklyStorage.restoreBlocks, 0);
+        BlocklyStorage.backupOnUnload();
         Blockly.JavaScript.addReservedWords('exit');
 
         var outputArea = document.getElementById('output');
