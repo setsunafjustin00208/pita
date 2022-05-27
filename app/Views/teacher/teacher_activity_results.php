@@ -184,7 +184,7 @@
                           <th><abbr title="Student name">Student Name</abbr></th>
                           <th><abbr title="Score">Score</abbr></th>
                           <th><abbr title="Student Output">Student Output</abbr></th>
-                          <th><abbr title="Student Evidence">View Code</abbr></th>
+                          <th><abbr title="View and score activity">Action</abbr></th>
                 </tr>
             </thead>
             <tbody>
@@ -203,7 +203,7 @@
                   <td><?=$activityRow->student_output?></td>
                   <td>
                     <div class="buttons">
-                      <a data-target="modal-trigger-view<?=$activityRow->activity_id?>" class="button is-warning is-small modal-trigger"><i class="fa fa-eye"></i></a>
+                      <a data-target="modal-trigger-view<?=$activityRow->activity_id?>" class="button is-warning is-small modal-trigger"><i class="fa fa-eye"></i>&nbsp; View code</a>
                       <div id= "modal-trigger-view<?=$activityRow->activity_id?>" class="modal modal-fx-fadeInScale">
                           <div class="modal-background"></div>
                             <div class="modal-card modal-size">
@@ -218,6 +218,33 @@
                                 <footer class="modal-card-foot">
                                   <button class="button">Cancel</button>
                                 </footer>
+                              </div>
+                        </div>
+                        <a data-target="modal-trigger-score<?=$activityRow->activity_id?>" class="button is-link is-small modal-trigger"><i class="fa fa-star"></i>&nbsp; Score</a>
+                        <div id= "modal-trigger-score<?=$activityRow->activity_id?>" class="modal modal-fx-fadeInScale">
+                          <div class="modal-background"></div>
+                            <div class="modal-card modal-size">
+                              <header class="modal-card-head">
+                                <p class="modal-card-title">View Code</p>
+                                  <button class="delete" aria-label="close"></button>
+                              </header>
+                              <section class="modal-card-body">
+                                  <?=form_open('databasecontroller/validate_student_activity')?>
+                                    <input type="hidden" name="score_id" value = "<?=$activityRow->score_id?>">
+                                    <input type="hidden" name="activity_id" value = "<?=$_SESSION['activity_id']?>">
+                                    <div class="field">
+                                       <label for="" class="label">Score</label>
+                                    </div>
+                                    <div class="control">
+                                        <input type="number" name="student_score" value="<?=$activityRow->student_score?>" style="width: 20%;" class="input is-link">
+                                    </div>
+                              </section>
+                                <footer class="modal-card-foot">
+                                  <button class="button is-success">Validate Activity</button>
+                                </form>
+                                  <button class="button">Cancel</button>
+                                </footer>
+                             
                               </div>
                         </div>
                     </div>

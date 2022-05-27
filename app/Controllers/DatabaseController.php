@@ -378,6 +378,19 @@
             $delete_announcement_function->delete($_POST);
             return redirect()->to('/views/teacher_actvities');
         }
+        public function validate_student_activity()
+        {
+           $update_sore_id = $_POST['score_id'];
+           $score_input = $_POST['student_score'];
+           $update_score_builder = $this->db->table('scores');
+           $set_data =['student_score' => $score_input];
+           $update_score_builder->set($set_data);
+           $update_score_builder->where('score_id',$update_sore_id);
+           $update_score_builder->update();
+           $_SESSION['activity_id'] = $_POST['activity_id'];
+           echo view('teacher/teacher_activity_results');
+
+        }
          
     }
 

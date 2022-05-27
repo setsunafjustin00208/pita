@@ -38,6 +38,7 @@
     <link rel="stylesheet" href="<?=base_url('/design/css/datatables.min.css')?>" type="text/css">
     <link rel="stylesheet" href="<?=base_url('/design/css/dataTables.bulma.css')?>" type="text/css">
     <link rel="stylesheet" href="<?=base_url('/design/css/jquery.dataTables.css')?>" type="text/css">
+    <link rel="icon" href="<?=base_url('/design/images/favicon.ico')?>" type="image/ico">
     <script src="<?=base_url('/design/js/mine.js')?>" type="text/javascript"></script>
     <script src="<?=base_url('/design/js/all.js')?>" type="text/javascript"></script>
     <script src="<?=base_url('/design/js/jquery-3.6.0.js')?>" type="text/javascript"></script>
@@ -130,9 +131,9 @@
                             &nbsp;
                             Log in
                         </a>
-                       <!-- <a href="<?=site_url('databasecontroller/email_test')?>" class="button is-link modal-trigger">
+                       <!--<a href="<?=site_url('databasecontroller/email_test')?>" class="button is-link modal-trigger">
                             Test email
-                        </a> -->
+                        </a>-->
                     </div>
                 </div>
             </div>
@@ -274,7 +275,7 @@
                       </div>
                       <div class="column animate__animated animate__bounceInDown animate__delay-2s">
                         <p class="title pt-6">
-                            Welcome To PITA
+                              Welcome To PITA
                         </p>
                       </div>
                     </div>
@@ -299,6 +300,7 @@
                 <h3 class="animate__animated animate__bounceInLeft animate__delay-3s"><?=$announcementRow->announcement_title?></h3>
                 <p class="animate__animated animate__bounceInRight animate__delay-4s">
                     <?=nl2br($announcementRow->announcement_details)?>
+                    
                 </p>
                 <?php
                         }
@@ -337,7 +339,6 @@
                         </block>
                         </value>
                     </block>
-                    <block type="controls_whileUntil"></block>
                     </category>
                     <category name="Math" colour="%{BKY_MATH_HUE}">
                     <block type="math_number">
@@ -423,9 +424,9 @@
                     highlightPause = false;
                     runButton.disabled = '';
 
-                    if (clearOutput) {
-                        outputArea.value = 'Program output:\n=================\n';
-                    }
+                        if (clearOutput) {
+                            outputArea.value = 'Program output:\n=================\n';
+                        }
                     }
 
                     function generateCodeAndLoadIntoInterpreter() {
@@ -439,10 +440,10 @@
 
                     function resetInterpreter() {
                     myInterpreter = null;
-                    if (runner) {
-                        clearTimeout(runner);
-                        runner = null;
-                    }
+                        if (runner) {
+                            clearTimeout(runner);
+                            runner = null;
+                        }
                     }
 
                     function runCode() {

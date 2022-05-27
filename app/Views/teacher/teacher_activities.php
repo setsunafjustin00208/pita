@@ -311,7 +311,7 @@
                                         </footer>
                                 </div>
                               </div>
-                              <a href="<?=site_url('/views/teacher_activity_results')?>/<?=$activityRow->activity_id?>" class="button is-link is-small"><i class="fa fa-eye"></i></a>
+                              <a href="<?=site_url('/views/teacher_activity_results')?>/<?=$activityRow->activity_id?>/<?=$activityRow->activity_score?>" class="button is-link is-small"><i class="fa fa-eye"></i></a>
                     </div>
                   </td>
               </tr>

@@ -51,6 +51,8 @@
     <link rel="stylesheet" href="<?=base_url('/design/css/datatables.min.css')?>" type="text/css">
     <link rel="stylesheet" href="<?=base_url('/design/css/dataTables.bulma.css')?>" type="text/css">
     <link rel="stylesheet" href="<?=base_url('/design/css/jquery.dataTables.css')?>" type="text/css">
+    <link rel="stylesheet" href="<?=base_url('/design/css/codemirror.css')?>" type="text/css">
+    <link rel="stylesheet" href="<?=base_url('/design/css/theme/ayu-dark.css')?>" type="text/css">
     <script src="<?=base_url('/design/js/mine.js')?>" type="text/javascript"></script>
     <script src="<?=base_url('/design/js/all.js')?>" type="text/javascript"></script>
     <script src="<?=base_url('/design/js/jquery-3.6.0.js')?>" type="text/javascript"></script>
@@ -63,10 +65,13 @@
     <script src="<?=base_url('/design/js/acorn_interpreter.js')?>"></script>
     <script src="<?=base_url('/design/js/blockly_compressed.js')?>"></script>
     <script src="<?=base_url('/design/js/blocks_compressed.js')?>"></script>
+    <script src="<?=base_url('/design/js/python_compressed.js')?>"></script>
     <script src="<?=base_url('/design/js/javascript_compressed.js')?>"></script>
     <script src="<?=base_url('/design/js/msg/js/en.js')?>"></script>
     <script src="<?=base_url('/design/js/wait_block.js')?>"></script>
     <script src="<?=base_url('/design/js/storage.js')?>"></script>
+    <script src="<?=base_url('/design/js/codemirror.js')?>"></script>
+    <script src="<?=base_url('/design/js/mode/python/python.js')?>"></script>
     <title>Hello&nbsp;<?=session()->get('fname')?></title>
 </head>
 <body>
@@ -171,8 +176,28 @@
           </p>
         </div>
       </section>
-    <div class="buttons">
-            <button class="button is-link p-3 m-3" onclick="runCode()" id="runButton"><i class="fa-solid fa-terminal"></i> &nbsp; Run Program</button>
+    <div class="buttons columns">
+      <div class="column is-8">
+         <button class="button is-link p-3 m-3" onclick="runCode()" id="runButton"><i class="fa-solid fa-terminal"></i> &nbsp; Run Program</button>
+      </div>
+      <div class="column is-4">
+       <a id="gcode" class="button is-success p-3 m-3 modal-trigger" data-target="modal-trigger-2"><i class="fa-brands fa-python"></i> &nbsp; Generated Code In python</a>
+       <div id= "modal-trigger-2" class="modal modal-fx-fadeInScale">
+            <div class="modal-background"></div>
+                <div class="modal-card modal-size">
+                        <header class="modal-card-head">
+                            <p class="modal-card-title"><strong>View Code</strong></p>
+                            <button class="delete" aria-label="close"></button>
+                        </header>
+                        <section class="modal-card-body">
+                          <textarea id="code" name="code"></textarea>
+                        </section>
+                        <footer class="modal-card-foot">
+                            <button class="button is-danger">Close</button>
+                        </footer>
+                </div>
+        </div>
+      </div>
     </div>
     <div class="columns" style="width: 100%">
         <div class="column" id="blocklyDiv"
@@ -199,7 +224,6 @@
             </block>
             </value>
         </block>
-        <block type="controls_whileUntil"></block>
         </category>
         <category name="Math" colour="%{BKY_MATH_HUE}">
         <block type="math_number">
@@ -229,6 +253,14 @@
     </xml>
 
     <script>
+       var editor = CodeMirror.fromTextArea(document.getElementById('code'), {
+                    lineNumbers: true,
+                    mode: 'text/x-python',
+                    theme: 'ayu-dark',
+                    readOnly: true,
+        }); 
+      
+        
         var demoWorkspace = Blockly.inject('blocklyDiv',
             {media: '<?=base_url()?>/design/media/',
             toolbox: document.getElementById('toolbox')});
@@ -239,7 +271,6 @@
         setTimeout(BlocklyStorage.restoreBlocks, 0);
         BlocklyStorage.backupOnUnload();
         Blockly.JavaScript.addReservedWords('exit');
-
         var outputArea = document.getElementById('output');
         var runButton = document.getElementById('runButton');
         var myInterpreter = null;
@@ -276,6 +307,7 @@
 
         var highlightPause = false;
         var latestCode = '';
+        var latestCodePython = '';
 
         function highlightBlock(id) {
         demoWorkspace.highlightBlock(id);
@@ -297,6 +329,8 @@
         Blockly.JavaScript.STATEMENT_PREFIX = 'highlightBlock(%1);\n';
         Blockly.JavaScript.addReservedWords('highlightBlock');
         latestCode = Blockly.JavaScript.workspaceToCode(demoWorkspace);
+        latestCodePython = Blockly.Python.workspaceToCode(demoWorkspace);
+        
 
         resetStepUi(true);
         }
@@ -315,10 +349,30 @@
             // Clear the program output.
             resetStepUi(true);
             runButton.disabled = 'disabled';
+             // Begin execution
+             highlightPause = false;
+            myInterpreter = new Interpreter(latestCode, initApi);
+            runner = function() {
+                if (myInterpreter) {
+                var hasMore = myInterpreter.run();
+                if (hasMore) {
+                    // Execution is currently blocked by some async call.
+                    // Try again later.
+                    setTimeout(runner, 10);
+                } else {
+                    // Program is complete.
+                    outputArea.value += '\n\n<< Program complete >>';
+                    editor.setValue(latestCodePython);
+                    resetInterpreter();
+                    resetStepUi(false);
+                }
+                }
+            };
+            runner();
 
             // And then show generated code in an alert.
             // In a timeout to allow the outputArea.value to reset first.
-            setTimeout(function() {
+            /*setTimeout(function() {
                 alert('Ready to execute the following code\n' +
             '===================================\n' +
             latestCode);
@@ -342,7 +396,7 @@
                 }
             };
             runner();
-            }, 1);
+            }, 1);*/
             return;
         }
         }
@@ -356,6 +410,7 @@
             generateCodeAndLoadIntoInterpreter();
         }
         });
+
     </script>
     </div>
 </div>

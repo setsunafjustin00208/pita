@@ -188,6 +188,7 @@
            
             $output = nl2br($_POST['a_output']);
             $student_id = $_POST['student_id'];
+            $teacher_id = $_POST['teacher_id'];
             $activity_id = $_POST['activity_id'];
             $grade = $_POST['grade'];
             $section = $_POST['section'];
@@ -213,7 +214,25 @@
                 $img2->move(ROOTPATH.'public/assets/uploads',$namefile2);
                 $filepath2 = base_url().'/assets/uploads/'.$namefile2;
 
-           $output_builder = $this->db->table('actvities');
+                $activty_builder = $this->db->table('scores');
+                $activity_data = 
+                [
+                    'teacher_id' => $teacher_id,
+                    'student_id' => $student_id,
+                    'activity_id' => $activity_id,
+                    'student_score' => 0,
+                    'student_output' => $output,
+                    'student_evidence' => $filepath2,
+                    'grade' => $grade,
+                    'section' => $section,
+                    'date_created' => date("y_m_d H:i:s"),
+                    'date_modified' => date("y_m_d H:i:s")
+                ];
+                
+                $activty_builder->insert($activity_data);
+                return redirect()->to('/views/student_activity');
+
+        /*   $output_builder = $this->db->table('actvities');
            $query_output = $output_builder->getWhere(['activity_output' => $output],1);
            $queryRow = $query_output->getRow();
            if(isset($queryRow))
@@ -254,8 +273,8 @@
                 ];
                 $score_builder->insert($data_score);
                 return redirect()->to('/views/student_activity');
-           }
-        }
+           } */
+        } 
         
     }
 

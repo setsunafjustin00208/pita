@@ -1,0 +1,41 @@
+CRITICAL - 2022-05-12 16:50:32 --> Attempt to read property "teacher_id" on null
+#0 C:\Program Files\xampp-pita\htdocs\app\Controllers\FileController.php(244): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read...', 'C:\\Program File...', 244)
+#1 C:\Program Files\xampp-pita\htdocs\system\CodeIgniter.php(832): App\Controllers\FileController->validate_output()
+#2 C:\Program Files\xampp-pita\htdocs\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\FileController))
+#3 C:\Program Files\xampp-pita\htdocs\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\Program Files\xampp-pita\htdocs\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-05-12 16:51:19 --> Attempt to read property "teacher_id" on null
+#0 C:\Program Files\xampp-pita\htdocs\app\Controllers\FileController.php(244): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read...', 'C:\\Program File...', 244)
+#1 C:\Program Files\xampp-pita\htdocs\system\CodeIgniter.php(832): App\Controllers\FileController->validate_output()
+#2 C:\Program Files\xampp-pita\htdocs\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\FileController))
+#3 C:\Program Files\xampp-pita\htdocs\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\Program Files\xampp-pita\htdocs\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-05-12 16:54:38 --> Attempt to read property "teacher_id" on null
+#0 C:\Program Files\xampp-pita\htdocs\app\Controllers\FileController.php(244): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read...', 'C:\\Program File...', 244)
+#1 C:\Program Files\xampp-pita\htdocs\system\CodeIgniter.php(832): App\Controllers\FileController->validate_output()
+#2 C:\Program Files\xampp-pita\htdocs\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\FileController))
+#3 C:\Program Files\xampp-pita\htdocs\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\Program Files\xampp-pita\htdocs\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-05-12 17:40:08 --> Undefined property: stdClass::$activity_score
+#0 C:\Program Files\xampp-pita\htdocs\app\Views\teacher\teacher_activity_results.php(238): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined prope...', 'C:\\Program File...', 238)
+#1 C:\Program Files\xampp-pita\htdocs\system\View\View.php(210): include('C:\\Program File...')
+#2 C:\Program Files\xampp-pita\htdocs\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\Program Files\xampp-pita\htdocs\system\Common.php(1089): CodeIgniter\View\View->render('teacher/teacher...', Array, true)
+#4 C:\Program Files\xampp-pita\htdocs\app\Controllers\Views.php(110): view('teacher/teacher...')
+#5 C:\Program Files\xampp-pita\htdocs\system\CodeIgniter.php(832): App\Controllers\Views->teacher_activity_results('10')
+#6 C:\Program Files\xampp-pita\htdocs\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Views))
+#7 C:\Program Files\xampp-pita\htdocs\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\Program Files\xampp-pita\htdocs\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2022-05-12 18:01:48 --> Invalid file: views/teacher_activity_results.php
+#0 C:\Program Files\xampp-pita\htdocs\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('views/teacher_a...')
+#1 C:\Program Files\xampp-pita\htdocs\system\Common.php(1089): CodeIgniter\View\View->render('views/teacher_a...', Array, true)
+#2 C:\Program Files\xampp-pita\htdocs\app\Controllers\DatabaseController.php(391): view('views/teacher_a...')
+#3 C:\Program Files\xampp-pita\htdocs\system\CodeIgniter.php(832): App\Controllers\DatabaseController->validate_student_activity()
+#4 C:\Program Files\xampp-pita\htdocs\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabaseController))
+#5 C:\Program Files\xampp-pita\htdocs\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\Program Files\xampp-pita\htdocs\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}

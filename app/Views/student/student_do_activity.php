@@ -47,6 +47,8 @@
       
 
     }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -61,6 +63,8 @@
     <link rel="stylesheet" href="<?=base_url('/design/css/datatables.min.css')?>" type="text/css">
     <link rel="stylesheet" href="<?=base_url('/design/css/dataTables.bulma.css')?>" type="text/css">
     <link rel="stylesheet" href="<?=base_url('/design/css/jquery.dataTables.css')?>" type="text/css">
+    <link rel="stylesheet" href="<?=base_url('/design/css/codemirror.css')?>" type="text/css">
+    <link rel="stylesheet" href="<?=base_url('/design/css/theme/ayu-dark.css')?>" type="text/css">
     <script src="<?=base_url('/design/js/mine.js')?>" type="text/javascript"></script>
     <script src="<?=base_url('/design/js/all.js')?>" type="text/javascript"></script>
     <script src="<?=base_url('/design/js/jquery-3.6.0.js')?>" type="text/javascript"></script>
@@ -73,10 +77,13 @@
     <script src="<?=base_url('/design/js/acorn_interpreter.js')?>"></script>
     <script src="<?=base_url('/design/js/blockly_compressed.js')?>"></script>
     <script src="<?=base_url('/design/js/blocks_compressed.js')?>"></script>
+    <script src="<?=base_url('/design/js/python_compressed.js')?>"></script>
     <script src="<?=base_url('/design/js/javascript_compressed.js')?>"></script>
     <script src="<?=base_url('/design/js/msg/js/en.js')?>"></script>
     <script src="<?=base_url('/design/js/wait_block.js')?>"></script>
     <script src="<?=base_url('/design/js/storage.js')?>"></script>
+    <script src="<?=base_url('/design/js/codemirror.js')?>"></script>
+    <script src="<?=base_url('/design/js/mode/python/python.js')?>"></script>
     <title>Hello&nbsp;<?=session()->get('fname')?></title>
 </head>
 <body>
@@ -162,17 +169,18 @@
         </aside>
     </div>
     <div class="column container p-4 mt-3">
-    <?=form_open_multipart('filecontroller/validate_output')?>
-    <input type="hidden"  name="activity_id" value="<?=$_SESSION['act_id']?>">
-    <input type="hidden"  name="student_id" value="<?=$session->get('user_id')?>">
-    <input type="hidden"  name="grade" value="<?=$session->get('grade')?>">
-    <input type="hidden"  name="section" value="<?=$session->get('section')?>">
     <div class="buttons columns">
         <div class="column is-9">
          <button class="button is-link p-3 m-3 mt-6" onclick="runCode()" id="runButton"><i class="fa fa-terminal" aria-hidden="true"></i>&nbsp; Run Program</button>
         </div>
         <div class="column is-3">
-        <div id="file-js-example" class="file has-name is-small is-boxed ml-4 pr-3">
+        <?=form_open_multipart('filecontroller/validate_output')?>
+        <input type="hidden"  name="activity_id" value="<?=$_SESSION['act_id']?>">
+        <input type="hidden"  name="teacher_id" value="<?=$_SESSION['teacher_id']?>">
+        <input type="hidden"  name="student_id" value="<?=$session->get('user_id')?>">
+        <input type="hidden"  name="grade" value="<?=$session->get('grade')?>">
+        <input type="hidden"  name="section" value="<?=$session->get('section')?>">
+          <div id="file-js-example" class="file has-name is-small is-boxed ml-4 pr-3">
                   <label class="file-label">
                     <input class="file-input" type="file" name="userfile2" required>
                     <span class="file-cta">
@@ -187,32 +195,34 @@
                       No file uploaded
                     </span>
                   </label>
-                </div>
-
-                <script>
-                  const fileInput = document.querySelector('#file-js-example input[type=file]');
-                  fileInput.onchange = () => {
-                    if (fileInput.files.length > 0) {
-                      const fileName = document.querySelector('#file-js-example .file-name');
-                      fileName.textContent = fileInput.files[0].name;
+          </div>
+          <script>
+            const fileInput = document.querySelector('#file-js-example input[type=file]');
+            fileInput.onchange = () => {
+              if (fileInput.files.length > 0) {
+                const fileName = document.querySelector('#file-js-example .file-name');
+                fileName.textContent = fileInput.files[0].name;
                     }
-                  }
-                </script>
-                 <button class="button is-success p-3 mt-5 ml-5"><i class="fa-solid fa-file-code"></i> &nbsp;  Submit Output</button>
+            }
+          </script>
+          <button class="button is-success p-3 mt-5 ml-5"><i class="fa-solid fa-file-code"></i> &nbsp;  Submit Output</button>
         </div>
     </div>
     <div class="columns" style="width: 100%">
-        
         <div class="column" id="blocklyDiv"
-            style="display: inline-block; height: 480px; width: 68%"><h1 class="subtitle mb-5">Intergrated Development Environment</h1></div>
+            style="display: inline-block; height: 520px; width: 68%"><h1 class="subtitle mb-5">Intergrated Development Environment</h1></div>
         <div class="column">
         <h1 class="subtitle mb-5">Code Output</h1>
         <textarea name="a_output" id="output"
-            style="display: inline-block; height: 455px;" readonly class="textarea has-fixed-size has-text-black is-link">
+            style="display: inline-block; height: 100px;" readonly class="textarea has-fixed-size has-text-black is-link">
         </textarea>
+        </form>
+        <h1 class="subtitle mb-5 mt-4"><i class="fa-brands fa-python"></i> &nbsp;Code In Python</h1>
+        <textarea name="" id="code" style="display: inline-block; height: auto;" readonly class="textarea has-fixed-size has-text-black is-link"></textarea>
         </div>
     </div>
-    </?form>
+    
+
     <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
         <category name="Logic" colour="%{BKY_LOGIC_HUE}">
         <block type="controls_if"></block>
@@ -229,7 +239,7 @@
             </block>
             </value>
         </block>
-        <block type="controls_whileUntil"></block>
+        <!--<block type="controls_whileUntil"></block>-->
         </category>
         <category name="Math" colour="%{BKY_MATH_HUE}">
         <block type="math_number">
@@ -259,13 +269,19 @@
     </xml>
 
     <script>
+       var editor = CodeMirror.fromTextArea(document.getElementById('code'), {
+                    lineNumbers: true,
+                    mode: 'text/x-python',
+                    theme: 'ayu-dark',
+                    readOnly: true,
+        }); 
         var demoWorkspace = Blockly.inject('blocklyDiv',
             {media: '<?=base_url()?>/design/media/',
             toolbox: document.getElementById('toolbox')});
         Blockly.Xml.domToWorkspace(document.getElementById('startBlocks'),
                                 demoWorkspace);
 
-
+            
         // Exit is used to signal the end of a script.
         setTimeout(BlocklyStorage.restoreBlocks, 0);
         BlocklyStorage.backupOnUnload();
@@ -280,7 +296,7 @@
         // Add an API function for the alert() block, generated for "text_print" blocks.
         var wrapper = function(text) {
             text = text ? text.toString() : '';
-            outputArea.value = outputArea.value + text;
+            outputArea.value = outputArea.value + text + '\n';
         };
         interpreter.setProperty(globalObject, 'alert',
             interpreter.createNativeFunction(wrapper));
@@ -307,6 +323,7 @@
 
         var highlightPause = false;
         var latestCode = '';
+        var latestCodePython = '';
 
         function highlightBlock(id) {
         demoWorkspace.highlightBlock(id);
@@ -328,16 +345,17 @@
         Blockly.JavaScript.STATEMENT_PREFIX = 'highlightBlock(%1);\n';
         Blockly.JavaScript.addReservedWords('highlightBlock');
         latestCode = Blockly.JavaScript.workspaceToCode(demoWorkspace);
-
+        latestCodePython = Blockly.Python.workspaceToCode(demoWorkspace);
+        
         resetStepUi(true);
         }
 
         function resetInterpreter() {
         myInterpreter = null;
-        if (runner) {
-            clearTimeout(runner);
-            runner = null;
-        }
+          if (runner) {
+              clearTimeout(runner);
+              runner = null;
+          }
         }
 
         function runCode() {
@@ -347,9 +365,31 @@
             resetStepUi(true);
             runButton.disabled = 'disabled';
 
+             // Begin execution
+             highlightPause = false;
+            myInterpreter = new Interpreter(latestCode, initApi);
+            runner = function() {
+                if (myInterpreter) {
+                var hasMore = myInterpreter.run();
+                if (hasMore) {
+                    // Execution is currently blocked by some async call.
+                    // Try again later.
+                    setTimeout(runner, 5);
+                    outputArea.value = 'Error';
+                    
+                } else {
+                    // Program is complete.
+                    editor.setValue(latestCodePython);
+                    resetInterpreter();
+                    resetStepUi(false);
+                 }
+                }
+            };
+            runner();
+
             // And then show generated code in an alert.
             // In a timeout to allow the outputArea.value to reset first.
-            setTimeout(function() {
+            /*setTimeout(function() {
                 alert('Ready to execute the following code\n' +
             '===================================\n' +
             latestCode);
@@ -363,19 +403,20 @@
                 if (hasMore) {
                     // Execution is currently blocked by some async call.
                     // Try again later.
-                    setTimeout(runner, 10);
+                    setTimeout(runner, 5);
+                    outputArea.value = 'Error';
+                    
                 } else {
                     // Program is complete.
-                    outputArea.value += '';
                     resetInterpreter();
                     resetStepUi(false);
-                }
+                 }
                 }
             };
             runner();
-            }, 1);
+            }, 1); */
             return;
-        }
+          }
         }
 
         // Load the interpreter now, and upon future changes.

@@ -18,8 +18,8 @@ class Views extends BaseController
     }
     public function signup_page()
     {
-        $_SESSION['MayUserNaIto'] = "Enter your personal Data";
-        $_SESSION['MayUserNaItoTitle'] = "Sign up";
+        $_SESSION['MayUserNaIto'] = "Email Taken! Please enter a different one";
+        $_SESSION['MayUserNaItoTitle'] = "Email Taken";
         echo view('sign_up');
     }
     public function verification_page()
@@ -119,6 +119,7 @@ class Views extends BaseController
     public function student_do_activity()
     {
         $_SESSION['act_id'] = $this->request->uri->getSegment(3);
+        $_SESSION['teacher_id'] = $this->request->uri->getSegment(4);
         echo view('student/student_do_activity');
     }
     public function student_about()

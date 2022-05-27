@@ -257,7 +257,7 @@
                     
                        
                       ?>
-                        <a href="<?=site_url('/views/student_do_activity')?>/<?=$activityRow->activity_id?>" class="button is-link is-small"><i class="fa fa-eye"></i>&nbsp; Do the activity</a>
+                        <a href="<?=site_url('/views/student_do_activity')?>/<?=$activityRow->activity_id?>/<?=$activityRow->teacher_id?>" class="button is-link is-small"><i class="fa fa-eye"></i>&nbsp; Do the activity</a>
                     <?php
                          }
                       

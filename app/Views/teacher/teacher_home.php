@@ -273,7 +273,7 @@
             <tbody>
               <?php
                    $announcement_builder= db_connect()->table('teacher_announcements');
-                   $announcement_results = $announcement_builder->get();
+                   $announcement_results = $announcement_builder->getWhere(['teacher_id' => $session->get('user_id')]);
 
                    foreach($announcement_results->getResult() as $announcementRow)
                    {
