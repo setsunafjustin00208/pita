@@ -192,7 +192,7 @@
             </header>
             <section class="modal-card-body">
               <div class="container mb-4 box">
-                <h1 class="subtitle">1. Hover mouse to the block category</h1>
+                <h1 class="subtitle">1. Hover mouse to the block categories</h1>
                 <figure class="image">
                     <img src="<?=base_url('/design/images/documentation.png')?>">
                 </figure>
