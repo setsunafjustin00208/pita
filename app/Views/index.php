@@ -280,7 +280,7 @@
                       </div>
                     </div>
                     <p class="subtitle box has-background-info animate__animated animate__bounceInUp animate__delay-3s">
-                        The <u>Program-Block Interface for Teaching Application</u> is a Web based block by block programming interface with activities given by the teacher for further understanding how to code. In a Visual way!
+                        The <u>Program-Block Interface for Teaching Aims</u> is a Web based block by block programming interface with activities given by the teacher for further understanding how to code visually!
                     </p>
                 
                 </div>

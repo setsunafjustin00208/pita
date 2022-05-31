@@ -172,8 +172,53 @@
     <div class="buttons columns">
         <div class="column is-9">
          <button class="button is-link p-3 m-3 mt-6" onclick="runCode()" id="runButton"><i class="fa fa-terminal" aria-hidden="true"></i>&nbsp; Run Program</button>
+         <button class="button is-success p-3 m-3 mt-6 modal-trigger" data-target="instructions"><i class="fa-solid fa-diamond-turn-right"></i> &nbsp; View Instructions</button>
+         <div class="modal" id="instructions">
+          <div class="modal-background"></div>
+          <div class="modal-card">
+            <header class="modal-card-head">
+              <p class="modal-card-title">Instructions</p>
+              <button class="delete" aria-label="close"></button>
+            </header>
+            <section class="modal-card-body">
+              <div class="container mb-4 box">
+                <h1 class="subtitle">1. Hover mouse to the block category</h1>
+                <figure class="image">
+                    <img src="<?=base_url('/design/images/documentation.png')?>">
+                </figure>
+              </div>
+              <div class="container mb-4 box">
+              <h1 class="subtitle">2. Choose a block</h1>
+                <figure class="image">
+                    <img src="<?=base_url('/design/images/documentation2.png')?>">
+                </figure>
+              </div>
+              <div class="container mb-4 box">
+              <h1 class="subtitle">3. Press a block and drag it into the empty space</h1>
+                <figure class="image">
+                    <img src="<?=base_url('/design/images/documentation3.png')?>">
+                </figure>
+              </div>
+              <div class="container mb-4 box">
+              <h1 class="subtitle">5. Put the blocks together</h1>
+                <figure class="image">
+                    <img src="<?=base_url('/design/images/documentation4.png')?>">
+                </figure>
+              </div>
+              <div class="container mb-4 box">
+              <h1 class="subtitle">6. Press the 'Run program' Button</h1>
+                <figure class="image">
+                    <img src="<?=base_url('/design/images/documentation5.png')?>">
+                </figure>
+              </div>
+            </section>
+            <footer class="modal-card-foot">
+              <button class="button">Cancel</button>
+            </footer>
+          </div>
         </div>
-        <div class="column is-3">
+        </div>
+        <div class="column">
         <?=form_open_multipart('filecontroller/validate_output')?>
         <input type="hidden"  name="activity_id" value="<?=$_SESSION['act_id']?>">
         <input type="hidden"  name="teacher_id" value="<?=$_SESSION['teacher_id']?>">
@@ -209,12 +254,12 @@
         </div>
     </div>
     <div class="columns" style="width: 100%">
-        <div class="column" id="blocklyDiv"
-            style="display: inline-block; height: 520px; width: 68%"><h1 class="subtitle mb-5">Intergrated Development Environment</h1></div>
+        <div class="column is-4" id="blocklyDiv"
+            style="display: inline-block; height: 590px; width: 68%"><h1 class="subtitle mb-5">Intergrated Development Environment</h1></div>
         <div class="column">
         <h1 class="subtitle mb-5">Code Output</h1>
         <textarea name="a_output" id="output"
-            style="display: inline-block; height: 100px;" readonly class="textarea has-fixed-size has-text-black is-link">
+            style="display: inline-block; height: 200px;" readonly class="textarea has-fixed-size has-text-black is-link">
         </textarea>
         </form>
         <h1 class="subtitle mb-5 mt-4"><i class="fa-brands fa-python"></i> &nbsp;Code In Python</h1>

@@ -176,36 +176,69 @@
           </p>
         </div>
       </section>
-    <div class="buttons columns">
+      <div class="buttons columns">
+      
       <div class="column is-8">
          <button class="button is-link p-3 m-3" onclick="runCode()" id="runButton"><i class="fa-solid fa-terminal"></i> &nbsp; Run Program</button>
       </div>
-      <div class="column is-4">
-       <a id="gcode" class="button is-success p-3 m-3 modal-trigger" data-target="modal-trigger-2"><i class="fa-brands fa-python"></i> &nbsp; Generated Code In python</a>
-       <div id= "modal-trigger-2" class="modal modal-fx-fadeInScale">
-            <div class="modal-background"></div>
-                <div class="modal-card modal-size">
-                        <header class="modal-card-head">
-                            <p class="modal-card-title"><strong>View Code</strong></p>
-                            <button class="delete" aria-label="close"></button>
-                        </header>
-                        <section class="modal-card-body">
-                          <textarea id="code" name="code"></textarea>
-                        </section>
-                        <footer class="modal-card-foot">
-                            <button class="button is-danger">Close</button>
-                        </footer>
-                </div>
+      <div class="column">
+         <button class="button is-success p-3 m-3 modal-trigger" data-target="instructions"><i class="fa-solid fa-diamond-turn-right"></i> &nbsp; View Instructions</button>
+         <div class="modal" id="instructions">
+          <div class="modal-background"></div>
+          <div class="modal-card">
+            <header class="modal-card-head">
+              <p class="modal-card-title">Instructions</p>
+              <button class="delete" aria-label="close"></button>
+            </header>
+            <section class="modal-card-body">
+              <div class="container mb-4 box">
+                <h1 class="subtitle">1. Hover mouse to the block category</h1>
+                <figure class="image">
+                    <img src="<?=base_url('/design/images/documentation.png')?>">
+                </figure>
+              </div>
+              <div class="container mb-4 box">
+              <h1 class="subtitle">2. Choose a block</h1>
+                <figure class="image">
+                    <img src="<?=base_url('/design/images/documentation2.png')?>">
+                </figure>
+              </div>
+              <div class="container mb-4 box">
+              <h1 class="subtitle">3. Press a block and drag it into the empty space</h1>
+                <figure class="image">
+                    <img src="<?=base_url('/design/images/documentation3.png')?>">
+                </figure>
+              </div>
+              <div class="container mb-4 box">
+              <h1 class="subtitle">5. Put the blocks together</h1>
+                <figure class="image">
+                    <img src="<?=base_url('/design/images/documentation4.png')?>">
+                </figure>
+              </div>
+              <div class="container mb-4 box">
+              <h1 class="subtitle">6. Press the 'Run program' Button</h1>
+                <figure class="image">
+                    <img src="<?=base_url('/design/images/documentation5.png')?>">
+                </figure>
+              </div>
+            </section>
+            <footer class="modal-card-foot">
+              <button class="button">Cancel</button>
+            </footer>
+          </div>
         </div>
       </div>
     </div>
+
     <div class="columns" style="width: 100%">
-        <div class="column" id="blocklyDiv"
-            style="display: inline-block; height: 480px; width: 68%"></div>
-        <div class="column ">
+        <div class="column is-4" id="blocklyDiv"
+            style="display: inline-block; height: 590px; width: 68%"></div>
+        <div class="column">
         <textarea name="a_output" id="output"
-            style="display: inline-block; height: 455px;" readonly class="textarea has-fixed-size has-text-black is-link">
+            style="display: inline-block; height: 200px;" readonly class="textarea has-fixed-size has-text-black is-link">
         </textarea>
+        <h1 class="subtitle mb-5 mt-4"><i class="fa-brands fa-python"></i> &nbsp;Code In Python</h1>
+        <textarea name="" id="code" style="display: inline-block; height: auto;" readonly class="textarea has-fixed-size has-text-black is-link"></textarea>
         </div>
     </div>
     <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
